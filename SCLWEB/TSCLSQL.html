@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="Shorcut icon" type="x-icon" href="https://i.ibb.co/fM2cnrV/Download-My-SQL-Logo-in-PNG-Vector-EPS-Format-Photoroom.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Tutorial</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Ledger&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Frijole&family=Ledger&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+        p {
+            font-size: 1.3em;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        body {
+            display: flex; 
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8; /* Light background for contrast */
+        }
+
+        h1, h2 {
+            font-size: 1.8em;
+            font-family: 'Times New Roman', Times, serif;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-top: 30px;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #0b0f23, #1b2845, #0b0f23);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            background-size: cover;
+            color: white;
+        }
+        @keyframes twinkling {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: -1000px 1000px;
+            }
+        }
+
+        body {
+            background: #000 url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+            animation: twinkling 200s linear infinite;
+        }    
+
+        .navbar {
+            width: 220px;
+            background: linear-gradient(to bottom, rgba(25, 25, 25, 1), rgba(0, 0, 50, 1));
+            padding: 20px;
+            border-radius: 0 20px 20px 0;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.6); 
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+            padding: 10px 15px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+        }
+
+        .navbar a:active {
+            background: rgba(255, 255, 255, 0.5);
+            color: #ff00ff;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.7);
+        }
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: #00ffff;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            max-width: 900px; 
+            margin-left: 30px;
+            margin-right: 30px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5), 0 2px 10px rgba(0, 0, 0, 0.1);
+            color: white; /* White text color */
+        }
+
+        /* Videos */
+        .vid {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%; 
+            padding-top: 56.25%; 
+            overflow: hidden;
+        }
+        .video-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width of the wrapper */
+            height: 100%; /* Full height of the wrapper */
+            object-fit: contain; /* Cover the area while maintaining aspect ratio */
+            border-radius: 8px; /* Rounded corners */
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width of the wrapper */
+            height: 100%; /* Full height of the wrapper */
+            border: none; /* Remove border */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        /* Language Access */
+        .container {
+            padding: 50px 0;
+            height: 100%;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .parent {
+            margin-top: -50px;
+            height: 400px;
+            width: 300px;
+            padding: 20px;
+            perspective: 1000px;
+        }
+        .card { 
+            padding-top: 100px;
+            height: 425px;
+            transform-style: preserve-3d;
+            background-image: url(https://i.ibb.co/3pZVjjQ/i01-meow-1.png);
+            background-position: center center;
+            width: 100%;
+            transition: all 0.5s ease-in-out;
+            border-radius: 10px;
+        }
+        .card:hover {
+            background-position: 80% 20%;
+            transform: rotate3d(0.5, 1, 0, 15deg);
+        }
+        .content-box {
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.811);
+            border-radius: 0 0 10px 10px;
+            box-shadow: rgba(255, 255, 255, 0.925) 0 20px 50px -25px;
+            transition: all 0.5s ease-in-out;
+            padding: 50px 25px 25px 25px;
+            transform-style: preserve-3d;
+        }
+        .card-title {
+            color: white;
+            font-size: 25px;
+            font-family: 'Frijole';
+            font-weight: 900;
+            transition: all 0.5s ease-in-out;
+            transform: translate3d(0px, 0px, 25px);
+        }
+        .card-title:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        .card-content {
+            padding-top: 15px;
+            font-size: 0.9em;
+            font-family: 'Ledger';
+            color: white;
+            transition: all 0.5s ease-in-out;
+        }
+        .card-content:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        .see-more {
+            display: block;
+            font-weight: 900;
+            font-size: 11px;
+            font-family: 'Times New Roman', Times, serif;
+            text-transform: uppercase;
+            color: blue;
+            padding-top: 15px;
+            transition: all 0.5s ease-in-out;
+            transform: translate3d(0px, 0px, 20px);
+        }
+        .see-more a {
+            text-decoration: none;
+            color: white;
+        }
+        .see-more:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        
+        .date-box7 {
+            position: absolute;
+            top: 75px;
+            left: 25px;
+            height: 60px;
+            width: 60px;
+            background-color: rgb(187, 187, 187);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: rgb(162, 175, 196) 0px 20px 60px 0px, rgb(175, 175, 175) 0px 18px 36px -18px;
+            transform: translate3d(0px, 0px, 50px);
+            background-image: url(https://i.ibb.co/fM2cnrV/Download-My-SQL-Logo-in-PNG-Vector-EPS-Format-Photoroom.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .date-box span {
+            display: block;
+            text-align: center;
+        }
+        .date-box .month {
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .date-box .date {
+            font-size: 20px;
+            font-weight: 900;
+            color: rgb(0, 136, 255);
+        }
+        
+    </style>
+
+</head>
+
+<body>
+
+    
+    <div class="container">
+        <div class="parent card8">
+            <div class="card">
+                <div class="content-box">
+                    <h1 class="card-title">SQL</h1>
+                    <p class="card-content">A language used to manage and manipulate data in relational databases, such as querying, updating, and organizing data.</p>
+                    <span class="see-more"><a href="/SCLWEB/TSCLPL.html">Exit</a></span>
+                </div>
+                <div class="date-box7">
+                </div>
+            </div>
+        </div>   
+    </div>
+
+
+    
+    <div class="navbar">
+        <h2>Navigation</h2>
+        <a href="#history">History</a>
+        <a href="#Intro">Introduction to SQL</a>
+        <a href="#syn">Syntax</a>
+        <a href="#ect">Select</a>
+        <a href="#whe">Where</a>
+        <a href="#and">And</a>
+        <a href="#or">Or</a>
+        <a href="#OB">Order By</a>
+        <a href="#not">Not</a>
+        <a href="#II">Insert Into</a>
+        <a href="#NV">Null Value</a>
+        <a href="#del">Delete/a>
+        <a href="#ST">Select top</a>
+        <a href="#Af">Aggregate Function</a>
+        <a href="#MM">Min and Max</a>
+        <a href="#cou">Count</a>
+        <a href="#sum">Sum</a>
+        <a href="#avg">Avg</a>
+        <a href="#like">Like</a>
+        <a href="#Wild">Wildcard</a>
+    </div>
+
+    <div class="content">
+
+    <h1>SQL</h1>
+
+    <h2 id="history">History</h2>
+    <p><b>A Brief History About SQL</b></p>
+    <br>
+    <p> Structured query language (SQL) is a programming language for storing and processing information in a relational database. A relational database stores information in tabular form, with rows and columns representing different data attributes and the various relationships between the data values.
+        SQL is an essential part of the technology stack for many organizations and is widely used in business, government, and scientific applications across many roles including: Data Analysts, Business Intelligence Analysts, Data Scientists, Database Developers, and Data Engineers. SQL is used by organizations 
+        to interact with databases which store and manage data in a structured and efficient way.</p>
+    <br>
+    <p> Origins ( 1970s)</b></p>
+    <br>
+    <p> Development: SQL was developed by IBM Corporation, Inc., to use Codd's model. SEQUEL later became SQL<br>
+        Influences:  SQL was Influenced by Datalog</p>
+    <br>
+    <p><b>1970</b>
+    <br>
+    <br>Introduced in the 1970s, SQL offered two main advantages over older read write APIs such as ISAM or VSAM. Firstly, it introduced the concept of accessing many records with one single command. Secondly, it eliminates the need to specify how to reach a record, i.e., with or without an index.</p>
+
+    <h1>SQL Lesson Flow</h1>
+
+    <h2 id="Intro">Introduction to SQL</h2>
+
+    <p><b>What is SQL?</b></p>
+    <br>
+    <p> Structured Query Language (SQL) s a domain-specific language used to manage data, especially in a relational database management system (RDBMS). It is particularly useful in handling structured data, i.e., data incorporating relations among entities and variables.
+        SQL is an essential part of the technology stack for many organizations and is widely used in business, government, and scientific applications across many roles including: Data Analysts, Business Intelligence Analysts, Data Scientists, Database Developers, and Data Engineers. SQL is used by organizations
+        to interact with databases which store and manage data in a structured and efficient way.</p>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="syn">Syntax</h2>
+
+    <p> Most of the actions you need to perform on a database are done with SQL statements.SQL statements consist of keywords that are easy to understand.</p>
+
+    <p><b>You can also watch the video tutorial below for better Understanding.</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/HXV3zeQKqGY" title="SQL Tutorial - Full Database Course for Beginners" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="ect">Select</h2>
+
+    <p> <b>SELECT Statement</b><br>SELECT statement is used to select data from a database.<br><b>SELECT DISTINCT Statement</b><br>. SELECT DISTINCT statement is used to return only distinct (different) values<br><b>SELECT Example Without DISTINCT</b><br>the DISTINCT keyword, the SQL statement returns the "Country" value from all the records of the "Customers" table
+        <br><b>Count Distinct</b><br>the DISTINCT keyword in a function called COUNT, we can return the number of different countries.</p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/yuYKEx6VDPE" title="SQL - SELECT DISTINCT Statement - W3Schools.com" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="whe">Where</h2>
+
+    <p> <b>WHERE Clause</b><br>WHERE clause is used to filter records. used to extract only those records that fulfill a specified condition.<br>following operators can be used in the WHERE clause<br></p>
+     
+    <div class="vid">
+        <div class="video-wrapper">
+            <img src="https://ibb.co/XLM55qT" alt="">
+        </div>
+    </div>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/L9GBpVXq-zc" title="SQL - WHERE Clause - W3Schools.com" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="OB">ORDER BY</h2>
+
+    <p> <b>ORDER BY Keyword</b><br>ORDER BY keyword is used to sort the result-set in ascending or descending order.<br>ORDER BY keyword sorts the records in ascending order by default. To sort the records in descending order, use the DESC keyword.</p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/h_HHTNjAgS8" title="ORDER BY Clause (SQL) - Sorting Results" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="and">And</h2>
+
+    <p> <b>AND Operator</b><br>AND operator is used to filter records based on more than one condition All Conditions Must Be True<br><b>Combining AND and OR</b><br>combine the AND and OR operators.<br></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/l3Ky5btytSY" title="How to use the AND Condition with the OR Condition in SQL" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+ 
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="or">Or</h2>
+
+    <p> The OR operator is used to filter records based on more than one condition At Least One Condition Must Be True<br><b>Combining AND and OR</b><br>You can combine the AND and OR operators.</p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/l3Ky5btytSY" title="How to use the AND Condition with the OR Condition in SQL" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="not">Not</h2>
+
+    <p> NOT operator is used in combination with other operators to give the opposite result, also called the negative result.</p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/TY0wlklcOhE" title="SQL NOT IN Keyword: A Definition and Example" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+  
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="II">Insert Into</h2>
+
+    <p> The INSERT INTO statement is used to insert new records in a table.<br><b>Insert Multiple Rows</b><br>To insert multiple rows of data, we use the same INSERT INTO statement, but with multiple values</p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/oqFo7iz7eFM" title="INSERT INTO Statement (SQL) - Adding Records" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="NV">Null Value</h2>
+
+    <p> A field with a NULL value is a field with no value.It is not possible to test for NULL values with comparison operators we will have to use the IS NULL and IS NOT NULL operators instead.<br><b>IS NULL Operator</b><br>IS NULL operator is used to test for empty values (NULL values).</p><br><b> IS NOT NULL Operator</b>
+    <br>IS NOT NULL operator is used to test for non-empty values (NOT NULL values).</p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/RKUYYrmv6gw" title="SQL - NULL Values - W3Schools.com" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="del">delete</h2>
+
+    <p> DELETE statement is used to delete existing records in a table.It is possible to delete all rows in a table without deleting the table.<br><b>Delete a Table</b><br> delete the table completely, use the DROP TABLE statement</p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/s7ehCYyEmVw" title="SQL - DELETE Statement - W3Schools.com" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="ST">Select top</h2>
+
+    <p> SELECT TOP clause is used to specify the number of records to return.<br>SELECT TOP clause is useful on large tables with thousands of records. Returning a large number of records can impact performance.</p>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="Af">Aggregate Function</h2>
+
+    <p> aggregate function is a function that performs a calculation on a set of valuesAggregate functions are often used with the GROUP BY clause of the SELECT statement. The GROUP BY clause splits the result-set into groups of values and the aggregate function can be used to return a single value for each group.<br>
+        The most commonly used SQL aggregate functions are:<br><br>MIN() - returns the smallest value within the selected column<br>MAX() - returns the largest value within the selected column<br>COUNT() - returns the number of rows in a set<br>SUM() - returns the total sum of a numerical column<br>AVG() - returns the average value of a numerical column</p>
+
+    <div class="vid">
+         <div class="video-wrapper">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/-Lw649PObq8" title="SQL Aggregate Functions: What You Need to Know" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+    
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="MM">Min and Max</h2>
+
+    <p> <b> MIN() and MAX() Functions</b><br>MIN() function returns the smallest value of the selected column.<br>MAX() function returns the largest value of the selected column.<br>
+        <b>Set Column Name </b><br>When you use MIN() or MAX() he returned column will not have a descriptive name. To give the column a descriptive name use the AS keyword<br><b>Use MIN() with GROUP BY</b><br>
+        use the MIN() function and the GROUP BY clause, to return the smallest price for each category in the Products table</p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/muwEdPsx534" title="COUNT, SUM, AVG, MIN, MAX (SQL) - Aggregating Data" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="cou">Count</h2>
+
+    <p> <b>COUNT() Function</b><br>COUNT() function returns the number of rows that matches a specified criterion.<br><b>Specify Column</b><br>specify a column name instead of (*)<br><b>Add a WHERE Clause</b><br>
+        add a WHERE clause to specify conditions<br><b>ignore Duplicates</b><br> ignore duplicates by using the DISTINCT keyword in the COUNT() function.If DISTINCT is specified, rows with the same value for the specified column will be counted as one.<br>
+        <b>Use an Alias</b><br> counted column a name by using the AS keyword.<br><b>Use COUNT() with GROUP BY</b><br>use the COUNT() function and the GROUP BY clause, to return the number of records for each category in the Products table</p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/muwEdPsx534" title="COUNT, SUM, AVG, MIN, MAX (SQL) - Aggregating Data" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="sum">Sum</h2>
+
+    <p> <b>SUM() Function</b><br> SUM() function returns the total sum of a numeric column.<br><b>SUM() With an Expression</b><br>parameter inside the SUM() function can also be an expression.<br><b>Use SUM() with GROUP BY</b><br>se the SUM() function and the GROUP BY clause, to return the Quantity for each OrderID in the OrderDetails table</p>
+     
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/muwEdPsx534" title="COUNT, SUM, AVG, MIN, MAX (SQL) - Aggregating Data" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="avg">Avg</h2>
+
+    <p> <b>AVG() Function</b><br>AVG() function returns the average value of a numeric column.<br><b>Higher Than Average</b><br>records with a higher price than average, we can use the AVG() function in a sub query<br><b>AVG() with GROUP BY</b><br>
+        we use the AVG() function and the GROUP BY clause, to return the average price for each category in the Products table</p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/muwEdPsx534" title="COUNT, SUM, AVG, MIN, MAX (SQL) - Aggregating Data" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+    
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+    
+    <h2 id="like">Like</h2>
+
+    <p> LIKE operator is used in a WHERE clause to search for a specified pattern in a column.<br>
+        The percent sign % represents zero, one, or multiple characters<br>The underscore sign _ represents one, single character</p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/vEt7bDnXlnY" title="How to use the SQL LIKE Condition" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+    
+    <h2 id="Wild">Wildcard</h2>
+
+    <p> Wildcard characters are used with the LIKE operator. The LIKE operator is used in a WHERE clause to search for a specified pattern in a column the % wildcard represents any number of characters, even zero characters.<br><b>the _ Wildcard</b><br>The _ wildcard represents a single character.<br>
+        <b> [] Wildcard</b><br>[] wildcard returns a result if any of the characters inside gets a match.<br><b>the - Wildcard</b>The - wildcard allows you to specify a range of characters inside the [] wildcard.<br>
+        <b>Combine Wildcards</b><br>wildcard, like % and _ , can be used in combination with other wildcards.<br><b>Without Wildcard</b><br>
+        no wildcard is specified, the phrase has to have an exact match to return a result.</p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/_POPNI4HFsc" title="WIldcards | SQL | Tutorial 15" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+</html>

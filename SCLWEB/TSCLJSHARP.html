@@ -1,0 +1,908 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J# Tutorial</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Ledger&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Frijole&family=Ledger&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+        p {
+            font-size: 1.3em;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        body {
+            display: flex; 
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8; /* Light background for contrast */
+        }
+
+        h1, h2 {
+            font-size: 1.8em;
+            font-family: 'Times New Roman', Times, serif;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-top: 30px;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #0b0f23, #1b2845, #0b0f23);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            background-size: cover;
+            color: white;
+        }
+        @keyframes twinkling {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: -1000px 1000px;
+            }
+        }
+
+        body {
+            background: #000 url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+            animation: twinkling 200s linear infinite;
+        }    
+
+        .navbar {
+            width: 220px;
+            background: linear-gradient(to bottom, rgba(25, 25, 25, 1), rgba(0, 0, 50, 1));
+            padding: 20px;
+            border-radius: 0 20px 20px 0;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.6); 
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+            padding: 10px 15px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+        }
+
+        .navbar a:active {
+            background: rgba(255, 255, 255, 0.5);
+            color: #ff00ff;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.7);
+        }
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: #00ffff;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            max-width: 900px; 
+            margin-left: 30px;
+            margin-right: 30px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5), 0 2px 10px rgba(0, 0, 0, 0.1);
+            color: white; /* White text color */
+        }
+
+        .sticky-container {
+            position: sticky;
+            top: 0;
+            
+        }
+
+        /* Videos */
+        .vid {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0;
+
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%; 
+            padding-top: 56.25%; 
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width of the wrapper */
+            height: 100%; /* Full height of the wrapper */
+            border: none; /* Remove border */
+            border-radius: 8px; /* Rounded corners */
+        }
+        .vidintro {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0; 
+        }
+        
+        .video-introduction {
+            position: relative;
+            width: 100%; 
+            overflow: hidden;
+        }
+        .vidselect {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0; 
+        }
+        
+        .video-selectors {
+            position: relative;
+            width: 100%; 
+            overflow: hidden;
+        }
+        .vidcolor {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0; 
+        }
+        
+        .video-colors {
+            position: relative;
+            width: 100%; 
+            overflow: hidden;
+        }
+        .vidbg {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0; 
+        }
+        
+        .video-background {
+            position: relative;
+            width: 100%; 
+            overflow: hidden;
+        }
+        .vidborder {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0; 
+        }
+        
+        .vide0-brd {
+            position: relative;
+            width: 100%; 
+            overflow: hidden;
+        }
+        .vidmargin {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0; 
+        }
+        
+        .video-mrgns {
+            position: relative;
+            width: 100%; 
+            overflow: hidden;
+        }
+        .vidpad {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0; 
+        }
+        
+        .video-padding {
+            position: relative;
+            width: 100%; 
+            overflow: hidden;
+        }
+        .vidhewi {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0; 
+        }
+        
+        .video-height {
+            position: relative;
+            width: 100%; 
+            overflow: hidden;
+        }
+        .vidbox {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0; 
+        }
+        
+        .video-boxmodel {
+            position: relative;
+            width: 100%; 
+            overflow: hidden;
+        }
+        .vidfnts {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0; 
+        }
+        
+        .video-fonts {
+            position: relative;
+            width: 100%; 
+            overflow: hidden;
+        }
+        .vidadva {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0; 
+        }
+        
+        .video-advance {
+            position: relative;
+            width: 100%; 
+            overflow: hidden;
+        }
+        .vidvaria {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0; 
+        }
+        
+        .video-varri {
+            position: relative;
+            width: 100%; 
+            overflow: hidden;
+        }
+        .vidtool {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0; 
+        }
+        
+        .video-tip {
+            position: relative;
+            width: 100%; 
+            overflow: hidden;
+        }
+        
+        
+        
+        
+        /* Language Access */
+        .container {
+            padding: 50px 0;
+            height: 100%;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .parent {
+            margin-top: -50px;
+            height: 400px;
+            width: 300px;
+            padding: 20px;
+            perspective: 1000px;
+        }
+        .card { 
+            padding-top: 100px;
+            height: 425px;
+            transform-style: preserve-3d;
+            background-image: url(https://i.ibb.co/3pZVjjQ/i01-meow-1.png);
+            background-position: center center;
+            width: 100%;
+            transition: all 0.5s ease-in-out;
+            border-radius: 10px;
+        }
+        .card:hover {
+            background-position: 80% 20%;
+            transform: rotate3d(0.5, 1, 0, 15deg);
+        }
+        .content-box {
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.811);
+            border-radius: 0 0 10px 10px;
+            box-shadow: rgba(255, 255, 255, 0.925) 0 20px 50px -25px;
+            transition: all 0.5s ease-in-out;
+            padding: 50px 25px 25px 25px;
+            transform-style: preserve-3d;
+        }
+        .card-title {
+            color: white;
+            font-size: 25px;
+            font-family: 'Frijole';
+            font-weight: 900;
+            transition: all 0.5s ease-in-out;
+            transform: translate3d(0px, 0px, 25px);
+        }
+        .card-title:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        .card-content {
+            padding-top: 15px;
+            font-size: 0.9em;
+            font-family: 'Ledger';
+            color: white;
+            transition: all 0.5s ease-in-out;
+        }
+        .card-content:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        .see-more {
+            display: block;
+            font-weight: 900;
+            font-size: 11px;
+            font-family: 'Times New Roman', Times, serif;
+            text-transform: uppercase;
+            color: blue;
+            padding-top: 15px;
+            transition: all 0.5s ease-in-out;
+            transform: translate3d(0px, 0px, 20px);
+        }
+        .see-more a {
+            text-decoration: none;
+            color: white;
+        }
+        .see-more:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        
+        .date-box10 {
+            position: absolute;
+            top: 75px;
+            left: 25px;
+            height: 60px;
+            width: 60px;
+            background-color: rgb(187, 187, 187);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: rgb(162, 175, 196) 0px 20px 60px 0px, rgb(175, 175, 175) 0px 18px 36px -18px;
+            transform: translate3d(0px, 0px, 50px);
+            background-image: url();
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .date-box span {
+            display: block;
+            text-align: center;
+        }
+        .date-box .month {
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .date-box .date {
+            font-size: 20px;
+            font-weight: 900;
+            color: rgb(0, 136, 255);
+        }
+        .photoatri {
+            width: 300px;
+            height: 300px;
+            background-image:url(https://i.ibb.co/fqCbjyz/Screenshot-2024-12-07-184723.png);
+            background-size: 100px;
+            background-position: center;
+        }
+        
+    </style>
+
+</head>
+
+<body>
+
+    
+    <div class="container">
+        <div class="parent card3">
+            <div class="card">
+                <div class="content-box">
+                    <h1 class="card-title">J#</h1>
+                    <p class="card-content">A now-obsolete language developed by Microsoft, similar to Java but designed for the .NET framework. It’s mostly replaced by C#.</p>
+                    <span class="see-more"><a href="/SCLWEB/TSCLPL.html">Exit</a></span>
+                </div>
+                <div class="date-box10">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <div class="navbar">
+        <h2>CSS</h2>
+        <a href="#history">History</a>
+        <a href="#Intro">Introduction to CSS</a>
+        <a href="#syn">CSS Syntax</a>
+        <a href="#select">CSS Selectors</a>
+        <a href="#color">CSS Colors</a>
+        <a href="#bg">CSS Backgrounds</a>
+        <a href="#border">CSS Border</a>
+        <a href="#mrgns">CSS Margins</a>
+        <a href="#Padd">CSS Padding</a>
+        <a href="#HeWi">CSS Height/Width</a>
+        <a href="#box">CSS Box Model</a>
+        <a href="#font">CSS Fonts</a>
+        <a href="#adva">CSS Advance</a>
+        <a href="#varia">CSS Variable</a>
+        <a href="#tool">CSS ToolTip</a>
+        
+
+    </div>
+
+    <div class="content">
+    <h1>J#</h1>
+    <h2 id="history">History</h2>
+    <p><b>A Brief History About J#</b></p>
+    <p>•	Origins: J# was introduced as part of Microsoft's Visual Studio .NET in 2002. It was born out of Microsoft's desire to attract Java developers to its platform and offer a viable alternative after the company's fallout with Sun Microsystems over Java licensing issues.</p>
+        
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(0, 0, 0); background-color: black; border: none;">
+
+    <h1>Introduction to J#</h1>
+
+    <h2 id="Intro">Introduction to J#</h2>
+
+    <p><b>What is J#?</b></p>
+        <p>•<b>	Development Timeline:</p></b>
+            o	2002: Released as part of Visual Studio .NET.
+            o	2005: Included in Visual Studio 2005.
+            o	2007: Officially discontinued, with no further updates or support provided.
+            •	Not a Java Virtual Machine: J# was designed to run on the .NET Common Language Runtime (CLR) instead of the Java Virtual Machine (JVM). This distinction made it more of a migration tool rather than a full-fledged Java implementation.
+            •	Popularity: Its syntax compatibility with Java and migration tools made it popular among developers who needed to transition Java-based projects to the .NET ecosystem
+            </P>
+    <br>
+        <p><b>Why Use CSS?</b></p>
+        <br><p>CSS is used to define styles for your web pages, including the design, layout and variations in display for different devices and screen sizes.</p>
+        <p><b>CSS EXAMPLE</b></p>
+     <img src="https://i.ibb.co/ZTTvJZY/Screenshot-20241208-185526.jpg" alt="Screenshot-20241208-185526" border="0" height="300" width="300">
+        
+        <br><p><b>CSS Solved a Big Problem</b></p>
+        <p>HTML was NEVER intended to contain tags for formatting a web page!
+
+            <br><br>HTML was created to describe the content of a web page, like:
+
+            <br><br>< h1 >This is a heading< /h 1>
+
+                <br><br> < p >This is a paragraph.< /p >
+
+When tags like <font>, and color attributes were added to the HTML 3.2 specification, it started a nightmare for web developers. Development of large websites, where fonts and color information were added to every single page, became a long and expensive</p>
+    <br><p><b>EXAMPLE VIDEO</b></p>  
+    <div class="vidfrm">
+        <div class="video-form">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/XPv4EeB0PJ8?si=7LBqYAkQQULrs58P" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>     </div>
+    </div>
+<br>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="syn">CSS Syntax</h2>
+
+    <p>A CSS rule consists of a selector and a declaration block</p>
+    <img src="https://i.ibb.co/bFwJGxL/Screenshot-20241208-190135.jpg" alt="Screenshot-20241208-190135" border="0" width="400" height="100">
+                    
+                    <br><p>The selector points to the HTML element you want to style.
+
+                        <br><br>The declaration block contains one or more declarations separated by semicolons.
+
+                        <br><br>Each declaration includes a CSS property name and a value, separated by a colon.
+
+                        <br><br>Multiple CSS declarations are separated with semicolons, and declaration blocks are surrounded by curly braces.</p>            
+                   
+            <br><p><b>EXAMPLE</b></p> 
+                    <p>In this example all <p> elements will be center-aligned, with a red text color</p> 
+<img src="https://i.ibb.co/Cmr4DTM/Screenshot-20241208-190531.jpg" alt="Screenshot-20241208-190531" border="0" width="350" height="150">                        
+            <br><p><b>EXAMPLE</b></p> 
+                        <p>p is a selector in CSS (it points to the HTML element you want to style: < p >).
+                            <br><br>color is a property, and red is the property value
+                            <br><br>text-align is a property, and center is the property value</p>          
+                        
+                        
+                        
+                        
+    <div class="vid">
+        <div class="video-wrapper">
+           <iframe width="560" height="315" src="https://www.youtube.com/embed/G8r00ZNopTE?si=ckvAm94IRlT4VO6o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>   </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="select">CSS Selectors</h2>
+
+    <p>A CSS selector selects the HTML element(s) you want to style.</p>
+
+       <p><br>All HTML tags must enclosed within < > these brackets.</p>
+           
+        <br><p><b>CSS Selectors</b></p>
+        <p>CSS selectors are used to "find" (or select) the HTML elements you want to style.  </p>
+        <br>
+           
+           <p>We can divide CSS selectors into five categories:
+               <br><br>Simple selectors (select elements based on name, id, class)
+               <br><br>Combinator selectors (select elements based on a specific relationship between them)
+Pseudo-class selectors (select elements based on a certain state)
+Pseudo-elements selectors (select and style a part of an element)
+Attribute selectors (select elements based on an attribute or attribute value)</p>
+           
+   
+<br><p><b>The CSS element Selector</b></p>
+           <p>The element selector selects HTML elements based on the element name.</p>
+
+           <br><p><b>EXAMPLE</b></p>
+<img src="https://i.ibb.co/tmjsF8J/Screenshot-20241208-192029.jpg" alt="Screenshot-20241208-192029" border="0" width="400" height="">
+
+    
+           <br><p><b>The CSS ID Selectors</b></p>
+           <p>The id selector uses the id attribute of an HTML element to select a specific element.
+
+               <br><br>The id of an element is unique within a page, so the id selector is used to select one unique element!
+
+               <br><br>To select an element with a specific id, write a hash (#) character, followed by the id of the element.</p>
+           
+           <br><p><b>EXAMPLE</b></p>
+           <p>The CSS rule below will be applied to the HTML element with id="para1": </p>
+         <img src="https://i.ibb.co/52wvy3G/Screenshot-20241208-192929.jpg" alt="Screenshot-20241208-192929" border="0" width="600" height="200">     
+         <p>An id name cannot start with a number!</p> 
+  
+           <br><p><b>CSS Class Selectors</b></p>
+           <p>The class selector selects HTML elements with a specific class attribute.
+               <br><br>To select elements with a specific class, write a period (.) character, followed by the class name.</p>  
+           
+      <br><p><b>CSS Simple Class Selectors</b></p> 
+<img src="https://i.ibb.co/fkyH6yM/Screenshot-20241208-194348.jpg" alt="Screenshot-20241208-194348" border="0" width="800" height="300">           
+           
+<br><p><b>EXAMPLE VIDEO</b></p>  
+<div class="vidselect">
+    <div class="video-selectors">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Z07d9Vu7GKM?si=WDoA63qHMz6pP0ET" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <br>           
+
+  <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+           
+           
+    <h2 id="color">CSS Color</h2>
+
+    <p><b>Colors are specified using predefined color names, or RGB, HEX, HSL, RGBA, HSLA values.</b></p>
+           <br><p><b>CSS Color Names</b></p>               
+           <p>In CSS, a color can be specified by using a predefined color name:</p>   
+      <img src="https://i.ibb.co/jGSfLPP/Screenshot-20241208-194653.jpg" alt="Screenshot-20241208-194653" border="0" width="800" height="300"> 
+           <p>CSS/HTML support 140 standard color names.</p>
+
+           <br><p><b>CSS Background Color</b></p>  
+           <p>You can set the background color for HTML elements:</p>
+          <img src="https://i.ibb.co/8Y86RGY/Screenshot-20241208-195051.jpg" alt="Screenshot-20241208-195051" border="0" width="800" height="300">
+        
+           <br><br><p><b>Example</b></p> 
+       <img src="https://i.ibb.co/8s5mQM5/Screenshot-20241208-195431.jpg" alt="Screenshot-20241208-195431" border="0" width="600" height="100">
+           
+      
+           <br><br><p><b>CSS Text Colors</b></p>  
+ <p style="color: red;">Hello World</p>
+           <br> <p style="color: blue;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam</p>
+      <br><br><p><b>CSS Color Value</b></p>
+           <p>In CSS, colors can also be specified using RGB values, HEX values, HSL values, RGBA values, and HSLA values:
+               <br>Same as color name "Tomato":</p>           
+       <img src="https://i.ibb.co/r73JwHZ/Screenshot-20241208-195952.jpg" alt="Screenshot-20241208-195952" border="0" width="800" height="300">    
+       <br>  
+       <br><p><b>EXAMPLE VIDEO</b></p>  
+       <div class="vidcolor">
+           <div class="video-colors">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/LwbKb2J8iy8?si=amXs55kiUUvypkl2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>   <br>
+    
+    
+       <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="bg">CSS Backgrounds</h2>
+
+    <p>The CSS background properties are used to add background effects for elements</p>
+       <img src="https://i.ibb.co/7yd4CpX/Screenshot-20241208-200312.jpg" alt="Screenshot-20241208-200312" border="0" width="800" height="300">
+        <br> <br>
+           
+           <br><p><b>CSS Background Colors</b></p>  
+           <p>The background-color property specifies the background color of an element.</p>
+    <br><p><b>Example</b></p> 
+           <p>The background color of a page is set like this:</p>
+          <img src="https://i.ibb.co/bXx0bJY/Screenshot-20241208-200617.jpg" alt="Screenshot-20241208-200617" border="0" width="700" height="100"> 
+           <p><b>With CSS, a color is most often specified by:</b>
+               <br>a valid color name - like "red"
+               <br>a HEX value - like "#ff0000"
+               <br>an RGB value - like "rgb(255,0,0)"
+               <br>Look at CSS Color Values for a complete list of possible color values.</p>
+           
+           <br><p><b>Opacity / Transparency</b></p>
+           <p>The opacity property specifies the opacity/transparency of an element. It can take a value from 0.0 - 1.0. The lower value, the more transparent:</p>
+           <img src="https://i.ibb.co/k3VRB3j/Screenshot-20241208-201105.jpg" alt="Screenshot-20241208-201105" border="0" width="800" height="200">
+           
+           <br><br><p><b>EXAMPLE VIDEO</b></p>  
+           <div class="vidbg">
+               <div class="video-background">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/YA8ZciJa64k?si=UOAlcz2pXBHzvEIF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <br>
+        
+
+
+
+        <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="border">CSS Borders</h2>
+           <p>The CSS border properties allow you to specify the style, width, and color of an element's border.</p>
+    <img src="https://i.ibb.co/m54tfBv/Screenshot-20241208-201702.jpg" alt="Screenshot-20241208-201702" border="0" width="800" height="250">       
+           <br>
+<img src="https://i.ibb.co/NLBH3gJ/Screenshot-20241208-201645.jpg" alt="Screenshot-20241208-201645" border="0" width="800" height="1100">           
+           <br><p>None of the OTHER CSS border properties (which you will learn more about in the next chapters) will have ANY effect unless the border-style property is set!</p>        
+           
+           <br><br><p><b>EXAMPLE VIDEO</b></p>  
+           <div class="vidborder">
+               <div class="vide0-brd">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/6RuzhtsbSIg?si=VJnA4g_-FHs4t_DP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>   <br>
+        
+      <br>
+                
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="mrgns">CSS Margins</h2>
+
+    <p>Margins are used to create space around elements, outside of any defined borders.</p>
+           <p>The CSS padding properties are used to generate space around an element's content, inside of any defined borders.
+
+               <br>With CSS, you have full control over the padding. There are properties for setting the padding for each side of an element (top, right, bottom, and left).</p>               
+           
+           
+   <img src="https://i.ibb.co/T8k8bHW/Screenshot-20241208-202538.jpg" alt="Screenshot-20241208-202538" border="0" width="800" height="200">
+           
+   <img src="https://i.ibb.co/jRGSWSw/Screenshot-20241208-202446.jpg" alt="Screenshot-20241208-202446" border="0" width="800" height="600"> 
+    
+    <br>
+
+           
+           
+    <br><p><b>Margin Shorthand Property</p></b>
+           <br><p><b>EXAMPLE:</b></p>
+           <p>To shorten the code, it is possible to specify all the margin properties in one property.
+
+               <br><br>The margin property is a shorthand property for the following individual margin properties:</p>
+        
+    <img src="https://i.ibb.co/gMtrF4j/Screenshot-20241208-203006.jpg" alt="Screenshot-20241208-203006" border="0" width="900" height="600">  
+           
+           
+           <br><p><b>All CSS Margine Property</b></p> 
+           <img src="https://i.ibb.co/PMKB18r/Screenshot-20241208-203228.jpg" alt="Screenshot-20241208-203228" border="0" width="900" height="300">
+      
+           <br><p><b>EXAMPLE VIDEO</b></p>  
+           <div class="vidmargin">
+               <div class="video-mrgns">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/2ZlVV0MM1a0?si=Sotna39u1yk-PL4-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <br>
+             
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="Padd">CSS Padding</h2>
+           <p>Padding is used to create space around an element's content, inside of any defined borders.</p>
+
+           <img src="https://i.ibb.co/LvfxWkS/Screenshot-20241208-210257.jpg" alt="Screenshot-20241208-210257" border="0" width="900" height="200">
+   
+       <br>
+           <p><b>The CSS padding properties are used to generate space around an element's content, inside of any defined borders.
+
+           <br> With CSS, you have full control over the padding. There are properties for setting the padding for each side of an element (top, right, bottom, and left).</b></p>
+           
+           <img src="https://i.ibb.co/Xz2Xk69/Screenshot-20241208-214552.jpg" alt="Screenshot-20241208-214552" border="0" height="300" width="800">
+        <img src="https://i.ibb.co/g3bW2sQ/Screenshot-20241208-214603.jpg" alt="Screenshot-20241208-214603" border="0" height="500" width="800">
+       <br><p><b>All CSS Padding Properties</b></p>
+<img src="https://i.ibb.co/qgh8wXG/Screenshot-20241208-214801.jpg" alt="Screenshot-20241208-214801" border="0" height="200" width="800">
+    
+<hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+       
+<h2 id="HeWi">CSS Height, Width and Max-width</h2>
+    <p>The CSS height and width properties are used to set the height and width of an element.
+        <br> The CSS max-width property is used to set the maximum width of an element.</p>
+        <img src="https://i.ibb.co/h8kxTL1/Screenshot-20241208-215316.jpg" alt="Screenshot-20241208-215316" border="0" width="800" height="800">
+        <br>
+        <br><p>The max-width property is used to set the maximum width of an element.
+
+            <br><br>The max-width can be specified in length values, like px, cm, etc., or in percent (%) of the containing block, or set to none (this is default. Means that there is no maximum width).
+
+            <br><br>The problem with the < div > above occurs when the browser window is smaller than the width of the element (500px). The browser then adds a horizontal scrollbar to the page.
+
+                <br><br>Using max-width instead, in this situation, will improve the browser's handling of small windows.
+
+                   <br><br>Tip: Drag the browser window to smaller than 500px wide, to see the difference between the two divs</p>
+
+
+            <br><p><b>EXAMPLE VIDEO</b></p>  
+            <div class="vidhewi">
+                <div class="video-height">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/QctF-i4-GuM?si=bD2lYs6oLgyrHT_Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <br>
+
+
+             <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="box">The CSS Box Model</h2>
+        <p>In CSS, the term "box model" is used when talking about design and layout.
+            <br>The CSS box model is essentially a box that wraps around every HTML element. It consists of: content, padding, borders and margins. The image below illustrates the box model:</p>
+     <img src="https://i.ibb.co/Cb2swWW/Screenshot-20241208-232342.jpg" alt="Screenshot-20241208-232342" border="0" width="800" height="300" align="center">     
+            <br>
+            <p><b>Explanation of the different parts:</b></p>
+            <p>Content - The content of the box, where text and images appear
+                <br><br>Padding - Clears an area around the content. The padding is transparent
+<br><br> Border - A border that goes around the padding and content
+<br><br> Margin - Clears an area outside the border. The margin is transparent
+
+                
+             <br><br><b>The box model allows us to add a border around elements, and to define space between elements.</b></p>
+            <p><b>EXAMPLE</b></p>
+            <p>Demonstration of the box model:</p>
+            <img src="https://i.ibb.co/jZmJVGx/Screenshot-20241208-232659.jpg" alt="Screenshot-20241208-232659" border="0" width="800" height="200">
+            
+            <br><br><p><b>Width and Height of an Element</b></p>
+            <br><p>order to set the width and height of an element correctly in all browsers, you need to know how the box model works.
+                
+            <br><br> Important: When you set the width and height properties of an element with CSS, you just set the width and height of the content area. To calculate the total width and height of an element, you must also include the padding and borders.</p>
+
+            <br><p><b>EXAMPLE VIDEO</b></p>  
+            <div class="vidbox">
+                <div class="video-boxmodel">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/QctF-i4-GuM?si=xZK3_ae7rIGgCBZh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                     <br>
+    
+            <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="font">The CSS Fonts</h2>
+            <br>Choosing the right font has a huge impact on how the readers experience a website.
+
+            <br><br>The right font can create a strong identity for your brand.
+
+            <br><br>Using a font that is easy to read is important. The font adds value to your text. It is also important to choose the correct color and text size for the font.
+            
+            <br><br><p><b>Generic Font Families</b></p>  
+            <p>CSS there are five generic font families:
+
+                <br><br>Serif fonts have a small stroke at the edges of each letter. They create a sense of formality and elegance.
+                <br>Sans-serif fonts have clean lines (no small strokes attached). They create a modern and minimalistic look.
+                <br>Monospace fonts - here all the letters have the same fixed width. They create a mechanical look. 
+                <br>Cursive fonts imitate human handwriting.
+                <br>Fantasy fonts are decorative/playful fonts.
+                <br>All the different font names belong to one of the generic font families</p>
+            
+            <br><br><p><b>All the different font names belong to one of the generic font families.</b></p>
+            <img src="https://i.ibb.co/jkqV7fv/Screenshot-20241208-233422.jpg" alt="Screenshot-20241208-233422" border="0" height="200" width="900">
+            <img src="https://i.ibb.co/swvcLG2/Screenshot-20241208-233525.jpg" alt="Screenshot-20241208-233525" border="0" height="700" width="900">
+            <br><br><p><b>The CSS font-family Property</b></p>
+            <p>In CSS, we use the font-family property to specify the font of a text.
+
+                <br><br>If the font name is more than one word, it must be in quotation marks, like: "Times New Roman"</p>
+            <br>
+            
+            <br><p><b>EXAMPLE VIDEO</b></p>  
+            <div class="vidfnts">
+                <div class="video-fonts">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/MnyCbILmtOY?si=8JuVEzrO37LKWxKc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                      <br>
+       
+        <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="adva">CSS Advance</h2>
+
+            <h3><b>CSS Attribute Selectors</b></h3>
+            <br><p><b>Style HTML Elements With Specific Attributes</b></p>
+            <br><p>It is possible to style HTML elements that have specific attributes or attribute values.</p>       
+            
+            <p>The [attribute] selector is used to select elements with a specified attribute.
+
+                <br><br>The following example selects all < a > elements with a target attribute:</p> 
+            <img src="https://i.ibb.co/27p5wCD/Screenshot-20241208-234211.jpg" alt="Screenshot-20241208-234211" border="0" width="700" height="80">
+             <img src="https://i.ibb.co/4frWG2h/Screenshot-20241208-234347.jpg" alt="Screenshot-20241208-234347" border="0" width="700" height="200"> 
+<img src="https://i.ibb.co/tDLj55N/Screenshot-20241208-234537.jpg" alt="Screenshot-20241208-234537" border="0" width="700" height="200">   
+<img src="https://i.ibb.co/7gSHKHZ/Screenshot-20241208-234636.jpg" alt="Screenshot-20241208-234636" border="0" width="900" height="700">                
+         
+<br><p><b>EXAMPLE VIDEO</b></p>  
+            <div class="vidfnts">
+                <div class="video-fonts">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/GVocONem9lw?si=AsdOg2LNj-Ho9Yo6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                           <br>
+       
+
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="varia">CSS Variables - The var()Function</h2>
+                <p>The var() function is used to insert the value of a CSS variable.
+
+                    <br><br>CSS variables have access to the DOM, which means that you can create variables with local or global scope, change the variables with JavaScript, and change the variables based on media queries.
+
+                    
+    <br><br>A good way to use CSS variables is when it comes to the colors of your design. Instead of copy and paste the same colors over and over again, you can place them in variables. </p>
+                <br><br>   <p><b>The Traditional Way</b></p>
+                
+                <br><p>The following example shows the traditional way of defining some colors in a style sheet (by defining the colors to use, for each specific element):</p>
+                Usually, the form data is sent to a file on the server when the user clicks on the submit button.<br><br>
+       
+                <br> <p><b>EXAMPLE</b></p>
+                <img src="https://i.ibb.co/6txgpCD/Screenshot-20241208-235231.jpg" alt="Screenshot-20241208-235231" border="0" width="500" height="300">   
+                
+                
+                <img src="https://i.ibb.co/m5z1kWh/Screenshot-20241208-235357.jpg" alt="Screenshot-20241208-235357" border="0" width="800" height="600">
+          <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+          <br><p><b>EXAMPLE VIDEO</b></p>  
+          <div class="vidvaria">
+              <div class="video-varri">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/5wLrz_zUwoU?si=JWyEUaWksXng43xS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                       <br>
+                          
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="tool">CSS ToolTip</h2>
+      <img src="https://i.ibb.co/6NTcmQ9/Screenshot-20241208-235730.jpg" alt="Screenshot-20241208-235730" border="0" width="800" height="300">          
+                <br><br><p><b>Basic Tooltip</b></p> 
+                <p>Create a tooltip that appears when the user moves the mouse over an element:</p>
+                
+                
+                <br><br><p>HTML: Use a container element (like <div>) and add the "tooltip" class to it. When the user mouse over this <div>, it will show the tooltip text.
+
+                    <br><br>The tooltip text is placed inside an inline element (like <span>) with class="tooltiptext".
+
+<br><br>CSS: The tooltip class use position:relative, which is needed to position the tooltip text (position:absolute). Note: See examples below on how to position the tooltip.
+
+<br><br>The tooltiptext class holds the actual tooltip text. It is hidden by default, and will be visible on hover (see below). We have also added some basic styles to it: 120px width, black background color, white text color, centered text, and 5px top and bottom padding.
+
+<br><br>The CSS border-radius property is used to add rounded corners to the tooltip text.
+
+<br><br>The :hover selector is used to show the tooltip text when the user moves the mouse over the <div> with class="tooltip".
+    
+</p>
+<br><p><b>EXAMPLE VIDEO</b></p>  
+<div class="vidtool">
+    <div class="video-tip">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/msyl-NSy-0o?si=fVkTCPuhcRcos8d-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  
+                    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+
+</body>
+
+</html>

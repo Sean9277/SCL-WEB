@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="Shorcut icon" type="x-icon" href="/SCL:IMG:GIF:ETC/SCLLOGO.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us!</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Rye&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Mirza:wght@400;500;600;700&family=Rye&display=swap');
+
+        body {
+            background-image: url(/SCL:IMG:GIF:ETC/7068.jpg);
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        * {
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #cec8c8;
+            font-size: 7em;
+            font-family: 'Times New Roman', Times, serif;
+            margin-bottom: 20px;
+        }
+
+        /*--- Nav Bar ---*/
+
+        .navbar {
+            backdrop-filter: blur(10px);
+            border: 1px #b8bcc9 solid;
+            border-left: none;
+            border-right: none;
+            margin-right: 0;
+            margin-top: 0;
+            padding-right: 10px;
+        }
+        .reallogo {
+            display: flex; /* Flexbox for the logo container */
+            align-items: center; /* Vertically aligns the image with the text */
+            margin-left: 46px; /* Adjust margin as needed */
+        }
+        .reallogo img {
+            width: 100px; /* Set the base width */
+            height: auto; /* Maintain aspect ratio */
+            clip-path: inset(20px 20px 20px 10px); /* Top, right, bottom, left */
+            position: relative;
+        }
+        .logo {
+            margin-right: 230px;
+            text-align: center;
+            font-size: 20px;
+            vertical-align: center;
+            color: #cec8c8;
+            font-family: 'Fugaz One';
+            padding-top: 0px;
+            padding-left: auto;
+            padding-right: auto;
+        }
+        .logo span {
+            color: gray;
+            font-size: 1.2em;
+        }
+        .navdiv {
+            margin: inherit;
+            justify-content: space-between;
+            display: flex;
+            align-items: center;
+        }
+        .navbar a{
+            text-decoration: none;
+            color: #e6d8f1;
+            font-family: 'Nunito';
+        }
+        .navbar a:hover {
+            color: black;
+            background-color: rgb(198, 197, 197);
+            border-radius: 10px;
+            transition: all 0.2s ease-in-out;
+        }
+        .navbar ul {
+            list-style-type: none;
+            margin: 0; 
+            padding: 0; 
+        }
+        .navbar ul li {
+            margin-left: 25px;
+            font-size: 20px;
+            padding-left: 10px;
+            padding-top: 0px;
+            float: left;
+        }
+        .navbar ul li a {
+            color: #e6d8f1;
+            text-decoration: none;
+            padding: 10px 15px;
+        }
+        .navbar ul li a.active {
+            background-color: rgb(198, 197, 197);
+            color: black; /* Change text color if you prefer */
+            border-radius: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+        }
+        /*--- Nav Bar ---*/
+
+        /*----- Image Slider ----*/
+
+         .slider {
+            margin: 0 auto;
+            width: 70%;
+            border: 1px solid rgb(165, 165, 165);
+            height: var(--heigth);
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 10% 90%,transparent);
+        }
+        .slider .list{
+            display: flex;
+            width: 100%;
+            min-width: calc(var(--width) * var(--quantity));
+            position: relative;
+        }
+        .slider .list .item{
+            width: var(--width);
+            height: var(--height);
+            position: absolute;
+            left: 100%;
+            animation: autoRun 10s linear infinite;
+            transition: filter 0.5s;
+            animation-delay: calc( (10s / var(--quantity)) * (var(--position) - 1) - 10s)!important;
+        }
+        .slider .list .item img {
+            width: 100%;
+        }
+        @keyframes autoRun {
+            from {
+                left: 100%;
+            } to {
+                left: calc(var(--width) * -1);
+            }
+        }
+        .slider:hover .item {
+            animation-play-state: paused!important;
+            filter: grayscale(1) blur(3px);
+        }   
+        .slider .item:hover {
+            filter: grayscale(0) blur(0);
+        }
+
+        /*----- Image Slider ----*/
+
+        a {
+            color: rgb(186, 255, 232);
+        }
+
+        /*--- Body ng about us ---*/
+        .wrapper {
+            display: flex; /* Use flexbox for side-by-side layout */
+            align-items: center;
+            margin-top: 50px;
+            margin-left: 25px;
+            width: 50%;
+            height: 50%;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+
+            animation: appear linear;
+            animation-timeline: view();
+            animation-range: entry 0 cover 40%;
+        }
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .wrapper img {
+            width: 20%; /* Set image width */
+            height: auto;
+            margin-right: 20px; /* Add space between the image and text */
+        }
+        .wrapper h3 {
+            font-size: 50px;
+            padding-top: 0;
+            font-family: 'Mirza';
+            padding-left: 0;
+            margin-top: 0;
+        }
+        .wrapper p {
+            font-size: 1.1em;
+            padding-top: 0;
+            font-family: 'Mirza';
+            padding-left: 0;
+            margin-top: 0;
+        }
+        
+
+        .wrapper-right {
+            display: flex; /* Use flexbox for side-by-side layout */
+            align-items: center;
+            margin-top: 50px;
+            margin-left: 47%;
+            margin-right: 25px;
+            width: 50%;
+            height: 50%;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+
+            animation: appear linear;
+            animation-timeline: view();
+            animation-range: entry 0 cover 40%;
+        }
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .wrapper-right img {
+            width: 20%; /* Set image width */
+            height: auto;
+            margin-right: 20px; /* Add space between the image and text */
+        }
+        .wrapper-right h3 {
+            font-size: 50px;
+            padding-top: 0;
+            font-family: 'Mirza';
+            padding-left: 0;
+            margin-top: 0;
+        }
+        .wrapper-right p {
+            font-size: 1.2em;
+            padding-top: 0;
+            font-family: 'Mirza';
+            padding-left: 0;
+            margin-top: 0;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    
+    
+    <nav class="navbar"> 
+        <div class="navdiv"> 
+            <div class="reallogo">
+                <img src="/SCL:IMG:GIF:ETC/SCLLOGO.png" alt="Logo" style="height: 100px; width: 100px;">
+            </div>
+            <div class="logo"> 
+                <span> Student </span> Code Learning
+            </div>
+            <ul> 
+                <li><a href="/SCLWEB/TSCL.html"> Home </a></li>
+                <li><a href="/SCLWEB/TSCLPL.html" > Programming Language </a></li>
+                <li><a href="/SCLWEB/TSCLAbout.html" class="active"> About </a></li>
+                <li><a href="/SCLWEB/TSCLContact.html"> Contact </a></li>
+                <li><a href="/SCLWEB/TSCLLogin.html"> Log in </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <br><br><br>
+
+    <h1 id="Back">Meet My Team!</h1>
+
+    <br><br><br>
+
+    <div class="slider" style="
+    --width: 200px;
+    --heigth: 200px;
+    --quantity: 7;
+    ">
+        <div class="list">
+            <div class="item" style="--position: 1"><a href="#Mat"><img src="/SCL:IMG:GIF:ETC/MAT1.png" alt=""></a></div>
+            <div class="item" style="--position: 2"><a href="#Ken"><img src="/SCL:IMG:GIF:ETC/KENNETH1.png" alt=""></a></div>
+            <div class="item" style="--position: 3"><a href="#Dawn"><img src="/SCL:IMG:GIF:ETC/DAWN1.png" alt=""></a></div>
+            <div class="item" style="--position: 4"><a href="#Sean"><img src="/SCL:IMG:GIF:ETC/SEAN1.png" alt=""></a></div>
+            <div class="item" style="--position: 5"><a href="#Shy"><img src="/SCL:IMG:GIF:ETC/SHYLA1.png" alt=""></a></div>
+            <div class="item" style="--position: 6"><a href="#Fran"><img src="/SCL:IMG:GIF:ETC/FRANCIS1.png" alt=""></a></div>
+            <div class="item" style="--position: 7"><a href="#Men"><img src="/SCL:IMG:GIF:ETC/MENDONES1.png" alt=""></a>   </div>
+        </div>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br>
+
+    <h1 style="color: #cec8c8;">About Us!</h1>
+
+    
+    <div class="wrapper">
+        <img src="/SCL:IMG:GIF:ETC/MAT.png" alt="">
+
+        <div id="Mat" class="Person1">
+            <h3><a href="#Back">Mathew C. Mazo</a></h3>
+            <p>
+                Hi, i'm not that kind of person who likes to talk if i don't know you pa, pero i get really talkative when i get to know you. I like swimming lalo na sa beaches and one of my best experience is nung nag swimming kami sa jolo the beach is super good. My favourite food is crabs because sabi nga nila "nasa simula ang paghihirap, huli ka na makakakain". 
+            </p>
+            <br>
+            <p>
+                <b>Motto in life:</b> mahirap kalabanin ang katamaran kaya kampihan mo nalang
+            </p>
+        </div>
+    </div>
+
+    <div class="wrapper-right">
+        <img src="/SCL:IMG:GIF:ETC/KENNETH.png" alt="">
+
+        <div id="Ken" class="Person2">
+            <h3><a href="#Back">John Kenneth Mangibin</a></h3>
+            <p>Hi guys! My name is Kenneth, one of the member of this group^^ <br><br>
+
+                I'm a happy-pill person, silly, OA they say. My Favorite Color was Onyx Black. My favorite music is currently the "that's so true". I love darky places, night walks etc. My dream places is Switzerland and Greenland.
+                
+            </p>
+            <br>
+            <p>
+                <b>Motto in life:</b> "It can only break you If you let It."
+            </p>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <img src="/SCL:IMG:GIF:ETC/DAWN.png" alt="">
+
+        <div id="Dawn" class="Person">
+            <h3><a href="#Back">Dawn Althea C. Vasquez</a></h3>
+            <p>
+                Hello everybody!! ᡣ˶ᵔ ᵕ ᵔ˶𐭩 My name is Dawn, and I am currently an ICT student at STI with a deep interest in technology. As I pursue my studies, I am drawn to the world of cybersecurity, where I hope to specialize. I’ve always been curious about how things work and the challenge of understanding complex systems keeps me motivated.
+            </p>
+            <br>
+            <p>
+                Beyond my academic pursuits, I find peace and inspiration in nature. Iike the sunset! They feel like nature’s way of saying "You did great" after a long tiring day of school. The beauty of a setting sun brings me a sense of accomplishment and hope. One of my favorite color? Is navy blue! As it reminds me of the deep ocean the calm, deep, and full of mystery.
+            </p>
+            <br>
+            <p>
+                <b>Motto in life:</b> "If the things don't go right, go left."
+            </p>
+        </div>
+    </div>
+
+    <div class="wrapper-right">
+        <img src="/SCL:IMG:GIF:ETC/MENDONES.png" alt="">
+
+        <div id="Men" class="Person">
+            <h3><a href="#Back">Lyka A. Mendones</a></h3>
+            
+            <p>
+                Hello everyone, I’m Lyka Mendones, an ICT student at STI College Fairview, and I’m passionate about exploring the world of technology. I love how technology evolves and how it can change the way we live, and I’m always eager to dive into new projects and learn more along the way. 
+            </p>
+            <br>
+            <p>
+                Outside of school, I find peace in the little things, whether it’s a quiet moment in nature or just taking time to reflect. I like to take a step back and appreciate the beauty in the everyday. My favorite color? I’m drawn to lavender, as it’s calming yet full of warmth and positivity.
+            </p>
+            <br>
+            <p>
+                <b>Motto in life:</b> "Embrace change, learn from it, and keep moving forward."
+            </p>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <img src="/SCL:IMG:GIF:ETC/SHYLA.png" alt="">
+
+        <div id="Shy" class="Person3">
+            <h3><a href="#Back">Shyla Joyce V. Escalona</a></h3>
+            <p>
+                Hi! My name is Shyla Joyce. I am an ICT student from STI College Fairview. I love technology and hobbies such as watching anime, reading manga, and watching YouTube.
+            </p>
+            <br>
+            <p>
+                Currently, I'm working with a talented team in developing a language learning platform. I'm excited to share my skills and learn from others.
+            </p>
+            <br>
+            <p>
+                <b>Motto in life:</b> "Have no regrets, move forward. Don't look back."
+            </p>
+        </div>
+    </div>
+
+    <div class="wrapper-right">
+        <img src="/SCL:IMG:GIF:ETC/SEAN.png" alt="">
+
+        <div id="Sean" class="Person4">
+            <h3><a href="#Back">Sean Andrei Evangelista</a></h3>
+            
+            <p>
+                Hello! My Name is Sean Andrei P. Evangelista,I am an ICT student in STI Fairview. As technology evolved I found it interesting. Continuing to work hard to achieve my dream as a Software Engineer. I am not afraid of failure because that only means that I can learn new things and improve my self.
+            </p>
+            <br>
+            <p>
+                My hobbies are Playing basketball ,Sleeping,and Riding a Motorcycle. 
+            </p>
+            <br>
+            <p>
+                <b>Motto in life:</b> "Rice is Life."
+            </p>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <img src="/SCL:IMG:GIF:ETC/FRANCIS.png" alt="">
+
+        <div id="Fran" class="Person5">
+            <h3><a href="#Back">Thomas Francis Manlongat</a></h3>
+            <p>
+                Hello everyone,
+                My name is Thomas Francis Manlongat from ICT 101. I am one of the officers for A.Y. 2024-2025 (First Semester). I am an ICT student at STI College Fairview, and my goal is to become an IT professional in the future. Although I’m not yet very passionate about exploring programming languages, I am eager to learn as our class begins.
+            </p>
+            <br>
+            <p>
+                <b>Motto in life:</b> No matter the challenges, keep moving forward with faith and perseverance." ---"Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight." — Proverbs 3:5-6 (NIV)
+            </p>
+        </div>
+    </div>
+
+    <br><br><br><br>
+        
+</body>
+
+</html>

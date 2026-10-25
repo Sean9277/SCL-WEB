@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="Shorcut icon" type="x-icon" href="https://i.ibb.co/QpRHqrj/htmllogo-Photoroom.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Tutorial</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Ledger&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Frijole&family=Ledger&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+        p {
+            font-size: 1.3em;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        body {
+            display: flex; 
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8; /* Light background for contrast */
+        }
+
+        h1, h2 {
+            font-size: 1.8em;
+            font-family: 'Times New Roman', Times, serif;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-top: 30px;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #0b0f23, #1b2845, #0b0f23);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            background-size: cover;
+            color: white;
+        }
+        @keyframes twinkling {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: -1000px 1000px;
+            }
+        }
+
+        body {
+            background: #000 url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+            animation: twinkling 200s linear infinite;
+        }    
+
+        .navbar {
+            width: 220px;
+            background: linear-gradient(to bottom, rgba(25, 25, 25, 1), rgba(0, 0, 50, 1));
+            padding: 20px;
+            border-radius: 0 20px 20px 0;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.6); 
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+            padding: 10px 15px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+        }
+
+        .navbar a:active {
+            background: rgba(255, 255, 255, 0.5);
+            color: #ff00ff;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.7);
+        }
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: #00ffff;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            max-width: 900px; 
+            margin-left: 30px;
+            margin-right: 30px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5), 0 2px 10px rgba(0, 0, 0, 0.1);
+            color: white; /* White text color */
+        }
+
+        /* Videos */
+        .vid {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%; 
+            padding-top: 56.25%; 
+            overflow: hidden;
+        }
+        .video-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; 
+            border-radius: 8px; 
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%; 
+            border: none;
+            border-radius: 8px; 
+        }
+
+        /* Language Access */
+        .container {
+            padding: 50px 0;
+            height: 100%;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .parent {
+            margin-top: -50px;
+            height: 400px;
+            width: 300px;
+            padding: 20px;
+            perspective: 1000px;
+        }
+        .card { 
+            padding-top: 100px;
+            height: 425px;
+            transform-style: preserve-3d;
+            background-image: url(https://i.ibb.co/3pZVjjQ/i01-meow-1.png);
+            background-position: center center;
+            width: 100%;
+            transition: all 0.5s ease-in-out;
+            border-radius: 10px;
+        }
+        .card:hover {
+            background-position: 80% 20%;
+            transform: rotate3d(0.5, 1, 0, 15deg);
+        }
+        .content-box {
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.811);
+            border-radius: 0 0 10px 10px;
+            box-shadow: rgba(255, 255, 255, 0.925) 0 20px 50px -25px;
+            transition: all 0.5s ease-in-out;
+            padding: 50px 25px 25px 25px;
+            transform-style: preserve-3d;
+        }
+        .card-title {
+            color: white;
+            font-size: 25px;
+            font-family: 'Frijole';
+            font-weight: 900;
+            transition: all 0.5s ease-in-out;
+            transform: translate3d(0px, 0px, 25px);
+        }
+        .card-title:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        .card-content {
+            padding-top: 15px;
+            font-size: 0.9em;
+            font-family: 'Ledger';
+            color: white;
+            transition: all 0.5s ease-in-out;
+        }
+        .card-content:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        .see-more {
+            display: block;
+            font-weight: 900;
+            font-size: 11px;
+            font-family: 'Times New Roman', Times, serif;
+            text-transform: uppercase;
+            color: blue;
+            padding-top: 15px;
+            transition: all 0.5s ease-in-out;
+            transform: translate3d(0px, 0px, 20px);
+        }
+        .see-more a {
+            text-decoration: none;
+            color: white;
+        }
+        .see-more:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        
+        .date-box {
+            position: absolute;
+            top: 75px;
+            left: 25px;
+            height: 60px;
+            width: 60px;
+            background-color: rgb(187, 187, 187);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: rgb(162, 175, 196) 0px 20px 60px 0px, rgb(175, 175, 175) 0px 18px 36px -18px;
+            transform: translate3d(0px, 0px, 50px);
+            background-image: url(https://i.ibb.co/QpRHqrj/htmllogo-Photoroom.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .date-box span {
+            display: block;
+            text-align: center;
+        }
+        .date-box .month {
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .date-box .date {
+            font-size: 20px;
+            font-weight: 900;
+            color: rgb(0, 136, 255);
+        }
+        
+    </style>
+
+</head>
+
+<body>
+
+    
+    <div class="container">
+        <div class="parent">
+            <div class="card">
+                <div class="content-box">
+                    <h1 class="card-title">HTML</h1>
+                    <p class="card-content"> HyperText Markup Language, The standard language for creating the structure of webpages. It defines elements like headings, paragraphs, links, images, and more.</p>
+                    <span class="see-more"><a href="/SCLWEB/TSCLPL.html">Exit</a></span>
+                </div>
+                <div class="date-box">
+                </div>
+            </div>
+        </div> 
+    </div>
+
+
+    
+    <div class="navbar">
+        <h2>Navigation</h2>
+        <a href="#history">History</a>
+        <a href="#Intro">Introduction to HTML</a>
+        <a href="#build">HMTL Building Blocks</a>
+        <a href="#tag">HTML Tags</a>
+        <a href="#attri">HTML Attributes</a>
+        <a href="#Elem">HTML Elements</a>
+        <a href="#Matting">HTML Formatting</a>
+        <a href="#Hdng">HTML Headings</a>
+        <a href="#Par">HTML Paragraph</a>
+        <a href="#img">HTML Image</a>
+        <a href="#table">HTML Table</a>
+        <a href="#order">HTML Order</a>
+        <a href="#unOr">HTML Unordered</a>
+        <a href="#descript">HTML Description Lists</a>
+        <a href="#form">HTML Form</a>
+        <a href="#color">HTML Color</a>
+        
+
+    </div>
+
+    <div class="content">
+    <h1>HTML</h1>
+    <h2 id="history">History</h2>
+    <p><b>A Brief History About HTML</b></p>
+    <br>
+    <p>In the late 1980's , a physicist, Tim Berners-Lee who was a contractor at CERN, proposed a system for CERN researchers. In 1989, he wrote a memo proposing an internet based hypertext system.</p>
+    <br>
+    <p>Tim Berners-Lee is known as the father of HTML. The first available description of HTML was a document called "HTML Tags" proposed by Tim in late 1991. The latest version of HTML is HTML5, which we will learn later in this tutorial.</p>
+    <p><br><b>HTML VERSION</b>
+    <br>Since the time HTML was invented there are lots of HTML versions in market, the brief introduction about the HTML version is given below:
+    <p><br><b>HTML 1.0</b>
+    <br> The first version of HTML was 1.0, which was the barebones version of HTML language, and it was released in1991.
+    <p><br><b>HTML 2.0</b>
+    <br>This was the next version which was released in 1995, and it was standard language version for website design. HTML 2.0 was able to support extra features such as form-based file upload, form elements such as text box, option button, etc.</p>
+    <p><br><b>HTML 3.2</b></p>
+    <p> HTML 3.2 version was published by W3C in early 1997. This version was capable of creating tables and providing support for extra options for form elements. It can also support a web page with complex mathematical equations. It became an official standard for any browser till January 1997. Today it is practically supported by most of the browsers</p>
+    <p><br><b>HTML 4.01</b>
+    <br>HTML 4.01 version was released on December 1999, and it is a very stable version of HTML language. This version is the current official standard, and it provides added support for stylesheets (CSS) and scripting ability for various multimedia elements.</p>
+    <p><br><b>HTML5</b>
+    <br>HTML5 is the newest version of HyperText Markup language. The first draft of this version was announced in January 2008. There are two major organizations one is W3C (World Wide Web Consortium), and another one is WHATWG( Web Hypertext Application Technology Working Group) which are involved in the development of HTML 5 version, and still, it is under development.</p>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(152, 152, 152); background-color: black; border: none;">
+
+    <h1>HTML Lesson Flow</h1>
+
+    <h2 id="Intro">Introduction to HTML</h2>
+
+    <p>HTML 5 tutorial provides basic and advanced concepts of HTML. Our HTML tutorial is developed for beginners and professionals. In our tutorial, every topic is given step-by-step so that you can learn it in a very easy way. If you are new in learning HTML, then you can learn HTML from basic to a professional level and after learning HTML with CSS and JavaScript you will be able to create your own interactive and dynamic website. But Now We will focus on HTML only in this tutorial.</p>
+    <p><br>HTML stands for HyperText Markup Language.
+        HTML is used to create web pages and web applications.
+        HTML is widely used language on the web.
+        We can create a static website by HTML only.
+        Technically, HTML is a Markup language rather than a programming language
+        </p>
+    <br>
+
+    <p><b>A Simple HTML Documents</b></p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/d5f12Mb/Screenshot-2024-12-08-140556.png" alt="Screenshot-2024-12-08-140556" border="0"></a width="30" height="20">
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="build">HTML Building Blocks</h2>
+
+    <p>An HTML document consist of its basic building blocks which are:
+    </p>
+    <p><br>Tags: An HTML tag surrounds the content and apply meaning to it. It is written between < and > brackets. </p>
+    <p><br>Attribute: An attribute in HTML provides extra information about the element, and it is applied within the start tag. An HTML attribute contains two fields: name & value</p>
+    <p> An HTML element is an individual component of an HTML file. In an HTML file, everything written within tags are termed as HTML elements</p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/HE2U5gnfmLU?si=CFkOSBMJdq9wgO4a" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="tag">HTML Tags</h2>
+
+    <p>HTML tags are like keywords which defines that how web browser will format and display the content. With the help of tags, a web browser can distinguish between an HTML content and a simple content.</p>
+
+       <p><br>All HTML tags must enclosed within < > these brackets.</p>
+        
+        <p><br>Every tag in HTML perform different tasks.
+        If you have used an open tag <tag>, then you must use a close tag </tag> (except some tags)
+        <br>
+        Unclosed HTML Tags
+        Some HTML tags are not closed, for example br and hr.
+        </p>
+        <br>
+        <p>< br > Tag: br stands for break line, it breaks the line of the code.</p>
+
+        <p>< hr > Tag: hr stands for Horizontal Rule. This tag is used to put a line across the webpage</p>
+        HTML Meta Tags
+DOCTYPE, title, link, meta and style
+
+<br>
+<br>
+
+<p><b>HTML Text Tags</b><br>
+< p >, < h1 >, < h2 >, < h3 >, < h4 >, < h5 >, < h6 >, < strong >, < em >, < abbr >, < acronym >, < address >, < bdo>, < blockquote >, < cite >, < q >, < code >, < ins >, < del >, < dfn >, < kbd >, < pre >, < samp >, < var > and < br ></p><br>
+
+
+<p><b>HTML Link Tags</b>
+    <br>
+< a > and < base ></p><br>
+
+<p><b>HTML Image and Object Tags</b>
+    <br><
+< img >, < area >, < map >, < param > and < object ></p><br>
+
+<p><b>HTML List Tags</b><br>
+< ul >, < ol >, < li >, < dl >, < dt > and < dd ></p>
+
+        <br>
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="attri">HMTL Attributes</h2>
+
+    <p><b>Each element or tag can have attributes, which defines the behaviour of that element.<br><br>
+
+        Attributes should always be applied with start tag.<br><br>
+        
+        The Attribute should always be applied with its name and value pair.<br><br>
+        
+       </b></p>
+
+    <p>1. id: Specifies a unique identifier for an element.<br><br>
+
+
+        2. class: Specifies one or more class names for an element.<br><br>
+        
+        
+        3. href: Specifies the URL for a hyperlink.<br><br>
+        
+        
+        4. src: Specifies the source of an image or other media.<br><br>
+        
+        
+        5. alt: Provides alternative text for an image.<br><br>
+        
+        
+        6. style: Specifies inline CSS styles for an element.<br><br>
+        
+        
+        7. title: Provides additional information when the user hovers over an element.<br><br>
+        
+        
+        8. type: Specifies the type of an input element (e.g., text, password).<br><br>
+        
+        
+        9. value: Specifies the value of form elements like input or option.<br><br>
+        
+        
+        10. disabled: Disables an element, making it unresponsive to user interaction.<br><br>
+        
+        
+        11. name: Specifies the name of a form element.<br><br>
+        
+        
+        12. placeholder: Provides a short hint for an input element.<br><br>
+        
+        
+        13. readonly: Specifies that an input field is read-only.<br><br>
+        
+        
+        14. checked: Specifies that a checkbox or radio button is selected.<br><br>
+        
+        
+        15. required: Specifies that an input field must be filled out before submitting a form.<br><br>
+        
+        
+        16. maxlength: Specifies the maximum number of characters allowed in an input field.<br><br>
+        
+        
+        17. action: Specifies the URL to send form data to when the form is submitted.<br><br>
+        
+        
+        18. method: Specifies the HTTP method (GET or POST) for form submission.<br><br>
+        
+        
+        19. target: Specifies where to open the linked document (e.g., in a new tab).<br><br>
+        
+        
+        20. autocomplete: Specifies whether the browser should autocomplete a form field<br><br>
+        </p>
+<br>
+<p><b>EXAMPLE:</b></p>
+    <div photoatri="<a href="https://ibb.co/PF5RqPv"><img src="https://i.ibb.co/fqCbjyz/Screenshot-2024-12-07-184723.png" alt="Screenshot-2024-12-07-184723" border="0"></a></div>
+
+    <br>
+    <br>
+    <p><b>EXAMPLE VIDEO</b></p>   
+
+    <div class="videlem">
+        <div class="video-wrapperatri">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/vIoO52MdZFE?si=yggE5O6L-d7vM24Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="Elem">HTML ELEMENTS</h2>
+
+    <p>An HTML file is made of elements. These elements are responsible for creating web pages and define content in that webpage. An element in HTML usually consist of a start tag <tag name>, close tag </tag name> and content inserted between them. Technically, an element is a collection of start tag, attributes, end tag, content between them.</p>
+    <br> <br>
+    <p>HTML block and Inline Elements<br> 
+        HTML elements are categorized into two main types based on how they affect the layout and flow of the page: block-level elements and inline elements.</p>
+    
+    <p><b>Inline Elements in HTML</b></p>
+    <p>Inline elements only take up as much width as necessary and do not start on a new line.</p>
+
+    <br><br><p><b>LIST OF INLINE ELEMENTS:</b></p>
+
+    <pre>
+        1.< a >: Defines a hyperlink.
+        2.< abbr >: Defines an abbreviation.
+        3.< acronym >: Defines an acronym (deprecated, use < abbr >).
+        4.< b >: Bold text (use < strong > for semantic meaning).
+        5.< bdo >: Overrides bidirectional text behavior.
+        6.< big >: Makes text larger (use CSS for text size).
+        7.< br >: Inserts a line break.
+        8.< button >: Defines a clickable button.
+        9.< cite >: Defines a reference to a creative work.
+        10.< code >: Defines computer code.
+        11.< dfn >: Defines a definition of a term.
+        12.< em >: Emphasizes text (typically italicized).
+        13.< i >: Italic text (use < em > for semantic meaning).
+        14.< img >: Embeds an image.
+        15.< input >: Defines an input field for user data.
+        16.< kbd >: Represents keyboard input.
+        17.< label >: Defines a label for a form control.
+        18.< map >: Defines a clickable image map.
+        19.< object >: Embeds an external resource (e.g., multimedia or a document).
+        20.< output >: Represents the result of a calculation or user action.
+        21.< q >: Defines a short inline quotation.
+        22.< samp >: Represents sample output from a program or machine.
+        23.< script >: Defines client-side JavaScript code.
+        24.< select >: Defines a dropdown list.
+        25.< small >: Decreases text size.
+        26.< span >: A generic inline container for styling or grouping small sections of content.
+        27.< strong >: Defines important text (typically bold).
+        28.< sub >: Defines subscript text.
+        29.< sup >: Defines superscript text.
+        30.< textarea >: Defines a multi-line text input.
+        31.< time >: Defines a specific time (like a date or time).
+        32.< tt >: Defines text in a teletype or monospace font (deprecated in favor of CSS).
+        33.< var >: Represents a variable in programming or mathematical expressions.
+</pre>
+
+<br><br><p><b>Block-Level Elements in HTML</b></p><br>
+
+<pre>
+        1.< address >: Defines contact information.
+        2.< article >: Represents a self-contained piece of content (like a blog post).
+        3.< aside >: Represents content tangentially related to the content around it (like a sidebar).
+        4.< blockquote >: Defines a block of quoted text.
+        5.< canvas >: Used to draw graphics via JavaScript.
+        6.< dd >: Describes a definition in a definition list.
+        7.< div >: A generic container for grouping content.
+        8.< dl >: Defines a definition list.
+        9.< dt >: Defines a term in a definition list.
+        10.< fieldset >: Groups related elements in a form.
+        11.< figcaption >: Provides a caption for a figure.
+        12.< figure >: Represents content that is referenced from the main content (like an image).
+        13.< footer >: Defines footer content, typically at the bottom of a page or section.
+        14.< form >: Defines an HTML form for user input.
+        15.< h1 > to < h6 >: Define headings (with < h1 > being the highest).
+        16.< header >: Represents introductory content or a navigational section.
+        17.< hr >: Represents a horizontal rule, typically used to separate sections.
+        18.< li >: Defines a list item (used inside < ul >, < ol >, or < menu >).
+        19.< main >: Represents the main content of the document.
+        20.< nav >: Defines navigation links.
+        21.< noscript >: Provides alternative content for users who don't have JavaScript enabled.
+        22.< ol >: Defines an ordered list.
+        23.< p >: Defines a paragraph of text.
+        24.< pre >: Defines preformatted text (preserves whitespace and line breaks).
+        25.< section >: Defines a section of content, often with its own heading.
+        26.< table >: Defines a table.
+        27.< tfoot >: Groups the footer content in a table.
+        28.< ul >: Defines an unordered list.
+        29.< video >: Embeds a video player.
+</pre>
+        
+<br><br><p><b>Block-level elements typically start on a new line and take up the full width available by default</b></p>
+
+<br><br><p><b>EXAMPLE VIDEO</b></p>   
+
+<div class="videlem">
+    <div class="video-wrapperatri">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/29IbTXYRo5U?si=foCjBYh75o1Ffis1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</div>
+<br>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="Matting">HTML Formatting</h2>
+
+    <p>HTML Formatting is a process of formatting text for better look and feel. HTML provides us ability to format text without using CSS. There are many formatting tags in HTML. These tags are used to make text bold, italicized, or underlined. There are almost 14 options available that how text appears in HTML and XHTML.</p>
+    <br><p> < b > This is a physical tag, which is used to bold the text written between it. </p>
+
+    <br>
+    <p>The HTML < b > element is a physical tag which display text in bold font, without any logical importance. If you write anything within < b >......< /b > element, is shown in bold letters.</p>
+    <br>
+    <p><b> See This Example:</p></b>
+    <br>
+    
+    <p>< p > < b >Write Your First Paragraph in bold text.< /b >< /p ></p>
+    <br><p>< strong > This is a logical tag, which tells the browser that the text is important.</p>
+    <br><p>< i > This is a physical tag which is used to make text italic.</p>
+    
+        <br><p>The HTML < i > element is physical element, which display the enclosed content in italic font
+See this example</p>
+   
+            <br><p><b>EXAMPLE:</b></p>
+            <p>< /b >< p > < i >Write Your First Paragraph in italic text.< /i >< /p >< /b ></p>
+                
+<pre>   
+< em > This is a logical tag which is used to display content in italic.
+< mark > This tag is used to highlight text.
+< u > This tag is used to underline text written between it.
+< tt > This tag is used to appear a text in teletype. (not supported in HTML5)
+< strike> This tag is used to draw a strikethrough on a section of text. (Not supported in HTML5)
+< sup > It  displays the content slightly above the normal line.
+< sub > It displays the content slightly below the normal line.
+< del > This tag is used to display the deleted content.
+< ins > This tag displays the content which is added
+< big > This tag is used to increase the font size by one conventional unit.
+< small > This tag is used to decrease the font size by one unit from base font size.
+</pre>
+    
+<div class="videoform">
+    <div class="video-frm">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/7FqQLqNIEY8?si=Um6-FGZ_B4JoZtue" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</div>
+    <br>
+                
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="Hdng">HTML HEADING</h2>
+
+    <p>Or h tag can be defined as a title or a subtitle which you want to display on the webpage. When
+you place the text within the heading tags < h1 >.........< /h1 >, it is displayed on the browser in the
+bold format and size of the text depends on the number of heading.</p>
+    
+   <img src="https://i.ibb.co/qFn8hQs/Screenshot-20241208-003355.jpg" alt="Screenshot-20241208-003355" border="0" width="300" height="300"><br>
+    
+    
+    <br><p><b>EXAMPLE:</b></p>
+    <br>
+  
+<img src="https://i.ibb.co/P9XBYdc/Screenshot-20241208-003407.jpg" alt="Screenshot-20241208-003407" border="0" width="200" height="200">
+   
+    <br><p>HTML headings can also be used with nested elements. Following are different codes to display
+the way to use heading elements.</p>
+    
+    <br><p><b>Headings Are Important</b></p>
+    <br><p>Search engines use the headings to index the structure and content of your web pages.</p><br>
+ <p>Users often skim a page by its headings. It is important to use headings to show the document structure.</p><br>
+        <p>< h1 > headings should be used for main headings, followed by < h2 > headings, then the less important < h3 >, and so on.</p><br>
+      <br><p><b>HTML Tag Reference</b></p><br> 
+      <img src="https://i.ibb.co/rGHxjD9/Screenshot-20241208-004404.jpg" alt="Screenshot-20241208-004404" border="0" width="700" height="200">
+    <br>
+    <br>
+    <br><p><b>EXAMPLE VIDEO</b></p>
+    <div class="videohdng">
+        <div class="video-heading">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/H519o8BvpQA?si=KetlqnysE9cvtKZ1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="Par">HTML Paragraph</h2>
+
+    <p>or HTML p tag is used to define a paragraph in a webpage. Let's take a simple example to see
+how it work. It is a notable point that a browser itself add an empty line before and after a
+paragraph. An HTML < p > tag indicates starting of new paragraph.</p>
+        <br><p><b>EXAMPLE:</b></p> 
+      <img src="https://i.ibb.co/2ZgBWmd/Screenshot-20241208-010341.jpg" alt="Screenshot-20241208-010341" border="0" width="500" height="130">  
+   
+        <br><p><b>HTML Display</b></p>
+        <p><b>•You cannot be sure how HTML will be displayed.</b></p>
+
+        <br><p><b>•Large or small screens, and resized windows will create different results.</b></p>
+
+   <br><p><b>•With HTML, you cannot change the display by adding extra spaces or extra lines in your HTML code.</b></p>
+
+<br><p><b>•The browser will automatically remove any extra spaces and lines when the page is displayed:</b></p>
+        </pre>  
+            
+            
+        <br><p><b>EXAMPLE</b></p> 
+<img src="https://i.ibb.co/k26NzyG/Screenshot-20241208-010354.jpg" alt="Screenshot-20241208-010354" border="0" width="500" height="400">
+            
+        <br><p><b>EXAMPLE</b></p>
+            <p> The < hr > tag defines a thematic break in an HTML page, and is most often displayed as a horizontal rule.</p>
+
+            <p> The < HR > element is used to separate content (or define a change) in an HTML page </p>
+
+        <br><p><b>EXAMPLE</b></p>
+<p>< h1 >This is heading 1< /h1 > <br>
+< p >This is some text.< /p > <br>
+< hr ><br>
+< h2 >This is heading 2< /h2 > <br
+< p >This is some other text.< /p > <br>
+< /hr >
+</p>    
+
+<div class="vidpar">
+    <div class="video-paragraph">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/By-d827_0jo?si=XBhAgfcvdPr_wQt7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</div>
+
+        
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="img">HTML Images</h2>
+
+    <p>In HTML,the < img>  tag serves the purpose of embedding an image. This means one 
+can display an image on a webpage. The < img > tag doesn't hav have a closing tag 
+and must have at least one attribute, that is, the (so (source) at) attribute, which 
+specifies the path to the image file.</p>
+        
+        <br>
+        <img src="https://i.ibb.co/g4rMM0x/Screenshot-20241208-014244.jpg" alt="Screenshot-20241208-014244" border="0" width="800" height="200">
+        
+        <br><br><p><b>EXAMPLE</b></p>
+        <img src="https://i.ibb.co/dk0jzSb/Screenshot-20241208-014715.jpg" alt="Screenshot-20241208-014715" border="0" width="500" height="150">
+   
+        <br><br><p><b>Image Syntax</b></p>
+        <p>Images are inserted into web pages using the HTML <img> tag. Actually, images are 
+not inserted into web pages; rather, they are linked to web pages. The <img> tag 
+creates a holding area for the image to appear in a web page. The <img> tag is empty 
+with no end tag and contains only attributes. There are essential two attributes in 
+the tag: src: The source path for the image. alt: Provides alternate text to be 
+displayed for the picture in case it cannot be displayed.</p>
+        
+        
+         <br><br><p><b>The Src Attribute</b></p>
+        <p>When a web page loads, it is the browser, at that moment, that gets the image from a web server and inserts it into the page. Therefore, make sure that the image actually stays in the same spot in relation to the web page, otherwise your visitors will get a broken link icon. The broken link icon and the alt text are shown if the browser cannot find the image.</p>
+        
+         <br><br><p><b>Image Size - Width and Height</b></p>
+        <p>Alternatively, you can use the width and height attributes:</p>
+        
+        <br><br><p><b>Width, Height or Style</b></p>
+        <p>The width, height, and style attributes are all valid in HTML.
+
+However, we suggest using the style attribute. It prevents styles sheets from changing the size of images:</p>
+        <img src="https://i.ibb.co/XZbsT87/Screenshot-20241208-020617.jpg" alt="Screenshot-20241208-020617" border="0" width="600" height="500">
+
+      <br><p><b>EXAMPLE VIDEO</b></p>
+      <div class="vidimg">
+          <div class="video-images">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/Hh_se2Zqsdk?si=22OEppIa1sZ_vxuY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+      </div>
+  
+      <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+
+    <h2 id="table">HTML Table</h2>
+        <p>HTML tables allow web developers to arrange data into rows and columns.</p>
+        
+        <img src="https://i.ibb.co/tPG6FzF/Screenshot-20241208-020929.jpg" alt="Screenshot-20241208-020929" border="0" width="800" height="200">
+        <p>table in HTML consists of table cells inside rows and columns</p>
+        <br><p><b>Example</b></p>
+        <img src="https://i.ibb.co/4Sw8qqG/Screenshot-20241208-021155.jpg" alt="Screenshot-20241208-021155" border="0" width="500" height="400">
+    <p>While Loop, Iterating Arrays, Do-While Lopp, Break Keyword, Conditions in While Loop </p>
+        
+        <br> <p><b>HTML TABLE TAGS</b></p>
+        <img src="https://i.ibb.co/HHKxQm6/Screenshot-20241208-021401.jpg" alt="Screenshot-20241208-021401" border="0" width="800" height="400">
+   
+        <br><p><b>EXAMPLE VIDEO</b></p>
+        <div class="vidTab">
+            <div class="video-table">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/iDA0kF5lrVk?si=aYyhKB5xbmC1PdV6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="order">Ordered HTML List</h2>
+
+    <p>An ordered list starts with the < ol > tag. Each list item starts with the < li > tag.
+    <br>The list items will be marked with numbers by default:</p>
+    
+        <br><b><p>Example</p></b>
+        
+       <img src="https://i.ibb.co/Vg6r6MW/Screenshot-20241208-021900.jpg" alt="Screenshot-20241208-021900" border="0" width="300" height="150">
+       <div class="vidordli">
+        <div class="video-orderlist">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/-kXZvKxs9oA?si=2ol5YqXxO5CS012z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+        
+        <h2 id="unOr">Unordered HTML List </h2>
+        <p>An unordered list starts with the < ul > tag. Each list item starts with the < li > tag.</p>
+<img src="https://i.ibb.co/WpPNJzF/Screenshot-20241208-022306.jpg" alt="Screenshot-20241208-022306" border="0" width="400" height="300">
+
+            <p><b>Example</b></p>
+            <img src="https://i.ibb.co/PrbhTHk/Screenshot-20241208-022316.jpg" alt="Screenshot-20241208-022316" border="0" width="300" height="200">
+            <br><p><b>EXAMPLE VIDEO</b></p>
+            <div class="vidUn">
+                <div class="video-unorder">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/rPblWCqOgWs?si=TErc4ymiyUNwaNZ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+    
+
+            
+            <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="descript">HTML Description Lists</h2>
+
+    <p>HTML also supports description lists. <br><br>
+
+A description list is a list of terms, with a description of each term.<br><br>
+       
+        <br><p><b>Example</b></p>
+        <img src="https://i.ibb.co/FHt68q2/Screenshot-20241208-023027.jpg" alt="Screenshot-20241208-023027" border="0" width="300" height="200">
+        
+        <p>The < dl > tag defines the description list, the < dt > tag defines the term (name), and the < dd > tag describes each term.</p>
+            
+            <br>
+            <div class="viddescript">
+                <div class="video-description">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/pgbn2pOdz8g?si=TZftlw8pIEuKDsTB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+           
+    <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    <h2 id="form">Forms</h2>
+
+    <p>The action attribute defines the action to be performed when the form is submitted.<br><br>
+
+Usually, the form data is sent to a file on the server when the user clicks on the submit button.<br><br>
+        <img src="https://i.ibb.co/DrQB714/Screenshot-20241208-023645.jpg" alt="Screenshot-20241208-023645" border="0" width="600" height="300">
+
+        <p>In the example, the form data is sent to a file called "action_page.php". This file contains a server-side script that handles the form data</p>
+  
+        <br><p><b>List Of All Forms Attributes</b></p> 
+        <img src="https://i.ibb.co/kD05ytn/Screenshot-20241208-023838.jpg" alt="Screenshot-20241208-023838" border="0" width="700" height="400">
+        <div class="vidfrm">
+            <div class="video-form">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/OiDE-yUEELw?si=2x32Wc5Avqf2ScZG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+          <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+          <h2 id="color">Color</h2>
+
+          <p>HTML colors are specified with predefined color names, or with RGB, HEX, HSL, RGBA, or HSLA values.</p><br><br>
+      
+    <p><b>Color Names</b></p>
+<br><p>In HTML, a color can be specified by using a color name:</p>
+
+<a href="https://ibb.co/JkHY2LZ"><img src="https://i.ibb.co/bdX4Lht/Screenshot-2024-12-08-151111.png" alt="Screenshot-2024-12-08-151111" border="0"></a width="600" height="200">
+
+<p>HTML supports 140 standard color names.</p>
+
+<br><p><b>Background Color</b></p>
+<p>You can set the background color for HTML elements:</p>
+
+<a href="https://ibb.co/PWq4Tn4"><img src="https://i.ibb.co/7psVg5V/Screenshot-2024-12-08-151723.png" alt="Screenshot-2024-12-08-151723" border="0"></a width="600" height="300">
+
+<br><p><b>TEXT Color<br></b></p>
+<br><p>You can set the color of text:</p>
+<br><p style="color: blue;">Hello World Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+<br><p style="color: purple;">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+<br><p style="color: green;">Hello We Are Group 6</p>
+
+<br><p><b>TEXT Color<br></b></p>
+<p>In HTML, colors can also be specified using RGB values, HEX values, HSL values, RGBA values, and HSLA values.
+The following three < div > elements have their background color set with RGB, HEX, and HSL values:</p>
+               <div class="vidcolor">
+                  <div class="video-clr">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/6IQz_cF-Slk?si=X8tGZoLuVJayDonX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  </div>
+              </div>
+      
+                <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+    
+
+</body>
+
+</html>

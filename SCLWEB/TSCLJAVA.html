@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="Shorcut icon" type="x-icon" href="https://i.ibb.co/BPd25jv/2-Photoroom.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Tutorial</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Ledger&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Frijole&family=Ledger&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+        p {
+            font-size: 1.3em;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        body {
+            display: flex; 
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8; /* Light background for contrast */
+        }
+
+        h1, h2 {
+            font-size: 1.8em;
+            font-family: 'Times New Roman', Times, serif;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-top: 30px;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #0b0f23, #1b2845, #0b0f23);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            background-size: cover;
+            color: white;
+        }
+        @keyframes twinkling {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: -1000px 1000px;
+            }
+        }
+
+        body {
+            background: #000 url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+            animation: twinkling 200s linear infinite;
+        }    
+
+        .navbar {
+            width: 220px;
+            background: linear-gradient(to bottom, rgba(25, 25, 25, 1), rgba(0, 0, 50, 1));
+            padding: 20px;
+            border-radius: 0 20px 20px 0;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.6); 
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+            padding: 10px 15px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+        }
+
+        .navbar a:active {
+            background: rgba(255, 255, 255, 0.5);
+            color: #ff00ff;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.7);
+        }
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: #00ffff;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            max-width: 900px; 
+            margin-left: 30px;
+            margin-right: 30px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5), 0 2px 10px rgba(0, 0, 0, 0.1);
+            color: white; /* White text color */
+        }
+
+        /* Videos */
+        .vid {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%; 
+            padding-top: 56.25%; 
+            overflow: hidden;
+        }
+        .video-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width of the wrapper */
+            height: 100%; /* Full height of the wrapper */
+            object-fit: contain; /* Cover the area while maintaining aspect ratio */
+            border-radius: 8px; /* Rounded corners */
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width of the wrapper */
+            height: 100%; /* Full height of the wrapper */
+            border: none; /* Remove border */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        /* Language Access */
+        .container {
+            padding: 50px 0;
+            height: 100%;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .parent {
+            margin-top: -50px;
+            height: 400px;
+            width: 300px;
+            padding: 20px;
+            perspective: 1000px;
+        }
+        .card { 
+            padding-top: 100px;
+            height: 425px;
+            transform-style: preserve-3d;
+            background-image: url(https://i.ibb.co/3pZVjjQ/i01-meow-1.png);
+            background-position: center center;
+            width: 100%;
+            transition: all 0.5s ease-in-out;
+            border-radius: 10px;
+        }
+        .card:hover {
+            background-position: 80% 20%;
+            transform: rotate3d(0.5, 1, 0, 15deg);
+        }
+        .content-box {
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.811);
+            border-radius: 0 0 10px 10px;
+            box-shadow: rgba(255, 255, 255, 0.925) 0 20px 50px -25px;
+            transition: all 0.5s ease-in-out;
+            padding: 50px 25px 25px 25px;
+            transform-style: preserve-3d;
+        }
+        .card-title {
+            color: white;
+            font-size: 25px;
+            font-family: 'Frijole';
+            font-weight: 900;
+            transition: all 0.5s ease-in-out;
+            transform: translate3d(0px, 0px, 25px);
+        }
+        .card-title:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        .card-content {
+            padding-top: 15px;
+            font-size: 0.9em;
+            font-family: 'Ledger';
+            color: white;
+            transition: all 0.5s ease-in-out;
+        }
+        .card-content:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        .see-more {
+            display: block;
+            font-weight: 900;
+            font-size: 11px;
+            font-family: 'Times New Roman', Times, serif;
+            text-transform: uppercase;
+            color: blue;
+            padding-top: 15px;
+            transition: all 0.5s ease-in-out;
+            transform: translate3d(0px, 0px, 20px);
+        }
+        .see-more a {
+            text-decoration: none;
+            color: white;
+        }
+        .see-more:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        
+        .date-box3 {
+            position: absolute;
+            top: 75px;
+            left: 25px;
+            height: 60px;
+            width: 60px;
+            background-color: rgb(187, 187, 187);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: rgb(162, 175, 196) 0px 20px 60px 0px, rgb(175, 175, 175) 0px 18px 36px -18px;
+            transform: translate3d(0px, 0px, 50px);
+            background-image: url(https://i.ibb.co/BPd25jv/2-Photoroom.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .date-box span {
+            display: block;
+            text-align: center;
+        }
+        .date-box .month {
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .date-box .date {
+            font-size: 20px;
+            font-weight: 900;
+            color: rgb(0, 136, 255);
+        }
+        
+    </style>
+
+</head>
+
+<body>
+
+    
+    <div class="container">
+        <div class="parent card4">
+            <div class="card">
+                <div class="content-box">
+                    <h1 class="card-title">JAVA</h1>
+                    <p class="card-content">A high-level, object-oriented programming language used to build cross-platform applications, like web and mobile apps.</p>
+                    <span class="see-more"><a href="/SCLWEB/TSCLPL.html">Exit</a></span>
+                </div>
+                <div class="date-box3">
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <div class="navbar">
+        <h2>Navigation</h2>
+        <a href="#history">History</a>
+        <a href="#Intro">Introduction to Java</a>
+        <a href="#IDE">JDK,IDE and Hello World</a>
+        <a href="#Var">Variable & Datatypes</a>
+        <a href="#User">User Input & Arithmetic Operators</a>
+        <a href="#Arr">Arrays</a>
+        <a href="#Con">Conditional Statements</a>
+        <a href="#Swi">Switch Statements</a>
+        <a href="#Whi">WHILE & DO - WHILE Loop</a>
+        <a href="#For">FOR Loop</a>
+        <a href="#FEL">FOR - EACH Loop</a>
+        <a href="#2D Arr">2D Arrays + Nested FOR Loop</a>
+        <a href="#Met">Methods / Functions</a>
+        <a href="#Pack">Packages & Modifiers </a>
+        <a href="#Cla">Classes & Objects</a>
+        <a href="#OB">Object Methods</a>
+        <a href="#En">Encapsulation</a>
+        <a href="#Over">Overloading Constructors</a>
+        <a href="#Inh">Inheritance</a>
+        <a href="#Pol">Polymorphism</a>
+        <a href="#Abs">Abstraction</a>
+        <a href="#ArrO">Arrays of Object</a>
+        <a href="#Enum">Enum</a>
+        <a href="#ArrL">Array Lists</a>
+        <a href="#ExHa">Exception Handling </a>
+        <a href="#DaCo">Datatype conversion</a>
+        <a href="#Has">HashMap</a>
+        <a href="#Stoc">Stock overflow</a>
+
+    </div>
+
+    <div class="content">
+
+    <h1>Java</h1>
+
+    <h2 id="history">History</h2>
+    <p><b>A Brief History About Java</b></p>
+    <br>
+    <p>Java was created by James Gosling and his team at Sun Microsystems in 1991, originally under the project name Oak. It was designed with the goal of being a platform-independent language for consumer electronics. However, as the internet grew in the 1990s, Java's potential for web development became clear.
+    <br>Java was officially released in 1995 as Java 1.0, with the promise of "Write Once, Run Anywhere" (WORA), meaning Java applications could run on any device with a Java Virtual Machine (JVM), regardless of the underlying operating system.</p>
+    <br>
+    <p><b>Early Development (1991-1995)</b>
+        <br>
+    <br>1991: Java was originally conceived under the name Oak by James Gosling and Mike Sheridan at Sun Microsystems. It was initially intended for consumer electronics like set-top boxes.
+    <br>The project was renamed Java in 1994 due to trademark issues with the name Oak.
+    <br>Java was designed to be platform-independent, allowing applications to run on any device using the Java Virtual Machine (JVM).</p>
+    <br>
+    <p><b>Java 1.0 (1995): Official Release</b>
+        <br>
+    <br>In 1995, Java 1.0 was released by Sun Microsystems, marking the beginning of its journey in the software industry.
+    <br>Java introduced the concept of "Write Once, Run Anywhere" (WORA), meaning Java programs could run on any system that had the JVM installed, making it platform-independent.
+    <br>The language quickly gained traction for web development due to the rise of the internet, especially with the introduction of Java Applets, which were small programs embedded in web pages.</p>
+    <br>
+    <p><b>Java 2 (J2SE, J2EE, J2ME) (1998)</b>
+        <br>
+    <br>In 1998, Java 2 was introduced with the first major split into three editions:
+    <br>- J2SE (Java 2 Standard Edition): Core platform for desktop and server applications.
+    <br>- J2EE (Java 2 Enterprise Edition): A set of APIs for building large-scale enterprise applications (introducing technologies like Enterprise JavaBeans (EJB) and Servlets).
+    <br>- J2ME (Java 2 Micro Edition): A platform for mobile and embedded devices, marking Java early entry into the mobile industry.</p>
+    <br>
+    <p><b>Java 5 (2004): A Major Update</b>
+        <br>
+    <br>Java 5 (also known as J2SE 5.0) was released in 2004, and it introduced several important features:
+    <br>- Generics: Allowed for type-safe data structures.
+    <br>- Metadata Annotations: Introduced a way to add metadata to classes and methods.
+    <br>- Enhanced For Loop: A more concise way to iterate over collections.
+    <br>- Varargs: Allowed methods to accept a variable number of arguments
+    </p>
+    <br>
+    <p><b>Java 6 (2006): Performance Improvements</b>
+        <br>
+    <br>Java 6 focused on improving performance, stability, and support for web applications.
+    <br>New features included scripting support via the Java Compiler API, performance optimizations, and better integration with web technologies.</p>
+    <br>
+    <p><b>Java 8 (2014): A Revolutionary Release</b>
+        <br>
+    <br>- Lambda Expressions: Allowed for functional programming features, enabling more concise and parallel-friendly code.
+    <br>- Streams API: A new abstraction for handling sequences of data, allowing developers to write declarative code for processing data.
+    <br>- Default Methods: Allowed interfaces to have methods with default implementations.
+    <br>- New Date and Time API: Replaced the outdated Date and Calendar classes.
+    <br>
+    <br>
+    <p><b>Java 9 (2017): Modularity</b>
+        <br>
+    <br>Java 9 introduced the module system (Project Jigsaw), allowing developers to modularize applications and the Java platform.
+    <br>This made the language more scalable and maintainable, especially for large applications.</p>
+    <br>
+    <p><b>Java 10 (2018) and Java 11 (2018): Six-Month Release Cycle</b>
+        <br>
+    <br>With the release of Java 10, Oracle introduced a six-month release cycle for Java, allowing faster innovation and feature delivery.
+    <br>Java 11 became the first LTS (Long-Term Support) release under the new cadence. It also introduced Flight Recorder (a tool for monitoring Java applications) and the HTTP Client API.
+    <br>
+
+    </p>
+    <br>
+    <p><b>Java 12 to Java 16 (2019–2021): Continuous Updates</b>
+        <br>
+        <ul style="margin-left: 25px;">
+            <p>These versions saw incremental updates, including:</p>
+            <li>Java 12: Introduced Shenandoah Garbage Collector and JVM improvements.</li>
+            <li>Java 13: Included Text Blocks (for easier handling of multi-line string literals).</li>
+            <li>Java 14: Featured JEP 358 for Helpful NullPointerExceptions and records (preview).</li>
+            <li>Java 15: Introduced sealed classes (preview) for better inheritance control.</li>
+        </ul>
+
+</p>
+    <br>
+    <p><b>Java 17 (2021): Another LTS Release</b>
+        <br>
+    <br>Java 17 is the latest LTS release, offering long-term support and many important updates:
+    <br>- Sealed Classes: Allowed more control over class hierarchies.
+    <br>- Pattern Matching (Preview): Simplified type matching.
+    <br>- Various performance improvements and API enhancements.</p>
+    <br>
+
+    
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1>Java Lesson Flow</h1>
+
+    <h2 id="Intro">Introduction to Java</h2>
+
+    <p><b>What is Java?</b></p>
+    <br>
+    <p>Java is one of the most popular and widely used programming languages in the world. It is a versatile, object-oriented, 
+        and platform-independent language that has been a staple in both the academic and professional software development fields for decades. 
+        Java is used in a variety of domains, from mobile applications (especially Android) to large-scale enterprise systems, web applications, 
+        and more.<br>
+        <br>
+        Key Features of Java:</p>
+        <br>
+
+    <ul style="margin-left: 25px;">
+        <li>Platform Independence
+            <br> - Java follows the principle of "write once, run anywhere," meaning that Java programs can be run on any device that has a Java Virtual Machine (JVM). 
+            The compiled code (bytecode) is not dependent on a specific system's architecture, which makes Java platform-independent.
+        </li>
+        <li>Object-Oriented Programming (OOP)
+            <br> - Java is an object-oriented programming (OOP) language. It promotes the concepts of classes and objects, where:
+            <br>Classes define the structure and behavior of objects.
+        </li>
+        <li>Simplicity
+            <br>- Java is designed to be simple and easy to learn. Its syntax is clean and mostly derived from C++, which makes it familiar to many programmers.
+            <br>- It removes complex features like pointers and manual memory management, which are present in languages like C and C++.
+        </li>
+        <li>Robustness
+            <br> - It refers to the language's ability to handle errors effectively, manage unexpected situations, and ensure stability and reliability in applications. 
+            Java's design emphasizes error detection, exception handling, memory management, and the avoidance of common programming pitfalls. 
+            Java programs are expected to run smoothly even in the presence of unexpected situations, ensuring higher application reliability and fewer crashes.
+        </li>
+        <li>Security
+            <br> - Java is known for its strong security model, which is a fundamental part of its design. 
+            The language and platform provide various features and mechanisms to ensure that Java applications can be run securely, 
+            preventing unauthorized access and protecting the system from malicious activities.
+        </li>
+        <li>Multithreading
+            <br> - Java is known for its strong security model, which is a fundamental part of its design. 
+            The language and platform provide various features and mechanisms to ensure that Java applications can be run securely, 
+            preventing unauthorized access and protecting the system from malicious activities.
+        </li>
+        <li>Rich API
+            <br> - Java provides a rich set of APIs that empower developers to create robust, portable, and feature-rich applications. 
+            These APIs cover a wide range of functionalities, making Java one of the most versatile programming languages.
+        </li>
+        <li>Distributed Computing
+            <br> - Java is widely used in distributed computing due to its robust libraries, support for multithreading, and platform-independent nature. 
+            Java provides a range of tools and APIs for building distributed systems, allowing developers to create scalable, fault-tolerant, and high-performance applications that run across multiple machines or nodes.
+        </li>
+        <li>Automatic Garbage Collection
+            <br>- Collection (GC) in Java is an automatic process that helps manage memory by reclaiming the memory that is no longer in use, preventing memory leaks, and ensuring that programs use memory efficiently. 
+            Java provides automatic garbage collection, which means that developers do not need to manually allocate or deallocate memory. Instead, the Java Virtual Machine (JVM) handles this process in the background.
+            <br>- Garbage Collection is a critical feature in Java because it simplifies memory management and helps prevent common errors such as memory leaks and dangling pointers, which are often encountered in languages that require manual memory management like C and C++.
+        </li>
+    </ul>
+        <br>
+
+    <p><b>Why do we use Java?</b></p>
+    <br> Java is a versatile, secure, and powerful programming language that can be used for developing a wide range of applications, from mobile and web apps to large-scale enterprise systems and distributed computing solutions. 
+    Its platform independence, ease of use, rich libraries, and continuous evolution make it an excellent choice for both beginners and experienced developers. 
+    Whether you're building a small mobile app or a large, complex enterprise system, Java remains one of the most reliable and widely-used programming languages in the world.
+    <br>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="IDE"> JDK, IDE and Hello World</h2>
+
+    <p>To get started with Java development, you need a few basic components: the Java Development Kit (JDK), an Integrated Development Environment (IDE), 
+        and a simple Java program (like the classic "Hello World") to test everything works correctly.
+    </p>
+        <br>
+
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/8HXqOHH2ocM?si=xNYFBeo_y72DYMno" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="Var">Variable & Datatypes</h2>
+
+    <p>In Java, a variable is a named container used to store data that can be referenced and manipulated during the program's execution. Every variable has a data type, which defines the kind of data it can store, such as numbers, characters, or true/false values. Java has two main categories of data types: primitive data types, which include types like int, float, and boolean, and reference data types, such as String and arrays, which store references to objects. Primitive data types hold simple values directly, while reference types hold memory addresses pointing to complex data structures. 
+        Choosing the correct data type for a variable ensures proper storage, memory efficiency, and support for required operations.
+    </p>
+        <br>
+
+    <p><b>Variables</b></p>
+        <br>
+    <p>Variable are used to store up temporary data to be used in our program's runtime.</p>
+        <br>
+    <p>In C#, there are different types of variables (defined with different keywords), for example:</p>
+        <br>
+    <ul style="margin-left: 25px;">
+        <li><span style="color: red; font-weight: bold;">int</span> - stores integers (whole numbers), without decimals, such as 123 or -123</li>
+        <li><span style="color: red; font-weight: bold;">double</span> - stores floating point numbers, with decimals, such as 19.99 or -19.99</li>
+        <li><span style="color: red; font-weight: bold;">char</span> - stores single characters, such as 'a' or 'B'. Char values are surrounded by single quotes</li>
+        <li><span style="color: red; font-weight: bold;">string</span> - stores text, such as "Hello World". String values are surrounded by double quotes</li>
+        <li><span style="color: red; font-weight: bold;">bool</span> - stores values with two states: true or false</li>
+    </ul>
+        <br>
+    
+    <p><b>Data Types</b></p>
+        <br>
+    <p>A data type specifies the size and type of variable values.
+
+        It is important to use the correct data type for the corresponding variable; to avoid errors, to save time and memory, but it will also make your code more maintainable and readable. <br> <br> The most common data types are:</p>
+    
+    <div class="vid">
+        <div class="video-wrapper">
+            <img src="https://i.ibb.co/CJ19Z7H/IMG-20241208-143126.jpg" alt="">
+        </div>
+    </div>
+
+        <br>
+    <p><b>Identifiers</b></p>
+        <br>
+    <p>An identifier is the name you give to a program element, such as a variable, function, class, or constant. Identifiers are used to reference and manipulate the data in your program. In C#, identifiers must follow specific rules, which are designed to ensure that the code is readable and avoids conflicts with the language's reserved keywords.</p>
+        <br>
+    <p><b>Rules for Identifiers : </b></p>
+        <br>
+    <ul style="margin-left: 25px;">
+        <li><b>Start with a letter or an underscore:</b> An identifier can start with a letter (A-Z or a-z) or an underscore (_), but it cannot start with a digit.</li>
+        <br>
+        <li>Valid: age, _myVariable, customerName</li>
+        <li>Invalid: 2ndVariable (starts with a digit)</li>
+        <br>
+        <li><b>Can include letters, digits, and underscores:</b> After the first character, the identifier can contain letters, digits (0-9), and underscores.</li>
+        <br>
+        <li>Valid: userName_123, customer1, _value</li>
+        <br>
+        <li><b>Cannot be a reserved keyword:</b> C# has a set of reserved keywords that are part of the language syntax. These cannot be used as identifiers.</li>
+        <br>
+        <li>Reserved keywords (examples): int, class, if, while, public, static, void, true, false.</li>
+        <br>
+        <li><b>Case-sensitive:</b> C# is case-sensitive, meaning myVariable and myvariable would be treated as two different identifiers.</li>
+    </ul>
+        <br>
+    
+    <div class="vid">
+        <div class="video-wrapper">
+            <img src="https://i.ibb.co/vY9ptDh/Screen-Shot-2024-12-08-at-3-32-20-PM.png" alt="">
+        </div>
+    </div>
+
+        <br>
+    <p><b>Declaring Variables</b></p>
+        <br>
+    <p>Declaring a variable in C# means specifying its data type and giving it a name. The type of the variable determines the kind of data it can store (e.g., numbers, text, boolean values). The declaration of a variable is always done by stating the type followed by the variable's name.</p>
+        <br>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <img src="https://i.ibb.co/f2Y8Q2J/Screen-Shot-2024-12-08-at-3-38-31-PM.png" alt="">
+        </div>
+    </div>
+
+    <p>In C#, variables must be declared before they are used. This is because C# is a statically-typed language, meaning the type of the variable is known at compile-time.</p>
+        <br>
+    <p><b>Assigning Variables </b></p>
+        <br>
+    <p>Assigning a variable means giving it a value. This is done using the assignment operator 😊). Once a variable is declared, you can assign a value to it either when you declare it or afterward. The value must match the variable's type.</p>
+        <br>
+    
+    <div class="vid">
+        <div class="video-wrapper">
+            <img src="https://i.ibb.co/g3mVB2X/Screen-Shot-2024-12-08-at-3-43-53-PM.png" alt="">
+        </div>
+    </div>
+
+    <p>In C#, variables are strongly typed, meaning the value assigned to the variable must match its declared type. If you try to assign a value of the wrong type, you'll get a compile-time error.</p>
+        <br>
+    <p><b>Printing Variables</b></p>
+        <br>
+    <p>To output information to the console in C#, you use the Console.WriteLine() method. This method prints the value of a variable or a string to the console, followed by a newline character.</p>
+        <br>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <img src="https://i.ibb.co/7ycNjCf/Screen-Shot-2024-12-08-at-3-53-22-PM.png" alt="">
+        </div>
+    </div>
+
+    <p><b>Concatenation</b></p>
+        <br>
+    <p>Concatenation refers to joining two or more strings into a single string. In C#, this can be done using the + operator.</p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <img src="https://i.ibb.co/1TCGqQG/Screen-Shot-2024-12-08-at-3-55-39-PM.png" alt="">
+        </div>
+    </div>
+
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/lePkYEGt2es?si=SourUYFw_2vlmB3m" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>        
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="Whi">User Input & Arithmetic Operators </h2>
+
+    <p>While Loop, Iterating Arrays, Do-While Lopp, Break Keyword, Conditions in While Loop </p>
+        <br>
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/76b2d6ozN_k?si=GixdM6f0tju7ABKO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>        
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="For">Arrays </h2>
+
+    <p>FOR Loop, Iterating Arrays, Break Keyword, Conditions in FOR Loop </p>
+        <br>
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/sU8MMne-pew?si=nIzIUxh9bjS_wiMY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>      
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="FEL">Conditional Statements </h2>
+
+    <p>FOR - EACH Loop, Iterating Arrays, Do-While Lopp, Break Keyword, Conditions in FOR - EACH Loop </p>
+        <br>
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/NOB3pdhvfJA?si=Kh9Rs-kSXZ8x-8Yg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>     
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="2DArr">Switch Statements </h2>
+
+    <p>2D Array, Declaring 2D Array, Accessing 2D Array, NESTED FOR Loop, Iterating 2D Array </p>
+        <br>
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/mVtNA3fmppA?si=VM6BwXY4S6FE70GF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>      
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="Met">While & Do - While Loop </h2>
+
+    <p>Methods, Creating Methods, Calling Methods, Comments, Variable Scooping, PARAMETERS/ARGUMENTS, Return Keyword, Return Type, Overloaidng Methods </p>
+        <br>
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/fAGn-N1TN8k?si=OMyfhvLB4wtyJEoY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>        
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="CM">For Loop </h2>
+
+    <p>Classes, Creating Classes, Class Instantiation, Access Modifiers, Static Classes, Static Methods and Variables </p>
+        <br>
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/bq4BJiTx2yE?si=48Rf_bn-Hbpm_cMN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="CO">For - Each Loop</h2>
+
+    <p>Object-Iriented Programming, Classes, Objects, Attributes, Class Creation, Class Instantiation, Accessing Attrinbute </p>
+        <br>
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/qo50NzJGS8Y?si=NWaGfoBE4XMiFi9w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>        
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="Cons">2D Arrays + NESTED FOR Loop & NEsted FOR-EACH Loop</h2>
+
+    <p>Contructors, Creating Constructors, This Keyword, Using Constructors</p>
+        <br>
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/89exXZIieA0?si=wtISu2S1cZArGmdZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>        
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="Obj">Methods / Functions</h2>
+
+    <p>Understanding Object Methods, Creating & Calling Object Methods </p>
+        <br>
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/GWAcorZSWdg?si=CirtUQGsReuYvUzA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="Enc">Packages & Modifiers</h2>
+
+    <p>Encapsulation, Using Encapsulation, Getters & Setters, Creating Getters & Setters </p>
+        <br>
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/wDA_2CmdpdA?si=TkdJWh8vgVNPFzvi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="OvrCon">Classes & Objects</h2>
+
+    <p>Inheritance, BASE & DERIVED Class, Using Inheritance, Base Keyword, Overriding Methods, Overriding Constructors </p>
+        <br>
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/8cTbNGa__Hk?si=2joXy_rs3KnfI16E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+   
+    <h2 id="Inh">Constructors</h2>
+
+    <p>Inheritance, BASE & DERIVED Class, Using Inheritance, Base Keyword, Overriding Methods, Overriding Constructors </p>
+        <br>
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/uarH8T2Trbs?si=H56_q3mtTcQZMZXU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>   
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="Pol">Object Methods</h2>
+
+    <p>Using Polymorphism, Instantiating Derived Class, Virtual Modifier, Override Modifier </p>
+        <br>
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/9AwACkhw6WE?si=6_rs_xyN1bjPvti1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="Abs">Encapsulation</h2>
+
+    <p>Abstraction, Abstraction Class, Abstraction Methods, Using Abstraction</p>
+        <br>
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/2TJ9A0wZtmE?si=-ai5HPPuDLwsrw-K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>      
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="AbsI">Overloading Constructors</h2>
+
+    <p>Abstraction, Interface, Using Abstraction (Interface)</p>
+        <br>
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/1TLk2Plejlo?si=HMJ8OOJarHVCBgsU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>      
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="AOB">Inheritance</h2>
+
+    <p>Arrays of objects, Intializing Arrays of Objects, Storing Objects Inside of Array, Array of Object and Polymorphism</p>
+        <br>    
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/HpIjwxTdH9g?si=B6iUUMpZ3JbR-Y9K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="AOB">Polymorphism</h2>
+
+    <p>Arrays of objects, Intializing Arrays of Objects, Storing Objects Inside of Array, Array of Object and Polymorphism</p>
+        <br>    
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/HpIjwxTdH9g?si=B6iUUMpZ3JbR-Y9K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="AOB">Abstraction</h2>
+
+    <p>Arrays of objects, Intializing Arrays of Objects, Storing Objects Inside of Array, Array of Object and Polymorphism</p>
+        <br>    
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/HpIjwxTdH9g?si=B6iUUMpZ3JbR-Y9K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="AOB">Abstraction Interface</h2>
+
+    <p>Arrays of objects, Intializing Arrays of Objects, Storing Objects Inside of Array, Array of Object and Polymorphism</p>
+        <br>    
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/HpIjwxTdH9g?si=B6iUUMpZ3JbR-Y9K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="AOB">Array of Objects</h2>
+
+    <p>Arrays of objects, Intializing Arrays of Objects, Storing Objects Inside of Array, Array of Object and Polymorphism</p>
+        <br>    
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/HpIjwxTdH9g?si=B6iUUMpZ3JbR-Y9K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="AOB">Enum</h2>
+
+    <p>Arrays of objects, Intializing Arrays of Objects, Storing Objects Inside of Array, Array of Object and Polymorphism</p>
+        <br>    
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/HpIjwxTdH9g?si=B6iUUMpZ3JbR-Y9K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="AOB">Array Lists</h2>
+
+    <p>Arrays of objects, Intializing Arrays of Objects, Storing Objects Inside of Array, Array of Object and Polymorphism</p>
+        <br>    
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/HpIjwxTdH9g?si=B6iUUMpZ3JbR-Y9K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="AOB">Exception Handling</h2>
+
+    <p>Arrays of objects, Intializing Arrays of Objects, Storing Objects Inside of Array, Array of Object and Polymorphism</p>
+        <br>    
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/HpIjwxTdH9g?si=B6iUUMpZ3JbR-Y9K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="AOB">Datatype Conversion</h2>
+
+    <p>Arrays of objects, Intializing Arrays of Objects, Storing Objects Inside of Array, Array of Object and Polymorphism</p>
+        <br>    
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/HpIjwxTdH9g?si=B6iUUMpZ3JbR-Y9K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="AOB">HashMap</h2>
+
+    <p>Arrays of objects, Intializing Arrays of Objects, Storing Objects Inside of Array, Array of Object and Polymorphism</p>
+        <br>    
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/HpIjwxTdH9g?si=B6iUUMpZ3JbR-Y9K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h2 id="AOB">Resecursive Methods</h2>
+
+    <p>Arrays of objects, Intializing Arrays of Objects, Storing Objects Inside of Array, Array of Object and Polymorphism</p>
+        <br>    
+    <p><b>You can also watch the video tutorial below for better Understanding :</b></p>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/HpIjwxTdH9g?si=B6iUUMpZ3JbR-Y9K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
+        </div>
+    </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    
+</body>
+
+</html>

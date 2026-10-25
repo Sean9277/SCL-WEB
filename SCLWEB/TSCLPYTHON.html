@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="Shorcut icon" type="x-icon" href="https://i.ibb.co/C5z7BSN/python-logo-Photoroom.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Tutorial</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Ledger&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Frijole&family=Ledger&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+        p {
+            font-size: 1.3em;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        body {
+            display: flex; 
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8; /* Light background for contrast */
+        }
+
+        h1, h2 {
+            font-size: 1.8em;
+            font-family: 'Times New Roman', Times, serif;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-top: 30px;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #0b0f23, #1b2845, #0b0f23);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            background-size: cover;
+            color: white;
+        }
+        @keyframes twinkling {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: -1000px 1000px;
+            }
+        }
+
+        body {
+            background: #000 url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+            animation: twinkling 200s linear infinite;
+        }    
+
+        .navbar {
+            width: 220px;
+            background: linear-gradient(to bottom, rgba(25, 25, 25, 1), rgba(0, 0, 50, 1));
+            padding: 20px;
+            border-radius: 0 20px 20px 0;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.6); 
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+            padding: 10px 15px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+        }
+
+        .navbar a:active {
+            background: rgba(255, 255, 255, 0.5);
+            color: #ff00ff;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.7);
+        }
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: #00ffff;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            max-width: 900px; 
+            margin-left: 30px;
+            margin-right: 30px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5), 0 2px 10px rgba(0, 0, 0, 0.1);
+            color: white; /* White text color */
+        }
+
+        /* Videos */
+        .vid {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%; 
+            padding-top: 56.25%; 
+            overflow: hidden;
+        }
+        .video-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width of the wrapper */
+            height: 100%; /* Full height of the wrapper */
+            object-fit: contain; /* Cover the area while maintaining aspect ratio */
+            border-radius: 8px; /* Rounded corners */
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width of the wrapper */
+            height: 100%; /* Full height of the wrapper */
+            border: none; /* Remove border */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        /* Language Access */
+        .container {
+            padding: 50px 0;
+            height: 100%;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .parent {
+            margin-top: -50px;
+            height: 400px;
+            width: 300px;
+            padding: 20px;
+            perspective: 1000px;
+        }
+        .card { 
+            padding-top: 100px;
+            height: 425px;
+            transform-style: preserve-3d;
+            background-image: url(https://i.ibb.co/3pZVjjQ/i01-meow-1.png);
+            background-position: center center;
+            width: 100%;
+            transition: all 0.5s ease-in-out;
+            border-radius: 10px;
+        }
+        .card:hover {
+            background-position: 80% 20%;
+            transform: rotate3d(0.5, 1, 0, 15deg);
+        }
+        .content-box {
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.811);
+            border-radius: 0 0 10px 10px;
+            box-shadow: rgba(255, 255, 255, 0.925) 0 20px 50px -25px;
+            transition: all 0.5s ease-in-out;
+            padding: 50px 25px 25px 25px;
+            transform-style: preserve-3d;
+        }
+        .card-title {
+            color: white;
+            font-size: 25px;
+            font-family: 'Frijole';
+            font-weight: 900;
+            transition: all 0.5s ease-in-out;
+            transform: translate3d(0px, 0px, 25px);
+        }
+        .card-title:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        .card-content {
+            padding-top: 15px;
+            font-size: 0.9em;
+            font-family: 'Ledger';
+            color: white;
+            transition: all 0.5s ease-in-out;
+        }
+        .card-content:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        .see-more {
+            display: block;
+            font-weight: 900;
+            font-size: 11px;
+            font-family: 'Times New Roman', Times, serif;
+            text-transform: uppercase;
+            color: blue;
+            padding-top: 15px;
+            transition: all 0.5s ease-in-out;
+            transform: translate3d(0px, 0px, 20px);
+        }
+        .see-more a {
+            text-decoration: none;
+            color: white;
+        }
+        .see-more:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        
+        .date-box9 {
+            position: absolute;
+            top: 75px;
+            left: 25px;
+            height: 60px;
+            width: 60px;
+            background-color: rgb(187, 187, 187);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: rgb(162, 175, 196) 0px 20px 60px 0px, rgb(175, 175, 175) 0px 18px 36px -18px;
+            transform: translate3d(0px, 0px, 50px);
+            background-image: url(https://i.ibb.co/C5z7BSN/python-logo-Photoroom.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .date-box span {
+            display: block;
+            text-align: center;
+        }
+        .date-box .month {
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .date-box .date {
+            font-size: 20px;
+            font-weight: 900;
+            color: rgb(0, 136, 255);
+        }
+        
+    </style>
+
+</head>
+
+<body>
+
+    
+    <div class="container">
+        <div class="parent card10">
+            <div class="card">
+                <div class="content-box">
+                    <h1 class="card-title">PHYTON</h1>
+                    <p class="card-content">A high-level, easy-to-learn programming language used for web development, data analysis, machine learning, and automation.</p>
+                    <span class="see-more"><a href="/SCLWEB/TSCLPL.html">Exit</a></span>
+                </div>
+                <div class="date-box9">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <div class="navbar">
+        <h2>Navigation</h2>
+        <a href="#history">History</a>
+        <a href="#Intro">Python Introduction</a>
+        <a href="#IDE">Python Syntax</a>
+        <a href="#Var">Python Comments</a>
+        <a href="#User">Python Data Types</a>
+        <a href="#Data">Python Numbers</a>
+        <a href="#Arit">Python Strings</a>
+        <a href="#Arr">Python Operators</a>
+        <a href="#Con">Python If...Else</a>
+        <a href="#Swi">Python While Loops</a>
+        <a href="#Whi">Python For Loops</a>
+        <a href="#For">Python Functions</a>
+        <a href="#FEL">Python Arrays</a>
+        <a href="#2DArr">Python Classes/Objects</a>
+        <a href="#Met">Python Inheritance</a>
+        <a href="#CM">Python Polymorphism</a>
+        <a href="#CO">Python Scope</a>
+        <a href="#Cons">Python Dates</a>
+        <a href="#Obj">Python JSON</a>
+
+    </div>
+<!--History -->
+    <div class="content">
+    <h1 id="history">Python</h1>
+    <h2>History</h2>
+
+    <p style="font-size: 20px; padding-bottom: 2px;" ><b> --The Beginnings (Late 1980s to Early 1990s)--</b></p>
+    <p> <b>Creator</b>: Python was conceived by Guido van Rossum in December 1989 during his work at the Centrum Wiskunde & Informatica (CWI) in the Netherlands.
+        <p style="padding: 3px;"></p>
+        <b>Inspiration</b>: Guido wanted to create a language that would bridge the gap between C and the high-level scripting languages of the time, such as ABC. He was particularly influenced by:<br>
+        <p style="padding: 3px;"></p>
+        <b>ABC language</b>: Known for its simplicity and error handling.<br>
+        Other languages: Such as C, Modula-3, and Unix shell scripting.<br>
+        <p style="padding: 3px;"></p>
+        <b>First Release</b>: The first official version, <b>Python 0.9.0,</b> was released in February 1991. It already included features like:<br>
+        <p style="padding: 5px;"> </p>
+        &#8226; Functions and exception handling.<br>
+        <p style="padding: 5px;"> </p>
+        &#8226; The <span style="background-color: #585858; font-size: small;">module</span> system.<br>
+        <p style="padding: 5px;"> </p>
+        &#8226; Core data types like <span style="background-color: #585858; font-size: small;">str</span>, <span style="background-color: #585858; font-size: small;">list</span>, <span style="background-color: #585858; font-size: small;">dict</span>, and <span style="background-color: #585858; font-size: small;">int</span>.</p>
+    
+        <p style="padding-top: 15px; font-size: 20px;"><b>-- Python 1.x Era (1991–2000)--</b></p>
+    <p>Python 1.0 was released in January 1994. It introduced significant features:<br>
+        <p style="padding: 3px;"></p>
+        &#8226; Functions, lambda, and exception handling.<br>
+        <p ></p>
+        &#8226; The <span style="background-color: #585858; font-size: small;">map</span>, <span style="background-color: #585858; font-size: small;">filter</span>, and <span style="background-color: #585858; font-size: small;">reduce</span> functions.<br>
+        <p style="padding: 3px;"></p>
+        Community and adoption grew during this period, largely thanks to Python's clean syntax and extensibility.</p>
+    
+        <p style="padding-top: 15px; font-size: 20px;"><b>-- Python 2.x Era (2000–2010) -- </b></p>
+    <p><b>Python 2.0</b>: Released in October 2000, it introduced many new features:<br>
+        <p style="padding: 3px;"></p>
+        &#8226; List comprehensions.<br>
+        <p style="padding: 5px;"> </p>
+        &#8226; A garbage collection system based on reference counting and cyclic garbage collection.<br>
+        <p style="padding: 5px;"> </p>
+        &#8226; Support for Unicode.<br>
+        <p style="padding: 3px;"></p>
+        <b>Challenges</b>: The 2.x series introduced some inconsistencies and design flaws, leading to long-term issues, particularly regarding Unicode and the division of integers (<span style="background-color: #585858; font-size: small;">int/int</span>)</p>
+    
+        <p style="padding-top: 15px; font-size: 20px;"><b>-- Python 3.x Era (2008–Present)--</b> <br></p>
+        <p><b>Python 3.0</b>: Released in December 2008, it was a major overhaul that broke backward compatibility to fix many issues in Python 2.x. Key changes included:<br>
+            <p style="padding: 3px;"></p>
+            &#8226; Print as a function: <span style="background-color: #585858; font-size: small;">print()</span> instead of <span style="background-color: #585858; font-size: small;">print</span>.<br>
+            <p style="padding: 5px;"> </p>
+            &#8226; Division behavior: <span style="background-color: #585858; font-size: small;">/</span> for true division, <span style="background-color: #585858; font-size: small;">//</span> for floor division.<br>
+            <p style="padding: 5px;"> </p>
+            &#8226; Enhanced Unicode support: Strings are <span style="background-color: #585858; font-size: small;">str</span> (Unicode) by default.<br>
+            <p style="padding: 5px;"> </p>
+            &#8226; Improved standard library organization and consistency.<br>
+            <p style="padding: 3px;"></p>
+            Python 2.x End of Life: Support for Python 2 ended on January 1, 2020, pushing developers toward Python 3.</p>
+
+    <p style="padding-top: 15px; font-size: 20px;"><b>--Modern Python (Post-2010)--</b></p>
+    <p> <b>Frequent Updates</b>: Python follows a robust release cycle, with significant updates every 18–24 months.<br>
+        <p style="padding: 3px;"></p>
+        <b>Community Growth</b>: Python became immensely popular due to:<br>
+        &#8226; Extensive libraries like NumPy, Pandas, TensorFlow, and Django.<br>
+        &#8226; Applications in data science, AI, web development, and automation.<br>
+        <p style="padding: 3px;"></p>
+        <b>Key Modern Features</b>:
+        &#8226; Type hints and gradual typing.
+        &#8226; Asynchronous programming with async and await.
+        &#8226; Pattern matching (introduced in Python 3.10).</p>
+
+    <p style="padding-top: 15px; font-size: 20px;"><b>--Python Today--</b></p>
+    <p>Python is one of the most widely used programming languages globally, known for:<br>
+        <p  style="padding: 3px;"></p>
+        &#8226; Its simplicity and beginner-friendly syntax.<br>
+        &#8226; A vast and supportive community.<br>
+        &#8226; Applications ranging from web development and automation to data science, machine learning, and artificial intelligence.</p>
+    <hr style="width:100%; height: 1px; text-align:center; color: black; background-color: black; border: none;">
+<!--History -->
+
+
+
+    <h1 id="Intro">Python Introduction </h1>
+    <h2>What is Python</h2>
+    <p>Python is a popular programming language. It was created by Guido van Rossum, and released in 1991.<br>
+        <p style="padding: 5px;"></p>
+        It is used for:<br>
+        <p style="padding: 5px;"></p>
+        &#8226; web development (server-side),<br>
+        &#8226; software development,<br>
+        &#8226; mathematics,<br>
+        &#8226; system scripting.</p>
+
+    <h2>What can Python do?</h2>
+        
+        <p> &#8226; Python can be used on a server to create web applications.<br>
+            &#8226; Python can be used alongside software to create workflows.<br>
+            &#8226; Python can connect to database systems. It can also read and modify files.<br>
+            &#8226; Python can be used to handle big data and perform complex mathematics.<br>
+            &#8226; Python can be used for rapid prototyping, or for production-ready software development.</p>
+
+    <h2>Why Python?</h2>
+
+        <p> &#8226; Python works on different platforms (Windows, Mac, Linux, Raspberry Pi, etc).<br>
+            &#8226; Python has a simple syntax similar to the English language.<br>
+            &#8226; Python has syntax that allows developers to write programs with fewer lines than some other programming languages.<br>
+            &#8226; Python runs on an interpreter system, meaning that code can be executed as soon as it is written. This means that prototyping can be very quick.<br>
+            &#8226; Python can be treated in a procedural way, an object-oriented way or a functional way.</p>
+    
+    <h2> Good To Know</h2>
+
+        <p> &#8226; The most recent major version of Python is Python 3, which we shall be using in this tutorial. However, Python 2, although not being updated with anything other than security updates, is still quite popular.<br>
+            &#8226; In this tutorial Python will be written in a text editor. It is possible to write Python in an Integrated Development Environment, such as Thonny, Pycharm, Netbeans or Eclipse which are particularly useful when managing larger collections of Python files.</p>
+
+    <h2> Python Syntax compared to other programming languages</h2>
+
+        <p> &#8226; Python was designed for readability, and has some similarities to the English language with influence from mathematics.<br>
+            &#8226; Python uses new lines to complete a command, as opposed to other programming languages which often use semicolons or parentheses.<br>
+            &#8226; Python relies on indentation, using whitespace, to define scope; such as the scope of loops, functions and classes. Other programming languages often use curly-brackets for this purpose.</p>
+        <p style="padding: 5px;"></p>
+            <a href="https://imgbb.com/"><img src="https://i.ibb.co/L0CS5v7/Screenshot-2024-12-09-223311.png" alt="Screenshot-2024-12-09-223311" border="2" style="border-color: #525a63;"></a>
+        <hr style="width:100%; height: 1px; text-align:center; color: rgb(167, 166, 166); background-color: rgb(167, 167, 167); border: none;">
+
+     
+    <h1 id="IDE">Python Syntax </h1>
+    <h2>Execute Python Syntax</h2>
+        <p>As we learned in the previous page, Python syntax can be executed by writing directly in the Command Line:</p>
+        <p style="padding: 5px;"> </p>
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/xLqw0tF/Screenshot-2024-12-09-224251.png" alt="Screenshot-2024-12-09-224251" border="2" style="border-color: #525a63;"></a>
+        <p style="padding: 5px;"></p>
+        <p>Or by creating a python file on the server, using the .py file extension, and running it in the Command Line:</p>
+        <p style="padding: 5px;"></p>
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/CKm0Qyb/Screenshot-2024-12-09-224617.png" alt="Screenshot-2024-12-09-224617" border="2" style="border-color: #525a63;"></a>
+    <h2> Python Indentation </h2>
+    <p>Indentation refers to the spaces at the beginning of a code line.<br>
+        <p style="padding: 5px;"> </p>
+        Where in other programming languages the indentation in code is for readability only, the indentation in Python is very important.<br>
+        <p style="padding: 5px;"> </p>
+        Python uses indentation to indicate a block of code</p>
+        <p style="padding: 5px;"> </p>
+        <a href="https://ibb.co/YTRx5Ch"><img src="https://i.ibb.co/5xMPQ0L/Screenshot-2024-12-09-225110.png" alt="Screenshot-2024-12-09-225110" border="2" style="border-color: #525a63;"></a>
+        <p style="padding: 5px;"></p>
+        <p>Python will give you an error if you skip the indentation:</p>
+        <p style="padding: 5px;"></p>
+        <a href="https://ibb.co/8MSvvKL"><img src="https://i.ibb.co/cJ7ffgS/Screenshot-2024-12-09-225405.png" alt="Screenshot-2024-12-09-225405" border="2" style="border-color: #525a63;"></a>
+        <p style="padding: 5px;"> </p>
+        <p>The number of spaces is up to you as a programmer, the most common use is four, but it has to be at least one.</p>
+        <p style="padding: 5px;"> </p>
+        <a href="https://ibb.co/SyVG0BC"><img src="https://i.ibb.co/xLzdG6T/Screenshot-2024-12-09-225557.png" alt="Screenshot-2024-12-09-225557" border="2" style="border-color: #525a63;"></a>
+        <p style="padding: 5px;"> </p>
+        <p>You have to use the same number of spaces in the same block of code, otherwise Python will give you an error:</p>
+        <p style="padding: 5px;"> </p>
+        <a href="https://ibb.co/kycRs95"><img src="https://i.ibb.co/qn1t3W7/Screenshot-2024-12-09-225736.png" alt="Screenshot-2024-12-09-225736" border="2" style="border-color: #525a63;"></a>
+    <h2>Python Variables</h2>
+        <p>In Python, variables are created when you assign a value to it:</p>
+        <p style="padding: 5px;"> </p>
+        <a href="https://ibb.co/KqQ6ngW"><img src="https://i.ibb.co/d23BZvD/Screenshot-2024-12-09-225921.png" alt="Screenshot-2024-12-09-225921" border="2" style="border-color: #525a63;" style="border-color: #525a63;"></a>
+        <p style="padding: 5px;"> </p>
+        <p>Python has no command for declaring a variable.<br>
+        <p style="padding: 5px;"> </p>
+            You will learn more about variables in the Python Variables chapter.</p>
+        <hr style="width:100%; height: 1px; text-align:center; color: rgb(167, 166, 166); background-color: rgb(167, 167, 167); border: none;">
+
+    
+    <h1 id="Var">Python Comments </h1>
+        <p>Comments can be used to explain Python code.<br>
+        <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>e="padding: 5px;"> </p>e="padding: 5px;"> </p>
+        Comments can be used to make the code more readable.<br>
+        <p style="padding: 5px;"> </p>
+        Comments can be used to prevent execution when testing code.
+    <h2> Creating Comments </h2>
+        <p>Comments starts with a <span style="color: red;">#</span>, and Python will ignore them:</p>
+        <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>
+        <a href="https://ibb.co/wWkqxt6"><img src="https://i.ibb.co/T8fGFyh/Screenshot-2024-12-09-231150.png" alt="Screenshot-2024-12-09-231150" border="2" style="border-color: #525a63;"></a>
+        <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>
+        <p>Comments can be placed at the end of a line, and Python will ignore the rest of the line:</p>
+        <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>e="padding: 5px;"> </p>
+        <a href="https://ibb.co/bmf5wsj"><img src="https://i.ibb.co/sRB9xKp/Screenshot-2024-12-09-231259.png" alt="Screenshot-2024-12-09-231259" border="2" style="border-color: #525a63;"></a>
+        <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>e="padding: 5px;"> </p>e="padding: 5px;"> </p>
+        <p>A comment does not have to be text that explains the code, it can also be used to prevent Python from executing code:</p>
+        <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>e="padding: 5px;"> </p>
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/vkS5rRC/Screenshot-2024-12-09-231353.png" alt="Screenshot-2024-12-09-231353" border="2" style="border-color: #525a63;"></a>
+    <h2> Multi-Line Comments </h2>
+        <p>Python does not really have a syntax for multiline comments.<br>
+            <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>e="padding: 5px;"> </p>
+            To add a multiline comment you could insert a <span style="color: red;">#</span> for each line:</p>
+            <p style="padding: 5px;"> </p>
+            <a href="https://ibb.co/wB7ckfm"><img src="https://i.ibb.co/bQFb0k9/Screenshot-2024-12-09-231547.png" alt="Screenshot-2024-12-09-231547" border="2" style="border-color: #525a63;"></a>
+            <p style="padding: 5px;"> </p>
+            <p>Or, not quite as intended, you can use a multiline string.<br>
+                <p style="padding: 5px;"> </p>
+                Since Python will ignore string literals that are not assigned to a variable, you can add a multiline string (triple quotes) in your code, and place your comment inside it:</p>
+            <p style="padding: 5px;"> </p>
+            <a href="https://imgbb.com/"><img src="https://i.ibb.co/DDM2Vqv/Screenshot-2024-12-09-231640.png" alt="Screenshot-2024-12-09-231640" border="2" style="border-color: #525a63;"></a>
+            <p style="padding: 5px;"> </p>
+            <p>As long as the string is not assigned to a variable, Python will read the code, but then ignore it, and you have made a multiline comment.</p>
+        <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+
+    <h1 id="User"> Python Data Types</h1>
+    <h2> Built-in Data Types </h2>
+    <p> In programming, data type is an important concept.<br>
+        <p style="padding: 5px;"> </p>
+        Variables can store data of different types, and different types can do different things.<br>
+        <p style="padding: 5px;"> </p>
+        Python has the following data types built-in by default, in these categories:</p>
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/XX1twMq/Screenshot-2024-12-09-232306.png" alt="Screenshot-2024-12-09-232306" border="2" style="border-color: #525a63;"></a>
+        <p style="padding: 5px;"> </p>
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ppsCxnNm-JI?si=gEI9Q97cnq_vqpo2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="Data"> Python Numbers </h1>
+        <h2>Python Numbers</h2>
+        <p>There are three numeric types in Python:<br>
+            <p style="padding: 5px;"> </p>
+            &#8226; <span style="color: red;">int</span> <br>
+            &#8226; <span style="color: red;">float</span><br>
+            &#8226; <span style="color: red;">complex</span><br>
+            <p style="padding: 5px;"> </p>
+            Variables of numeric types are created when you assign a value to them:</p>
+            <p style="padding: 5px;"> </p>
+            <a href="https://ibb.co/Wyq9KCL"><img src="https://i.ibb.co/mq1szp3/Screenshot-2024-12-09-233109.png" alt="Screenshot-2024-12-09-233109" border="2" style="border-color: #525a63;"></a>
+            <p style="padding: 5px;"> </p>
+            <p>To verify the type of any object in Python, use the type() function:</p>
+            <p style="padding: 5px;"> </p>
+            <a href="https://imgbb.com/"><img src="https://i.ibb.co/z2XVJMZ/Screenshot-2024-12-09-233212.png" alt="Screenshot-2024-12-09-233212" border="2" style="border-color: #525a63;"></a>
+        <h2>Int</h2>
+            <p>Int, or integer, is a whole number, positive or negative, without decimals, of unlimited length.</p>
+            <p style="padding: 5px;"> </p>
+            <a href="https://ibb.co/NV4mzLf"><img src="https://i.ibb.co/ZLZYChv/Screenshot-2024-12-09-233324.png" alt="Screenshot-2024-12-09-233324" border="2" style="border-color: #525a63;"></a>
+        <h2> Float</h2>
+        <p>Float, or "floating point number" is a number, positive or negative, containing one or more decimals.</p>
+        <p style="padding: 5px;"> </p>
+        <a href="https://ibb.co/3THTqd8"><img src="https://i.ibb.co/S6p68y1/Screenshot-2024-12-09-233425.png" alt="Screenshot-2024-12-09-233425" border="2" style="border-color: #525a63;"></a>
+        <p style="padding: 5px;"> </p>
+        <p>Float can also be scientific numbers with an "e" to indicate the power of 10.</p>
+        <p style="padding: 5px;"> </p>
+        <a href="https://ibb.co/grq0dby"><img src="https://i.ibb.co/tHj0zwB/Screenshot-2024-12-09-233537.png" alt="Screenshot-2024-12-09-233537" border="2" style="border-color: #525a63;"></a>
+    <h2>Complex</h2>
+        <p>Complex numbers are written with a "j" as the imaginary part:</p>
+        <p style="padding: 5px;"> </p>
+        <a href="https://ibb.co/thgCsKd"><img src="https://i.ibb.co/wLV6Wgv/Screenshot-2024-12-09-233653.png" alt="Screenshot-2024-12-09-233653" border="2" style="border-color: #525a63;"></a>
+    <h2>Type Conversion</h2>
+            <p>You can convert from one type to another with the <span style="color: red;">int()</span>, <span style="color: red;">float()</span>, and <span style="color: red;">complex()</span> methods:</p>
+            <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>
+            <a href="https://ibb.co/WGnFQd4"><img src="https://i.ibb.co/5GTvdzg/Screenshot-2024-12-09-233928.png" alt="Screenshot-2024-12-09-233928" border="2" style="border-color: #525a63;"></a>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+
+    <h1 id="Arit">Python Strings</h1>
+    <h2>Strings</h2>
+            <p>Strings in python are surrounded by either single quotation marks, or double quotation marks.<br>
+                <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>e="padding: 5px;"> </p>
+                <span style="color: red;">'hello'</span> is the same as <span style="color: red;">"hello"</span>.<br>
+                <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>e="padding: 5px;"> </p>
+                You can display a string literal with the <span style="color: red;">print()</span> function:</p>
+            <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>e="padding: 5px;"> </p>e="padding: 5px;"> </p>
+            <a href="https://ibb.co/XL0wGMX"><img src="https://i.ibb.co/LRjGsHS/Screenshot-2024-12-09-234417.png" alt="Screenshot-2024-12-09-234417" border="2" style="border-color: #525a63;"></a>
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Ctqi5Y4X-jA?si=oExakP_kQl0Ci_dV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+    
+    
+    <h1 id="Arr"> Python Operators</h1>
+    <h2>Python Operators</h2>
+    <p>Operators are used to perform operations on variables and values.<br>
+        <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>e="padding: 5px;"> </p>
+        In the example below, we use the <span style="color:red ;">+</span> operator to add together two values:</p>
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/XWt1Zv5/Screenshot-2024-12-09-234934.png" alt="Screenshot-2024-12-09-234934" border="2" style="border-color: #525a63;" style="border-color: #525a63;"></a>
+        <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>e="padding: 5px;"> </p>
+        Python divides the operators in the following groups:<br>
+        <p style="padding: 5px;"> </p>
+        &#8226; Arithmetic operators<br>
+        &#8226; Assignment operators<br>
+        &#8226; Comparison operators<br>
+        &#8226; Logical operators<br>
+        &#8226; Identity operators<br>
+        &#8226; Membership operators<br>
+        &#8226; Bitwise operators
+    <h2> Python Arithmetic Operators </h2>
+    <p>Arithmetic operators are used with numeric values to perform common mathematical operations:</p>
+    <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>
+    <a href="https://ibb.co/zsQjX0r"><img src="https://i.ibb.co/cJkM671/Screenshot-2024-12-09-235218.png" alt="Screenshot-2024-12-09-235218" border="2" style="border-color: #525a63;" style="border-color: #525a63;"></a>
+
+    <h2> Python Assignment Operators</h2>
+    <p>Assignment operators are used to assign values to variables:</p>
+    <p style="padding: 5px;"> </p>
+    <a href="https://ibb.co/xGsmCjc"><img src="https://i.ibb.co/GkJsx21/Screenshot-2024-12-09-235402.png" alt="Screenshot-2024-12-09-235402" border="2" style="border-color: #525a63;"></a>
+
+    <h2> Python Comparison Operators </h2>
+    <p>Comparison operators are used to compare two values:</p>
+    <p style="padding: 5px;"> </p>
+    <a href="https://ibb.co/b2WFF3f"><img src="https://i.ibb.co/yYfppR3/Screenshot-2024-12-09-235518.png" alt="Screenshot-2024-12-09-235518" border="2" style="border-color: #525a63;"></a>
+    
+    <h2>Python Logical Operators</h2>
+    <p>Logical operators are used to combine conditional statements:</p>
+    <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>
+    <a href="https://ibb.co/Dkjsn0F"><img src="https://i.ibb.co/BjYdR0J/Screenshot-2024-12-09-235718.png" alt="Screenshot-2024-12-09-235718" border="2" style="border-color: #525a63;"></a>
+    
+    <h2>Python Identity Operators</h2>
+    <p>Identity operators are used to compare the objects, not if they are equal, but if they are actually the same object, with the same memory location:</p>
+    <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>
+    <a href="https://ibb.co/tBGsT85"><img src="https://i.ibb.co/F6rwLgt/Screenshot-2024-12-09-235839.png" alt="Screenshot-2024-12-09-235839" border="2" style="border-color: #525a63;"></a>
+    
+    <h2>Python Membership Operators</h2>
+    <p>Membership operators are used to test if a sequence is presented in an object:</p>
+    <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>
+    <a href="https://ibb.co/D5ryZdb"><img src="https://i.ibb.co/PwDndkY/Screenshot-2024-12-10-000008.png" alt="Screenshot-2024-12-10-000008" border="2" style="border-color: #525a63;"></a>
+
+    <h2>Python Bitwise Operators</h2>
+    <p>Bitwise operators are used to compare (binary) numbers:</p>
+    <p style="padding: 5px;"> </p>
+    <a href="https://ibb.co/KyZFfQx"><img src="https://i.ibb.co/XJBSKdx/Screenshot-2024-12-10-000110.png" alt="Screenshot-2024-12-10-000110" border="2" style="border-color: #525a63;"></a>
+
+    <h2>Operator Precedence</h2>
+    <p>Operator precedence describes the order in which operations are performed.</p>
+    <p style="padding: 5px;"> </p>
+    <a href="https://ibb.co/sjfCmjx"><img src="https://i.ibb.co/tBGzmBj/Screenshot-2024-12-10-000220.png" alt="Screenshot-2024-12-10-000220" border="2" style="border-color: #525a63;"></a>
+    <p style="padding: 5px;"> </p>
+    <a href="https://ibb.co/Z6Bt3pb"><img src="https://i.ibb.co/XZ7N9rG/Screenshot-2024-12-10-000301.png" alt="Screenshot-2024-12-10-000301" border="2" style="border-color: #525a63;"></a>
+    <p style="padding: 5px;"> </p>
+    <p>The precedence order is described in the table below, starting with the highest precedence at the top:</p>
+    <p style="padding: 5px;"> </p>
+    <a href="https://ibb.co/vvSrNwg"><img src="https://i.ibb.co/G3q1ZxB/Screenshot-2024-12-10-000422.png" alt="Screenshot-2024-12-10-000422" border="2" style="border-color: #525a63;"></a>
+    <p style="padding: 5px;"> </p>
+    <p>If two operators have the same precedence, the expression is evaluated from left to right.</p>
+    <p style="padding: 5px;"> </p>
+    <a href="https://ibb.co/SdRVwV2"><img src="https://i.ibb.co/8d6PgPJ/Screenshot-2024-12-10-000546.png" alt="Screenshot-2024-12-10-000546" border="2" style="border-color: #525a63;"></a>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+
+    <h1 id="Con"> Python Conditions and If statements</h1>
+    <p>Python supports the usual logical conditions from mathematics:<br>
+    <p style="padding: 5px;"> </p>
+    &#8226; Equals: a == b<br>
+    &#8226; Not Equals: a != b<br>
+    &#8226; Less than: a < b<br>
+    &#8226; Less than or equal to: a <= b<br>
+    &#8226; Greater than: a > b<br>
+    &#8226; Greater than or equal to: a >= b<br>
+    &#8226; These conditions can be used in several ways, most commonly in "if statements" and loops.<br>
+    <p style="padding: 5px;"> </p>
+    An "if statement" is written by using the if keyword.</p>
+    <p style="padding: 5px;"> </p>
+    <a href="https://ibb.co/F7VnLtB"><img src="https://i.ibb.co/q15x3wR/Screenshot-2024-12-10-001513.png" alt="Screenshot-2024-12-10-001513" border="2" style="border-color: #525a63;"></a>
+    <p style="padding: 5px;"> </p>e="padding: 5px;"> </p>
+    <p>In this example we use two variables, a and b, which are used as part of the if statement to test whether b is greater than a. As a is 33, and b is 200, we know that 200 is greater than 33, and so we print to screen that "b is greater than a".</p>
+    <h2>Indentation</h2>
+    <p>Python relies on indentation (whitespace at the beginning of a line) to define scope in the code. Other programming languages often use curly-brackets for this purpose.</p>
+    <p style="padding: 5px;"> </p>
+    <a href="https://ibb.co/3TXBqyj"><img src="https://i.ibb.co/mRs6wC2/Screenshot-2024-12-10-001708.png" alt="Screenshot-2024-12-10-001708" border="2" style="border-color: #525a63;"></a>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/SiECEKZDqqk?si=4klXDjJVW8GkfzBT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+    
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+
+
+    <h1 id="Swi"> Python While Loops</h1>
+    <h2>Python Loops</h2>
+    <p>Python has two primitive loop commands:
+
+        &#8226; <span style="color: red;"> while loops</span>
+        &#8226; <span style="color: red;">for loops</span>
+        </p>
+    <h2>The while Loop</h2>
+    <p>With the <span style="color: red;">while</span> loop we can execute a set of statements as long as a condition is true.</p>
+    <p style="padding: 5px;"> </p>
+    <a href="https://ibb.co/vQQNv2r"><img src="https://i.ibb.co/Yyy5TvK/Screenshot-2024-12-10-002221.png" alt="Screenshot-2024-12-10-002221" border="2" style="border-color: #525a63;"></a>
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/S_1QiK_RF2o?si=F1XcCM_OJingBwio" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+    
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+
+    <h1 id="Whi"> Python For Loops </h1>
+    <p>A for loop is used <span style="color: red;">for</span> iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).<br>
+        <p style="padding: 5px;"> </p>
+        This is less like the <span style="color: red;">for</span> keyword in other programming languages, and works more like an iterator method as found in other object-orientated programming languages.<br>
+        <p style="padding: 5px;"> </p>
+        With the <span style="color: red;">for</span> loop we can execute a set of statements, once for each item in a list, tuple, set etc.</p>
+        <p style="padding: 5px;"> </p>
+        <a href="https://ibb.co/TRMyfZD"><img src="https://i.ibb.co/gwZY2Gb/Screenshot-2024-12-10-002811.png" alt="Screenshot-2024-12-10-002811" border="2" style="border-color: #525a63;"></a>
+        <p style="padding: 5px;"> </p>
+        <p>The <span style="color: red;">for</span> loop does not require an indexing variable to set beforehand.</p>
+    
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/KWgYha0clzw?si=bdPGQBObWXe_xQ3o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    
+        <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="For"> Python Functions </h1>
+    <p>A function is a block of code which only runs when it is called.<br>
+        <p style="padding: 5px;"> </p>
+        You can pass data, known as parameters, into a function.<br>
+        <p style="padding: 5px;"> </p>
+        A function can return data as a result.</p>
+    <h2>Creating a Function</h2>
+    <p>In Python a function is defined using the def keyword:</p>
+    <p style="padding: 5px;"> </p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/cNxPHRC/Screenshot-2024-12-10-003816.png" alt="Screenshot-2024-12-10-003816" border="2" style="border-color: #525a63;"></a>
+    <h2>Calling a Function</h2>
+    <p>To call a function, use the function name followed by parenthesis:</p>
+    <a href="https://ibb.co/nB7KMvw"><img src="https://i.ibb.co/0KCzySn/Screenshot-2024-12-10-003926.png" alt="Screenshot-2024-12-10-003926" border="2" style="border-color: #525a63;"></a>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="FEL"> Python Arrays </h1>
+    <h2>Arrays</h2>
+    <p>Arrays are used to store multiple values in one single variable:</p>
+    <p style="padding: 5px;"> </p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/L67dkXH/Screenshot-2024-12-10-005250.png" alt="Screenshot-2024-12-10-005250" border="2" style="border-color: #525a63;"></a>
+    <h2>What is an Array?</h2>
+    <p>An array is a special variable, which can hold more than one value at a time.<br>
+        <p style="padding: 5px;"> </p>
+        If you have a list of items (a list of car names, for example), storing the cars in single variables could look like this:</p>
+        <p style="padding: 5px;"> </p>
+        <a href="https://ibb.co/QknJd5T"><img src="https://i.ibb.co/vhmcYtT/Screenshot-2024-12-10-005539.png" alt="Screenshot-2024-12-10-005539" border="2" style="border-color: #525a63;"></a>
+    <p style="padding: 5px;"> </p>
+    <p>However, what if you want to loop through the cars and find a specific one? And what if you had not 3 cars, but 300?<br>
+        <p style="padding: 5px;"> </p>
+        The solution is an array!<br>
+        <p style="padding: 5px;"> </p>
+        An array can hold many values under a single name, and you can access the values by referring to an index number.</p>
+    <h2>Access the Elements of an Array</h2>
+    <p>You refer to an array element by referring to the <i>index</i> number.</p>
+    <p style="padding: 5px;"> </p>
+    <a href="https://ibb.co/F8cH8B4"><img src="https://i.ibb.co/tYnLYbp/Screenshot-2024-12-10-005902.png" alt="Screenshot-2024-12-10-005902" border="2" style="border-color: #525a63;"></a>
+    <p style="padding: 5px;"> </p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/NpKgV34/Screenshot-2024-12-10-010000.png" alt="Screenshot-2024-12-10-010000" border="2" style="border-color: #525a63;"></a>
+    <p style="padding: 5px;"> </p>
+    <h2>The Length of an Array</h2>
+    <p>Use the <span style="color: red;">len()</span> method to return the length of an array (the number of elements in an array).</p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/9GzHPN1/Screenshot-2024-12-10-010153.png" alt="Screenshot-2024-12-10-010153" border="2" style="border-color: #525a63;"></a>
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/phRshQSU-xA?si=g7u5BKybgF_X9goz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+        
+    <h1 id="2DArr">Python Classes and Objects</h1>
+    <h2>Python Classes/Objects</h2>
+    <p>Python is an object oriented programming language.<br>
+        <p style="padding: 5px;"> </p>
+        Almost everything in Python is an object, with its properties and methods.<br>
+        <p style="padding: 5px;"> </p>
+        A Class is like an object constructor, or a "blueprint" for creating objects.</p>
+    <h2>Create a Class</h2>
+        <p>To create a class, use the keyword <span style="color: red;">class</span>:</p>
+        <p style="padding: 5px;"> </p>
+        <a href="https://ibb.co/qg18Lp0"><img src="https://i.ibb.co/2MKr0d8/Screenshot-2024-12-10-012433.png" alt="Screenshot-2024-12-10-012433" border="2" style="border-color: #525a63;"></a>
+    <h2>Create Object</h2>
+    <p>Now we can use the class named MyClass to create objects:</p>
+    <a href="https://ibb.co/ChPNZZX"><img src="https://i.ibb.co/r4dTSSL/Screenshot-2024-12-10-012703.png" alt="Screenshot-2024-12-10-012703" border="2" style="border-color: #525a63;"></a>
+    <h2>The __init__() Function</h2>
+    <p>The examples above are classes and objects in their simplest form, and are not really useful in real life applications.<br>
+        <p style="padding: 5px;"> </p>
+        To understand the meaning of classes we have to understand the built-in <span style="color: red;">__init__()</span> function.<br>
+        <p style="padding: 5px;"> </p>
+        All classes have a function called <span style="color: red;">__init__()</span>, which is always executed when the class is being initiated.<br>
+        <p style="padding: 5px;"> </p>
+        Use the <span style="color: red;">__init__()</span> function to assign values to object properties, or other operations that are necessary to do when the object is being created:</p>
+        <p style="padding: 5px;"> </p>
+        <a href="https://ibb.co/T1n4zQH"><img src="https://i.ibb.co/Sc1tqkK/Screenshot-2024-12-10-013222.png" alt="Screenshot-2024-12-10-013222" border="2" style="border-color: #525a63;"></a>
+        <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+    
+
+    <h1 id="Met">Python Inheritance</h1>
+    <h2>Python Inheritance</h2>
+    <p>Inheritance allows us to define a class that inherits all the methods and properties from another class.<br>
+        <p style="padding: 5px;"> </p>
+        <b>Parent</b> class is the class being inherited from, also called base class.<br>
+        <p style="padding: 5px;"> </p>
+        <b>Child</b> class is the class that inherits from another class, also called derived class.</p>
+    <h2>Create a Parent Class</h2>
+    <p>Any class can be a parent class, so the syntax is the same as creating any other class:</p>
+    <p><a href="https://ibb.co/4YsSrdR"><img src="https://i.ibb.co/3MfFZzm/Screenshot-2024-12-10-013733.png" alt="Screenshot-2024-12-10-013733" border="2" style="border-color: #525a63;"></a>
+    <h2>Create a Child Class</h2>
+        <p>To create a class that inherits the functionality from another class, send the parent class as a parameter when creating the child class:</p>
+        <p style="padding: 5px;"> </p>
+        <a href="https://ibb.co/x3yHLxr"><img src="https://i.ibb.co/XV98LcG/Screenshot-2024-12-10-013913.png" alt="Screenshot-2024-12-10-013913" border="2" style="border-color: #525a63;"></a>
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/an59YHkdK9A?si=jjrQRvagCNTdeiLW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="CM">Python Polymorphism</h1>
+        <p>The word "polymorphism" means "many forms", and in programming it refers to methods/functions/operators with the same name that can be executed on many objects or classes.</p>
+    <h2>Function Polymorphism</h2>
+    <p>An example of a Python function that can be used on different objects is the <span style="color: red;">len()</span> function.</p>
+    <h4 style="padding: 7px; font-size:17px;">String</h4>
+    <p>For strings <span style="color: red;"></span>len() returns the number of characters:</p>
+    <p style="padding: 5px;"> </p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/8mp289V/Screenshot-2024-12-10-015213.png" alt="Screenshot-2024-12-10-015213" border="2" style="border-color: #525a63;"></a>
+    <p style="padding: 5px;"> </p>
+    <h4 style="padding: 7px; font-size:17px;">Tuple</h4>
+        <p>For tuples <span style="color: red;">len()</span> returns the number of items in the tuple:</p>
+    <p style="padding: 5px;"> </p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/RyDMn13/Screenshot-2024-12-10-015520.png" alt="Screenshot-2024-12-10-015520" border="2" style="border-color: #525a63;"></a>
+    <p style="padding: 5px;"> </p>
+    <h4 style="padding: 7px; font-size:17px;">Dictionary</h4>
+    <p>For dictionaries <span style="color: red;">len()</span> returns the number of key/value pairs in the dictionary:</p>
+    <p style="padding: 5px;"> </p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/64szKLY/Screenshot-2024-12-10-015722.png" alt="Screenshot-2024-12-10-015722" border="2" style="border-color: #525a63;"></a>
+    
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1  id="CO"> Python Scope </h1>
+    <p>A variable is only available from inside the region it is created. This is called <b>scope</b>.</p>
+    <h2>Local Scope</h2>
+    <p>A variable created inside a function belongs to the local scope of that function, and can only be used inside that function.</p>
+    <a href="https://ibb.co/DRyWFS5"><img src="https://i.ibb.co/YLMQSqp/Screenshot-2024-12-10-020700.png" alt="Screenshot-2024-12-10-020700" border="2" style="border-color: #525a63;"></a>
+        <h2>Function Inside Function</h2>
+        <p>As explained in the example above, the variable <span style="color: red;">x</span> is not available outside the function, but it is available for any function inside the function:</p>
+        <a href="https://ibb.co/gJxsfc5"><img src="https://i.ibb.co/NKMwJG8/Screenshot-2024-12-10-020848.png" alt="Screenshot-2024-12-10-020848" border="2" style="border-color: #525a63;"></a>
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/KyCw1uA1-M8?si=pt3S4WLg1y_pxwS9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="Cons">Python Datetime</h1>
+    <h2>Python Dates</h2>
+    <p>A date in Python is not a data type of its own, but we can import a module named datetime to work with dates as date objects.</p>
+    <p style="padding: 5px;"> </p>
+    <a href="https://ibb.co/F3xnDBc"><img src="https://i.ibb.co/W5xs2c7/Screenshot-2024-12-10-021245.png" alt="Screenshot-2024-12-10-021245" border="2" style="border-color: #525a63;"></a>
+    <h2>Date Output</h2>
+    <p>When we execute the code from the example above the result will be:<br>
+        <p style="padding: 5px;"> </p>
+        <span style="color: red;">2024-12-10 02:11:43.857976</span><br>
+        The date contains year, month, day, hour, minute, second, and microsecond.<br>
+        <p style="padding: 5px;"> </p>
+        The datetime module has many methods to return information about the date object.<br>
+        <p style="padding: 5px;"> </p>
+        Here are a few examples, you will learn more about them later in this chapter:</p>
+        <p style="padding: 5px;"> </p>
+        <a href="https://ibb.co/PNtNVcW"><img src="https://i.ibb.co/Ns7sG9N/Screenshot-2024-12-10-021614.png" alt="Screenshot-2024-12-10-021614" border="2" style="border-color: #525a63;"></a>
+    <h2>Creating Date Objects</h2>
+    <p>To create a date, we can use the <span style="color: red;">datetime()</span> class (constructor) of the <span style="color: red;">datetime</span> module.
+        <p style="padding: 5px;"> </p>
+        <p><a href="https://ibb.co/dGkLbYt"><img src="https://i.ibb.co/TmPbK31/Screenshot-2024-12-10-021900.png" alt="Screenshot-2024-12-10-021900" border="2" style="border-color: #525a63;"></a>
+        <p style="padding: 5px;"> </p>
+        <p>The <span style="color: red;">datetime()</span> class also takes parameters for time and timezone (hour, minute, second, microsecond, tzone), but they are optional, and has a default value of <span style="color: red;">0</span>, (<span style="color: red;">None</span> for timezone).</p><br>
+            <p style="padding: 5px;"> </p>
+        The <span style="color: red;">datetime()</span> class requires three parameters to create a date: year, month, day.</p>
+
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+    
+
+
+    <h1 id="Obj">Python JSON</h1>
+    <p>JSON is a syntax for storing and exchanging data.<br>
+        <p style="padding: 5px;"> </p>
+        JSON is text, written with JavaScript object notation.
+    <h2>JSON in Python</h2>
+        <p>Python has a built-in package called <span style="color: red;">json</span>, which can be used to work with JSON data.</p>
+        <p style="padding: 5px;"> </p>
+        <a href="https://ibb.co/zbQ6zcf"><img src="https://i.ibb.co/vmVXS5z/Screenshot-2024-12-10-022659.png" alt="Screenshot-2024-12-10-022659" border="2" style="border-color: #525a63;"></a>
+    <h2>Parse JSON - Convert from JSON to Python</h2>
+    <p>If you have a JSON string, you can parse it by using the <span style="color: red;">json.loads()</span> method.</p>
+        <p style="padding: 5px;"> </p>
+        <a href="https://ibb.co/nL54VxL"><img src="https://i.ibb.co/4V5CDhV/Screenshot-2024-12-10-022849.png" alt="Screenshot-2024-12-10-022849" border="2" style="border-color: #525a63;"></a>
+    <h2>Convert from Python to JSON</h2>
+        <p>If you have a Python object, you can convert it into a JSON string by using the <span style="color: red;">json.dumps()</span> method.</p>
+        <p style="padding: 5px;"> </p>
+        <a href="https://ibb.co/w6DSMNC"><img src="https://i.ibb.co/zfKXGhb/Screenshot-2024-12-10-023042.png" alt="Screenshot-2024-12-10-023042" border="2" style="border-color: #525a63;"></a>
+        <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    
+
+</body>
+
+</html>

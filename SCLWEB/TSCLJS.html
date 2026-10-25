@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="Shorcut icon" type="x-icon" href="https://i.ibb.co/z69Fy4N/Javascript-Stickers-by-flexweb-Redbubble-Photoroom.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script Tutorial</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Ledger&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Frijole&family=Ledger&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+        p {
+            font-size: 1.3em;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        body {
+            display: flex; 
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8; /* Light background for contrast */
+        }
+
+        h1, h2 {
+            font-size: 1.8em;
+            font-family: 'Times New Roman', Times, serif;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-top: 30px;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #0b0f23, #1b2845, #0b0f23);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            background-size: cover;
+            color: white;
+        }
+        @keyframes twinkling {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: -1000px 1000px;
+            }
+        }
+
+        body {
+            background: #000 url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+            animation: twinkling 200s linear infinite;
+        }    
+
+        .navbar {
+            width: 220px;
+            background: linear-gradient(to bottom, rgba(25, 25, 25, 1), rgba(0, 0, 50, 1));
+            padding: 20px;
+            border-radius: 0 20px 20px 0;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.6); 
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+            padding: 10px 15px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+        }
+
+        .navbar a:active {
+            background: rgba(255, 255, 255, 0.5);
+            color: #ff00ff;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.7);
+        }
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: #00ffff;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            max-width: 900px; 
+            margin-left: 30px;
+            margin-right: 30px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5), 0 2px 10px rgba(0, 0, 0, 0.1);
+            color: white; /* White text color */
+        }
+
+        /* Videos */
+        .vid {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%; 
+            padding-top: 56.25%; 
+            overflow: hidden;
+        }
+        .video-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width of the wrapper */
+            height: 100%; /* Full height of the wrapper */
+            object-fit: contain; /* Cover the area while maintaining aspect ratio */
+            border-radius: 8px; /* Rounded corners */
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width of the wrapper */
+            height: 100%; /* Full height of the wrapper */
+            border: none; /* Remove border */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        /* Language Access */
+        .container {
+            padding: 50px 0;
+            height: 100%;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .parent {
+            margin-top: -50px;
+            height: 400px;
+            width: 300px;
+            padding: 20px;
+            perspective: 1000px;
+        }
+        .card { 
+            padding-top: 100px;
+            height: 425px;
+            transform-style: preserve-3d;
+            background-image: url(https://i.ibb.co/3pZVjjQ/i01-meow-1.png);
+            background-position: center center;
+            width: 100%;
+            transition: all 0.5s ease-in-out;
+            border-radius: 10px;
+        }
+        .card:hover {
+            background-position: 80% 20%;
+            transform: rotate3d(0.5, 1, 0, 15deg);
+        }
+        .content-box {
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.811);
+            border-radius: 0 0 10px 10px;
+            box-shadow: rgba(255, 255, 255, 0.925) 0 20px 50px -25px;
+            transition: all 0.5s ease-in-out;
+            padding: 50px 25px 25px 25px;
+            transform-style: preserve-3d;
+        }
+        .card-title {
+            color: white;
+            font-size: 25px;
+            font-family: 'Frijole';
+            font-weight: 900;
+            transition: all 0.5s ease-in-out;
+            transform: translate3d(0px, 0px, 25px);
+        }
+        .card-title:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        .card-content {
+            font-size: 0.9em;
+            font-family: 'Ledger';
+            color: white;
+            transition: all 0.5s ease-in-out;
+        }
+        .card-content:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        .see-more {
+            display: block;
+            font-weight: 900;
+            font-size: 11px;
+            font-family: 'Times New Roman', Times, serif;
+            text-transform: uppercase;
+            color: blue;
+            padding-top: 15px;
+            transition: all 0.5s ease-in-out;
+            transform: translate3d(0px, 0px, 20px);
+        }
+        .see-more a {
+            text-decoration: none;
+            color: white;
+        }
+        .see-more:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        
+        .date-box2 {
+            position: absolute;
+            top: 75px;
+            left: 25px;
+            height: 60px;
+            width: 60px;
+            background-color: rgb(187, 187, 187);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: rgb(162, 175, 196) 0px 20px 60px 0px, rgb(175, 175, 175) 0px 18px 36px -18px;
+            transform: translate3d(0px, 0px, 50px);
+            background-image: url(https://i.ibb.co/z69Fy4N/Javascript-Stickers-by-flexweb-Redbubble-Photoroom.png);
+            background-size: 90%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .date-box span {
+            display: block;
+            text-align: center;
+        }
+        .date-box .month {
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .date-box .date {
+            font-size: 20px;
+            font-weight: 900;
+            color: rgb(0, 136, 255);
+        }
+        
+    </style>
+
+</head>
+
+<body>
+
+    
+    <div class="container">
+        <div class="parent card3">
+            <div class="card">
+                <div class="content-box">
+                    <h1 class="card-title">JAVA SCRIPT</h1>
+                    <p class="card-content"> A programming language that makes websites interactive. It is used for things like form validation, animations, and dynamic content updates.</p>
+                    <span class="see-more"><a href="/SCLWEB/TSCLPL.html">Exit</a></span>
+                </div>
+                <div class="date-box2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <div class="navbar">
+        <h2>Navigation</h2>
+        <a href="#history">History</a>
+        <a href="#Intro"> Introduction To JavaScript</a>
+        <a href="#IDE"> Output</a>
+        <a href="#Var"> Syntax</a>
+        <a href="#User"> Comments</a>
+        <a href="#Data"> Variables</a>
+        <a href="#Arit"> Operators</a>
+        <a href="#Arr"> Assignments</a>
+        <a href="#Con"> Data Types</a>
+        <a href="#Swi"> Functions</a>
+        <a href="#Whi"> Objects</a>
+        <a href="#For"> Strings</a>
+        <a href="#FEL"> String Methods</a>
+        <a href="#2DArr"> Numbers</a>
+        <a href="#Met"> Arrays</a>
+        <a href="#CM"> Array Methods</a>
+        <a href="#CO"> Math</a>
+        <a href="#Cons"> Booleans</a>
+        <a href="#Obj"> Break</a>
+        <a href="#Enc"> Maps</a>
+        <a href="#Inh"> Typeof</a>
+        <a href="#Pol"> Errors</a>
+        <a href="#Abs"> Classes</a>
+        <a href="#AbsI"> Debugging</a>
+        <a href="#AOB"> Performance</a>
+
+    </div>
+
+    <div class="content">
+    <h1 id="history">JavaScript</h1>
+    <h2>History</h2>
+
+    <p><b> --The Birth of JavaScript (1995)--</b></p>
+    <p><b> Inventor</b>: Brendan Eich. <br>
+        <b> Company</b>: Netscape Communications Corporation.<br>
+        <b>Purpose</b>: JavaScript was created to add interactivity to web pages.<br>
+        <b>Timeline</b>:Eich developed the language in just 10 days.<br>
+        Initially called Mocha, it was later renamed to LiveScript, and finally to JavaScript to capitalize on the popularity of Java at the time.</p>
+    
+        <p><b>-- Standardization (1996–1999)--</b></p>
+    <p><br><B> 1996 </B>: Microsoft introduced a similar scripting language called cript, which ran on Internet Explorer.
+        <br><b> 1997</b>: JavaScript was submitted to ECMA International for standardization.<br>
+        <b>1999</b>: The third edition of ECMAScript (ES3) became the baseline for modern JavaScript.</p>
+    
+        <p><b>-- Dormant Period (2000–2005) -- (2000)</b></p>
+    <p><br><i> After the release of ES3, JavaScript development slowed down as browser wars (primarily between Internet Explorer and Netscape) dominated the web.<br>
+        During this time, JavaScript was mostly used for basic form validation and small interactive elements.</i></p>
+    
+        <p><b>-- The AJAX Revolution (2005)--</b> <br></p>
+        <p>    <b>AJAX (Asynchronous JavaScript and XML)</b>: Popularized by Google (notably Gmail and Google Maps), AJAX allowed dynamic, asynchronous updates without reloading the page.<br>
+        This marked a turning point, as developers started using JavaScript to create rich, interactive web applications.</p>
+
+    <p><b>--Rise of Libraries and Frameworks (2006–2010)--</b></p>
+    <p> <br>Libraries like <b>jQuery</b> simplified DOM manipulation, event handling, and AJAX requests, making JavaScript more accessible.
+    Frameworks like <b>MooTools </b>, <b> Prototype</b>, and <b> Dojo emerged</b>.</p>
+
+    <p><b>--ECMAScript 5 and Modern Standards (2009)--</b></p>
+    <p><br> <b> ECMAScript 5 (ES5)</b> introduced new features like:<br>
+        &#8226; Strict mode.<br>
+        &#8226;  ON support.<br>
+    Array methods (e.g., <small> forEach, map, filter</small>).
+    This version became widely adopted and set the stage for modern JavaScript.</p>
+    
+    <p><b>--The Node. Revolution (2009)--</b></p>
+    <p><br><b> Node.</b>: Created by Ryan Dahl, it brought JavaScript to the server-side.<br>
+    Enabled JavaScript to be used beyond the browser, making it a full-stack language</p>
+    
+    <p><b>--ECMAScript 6 and Beyond (2015–Present)--</b></p>
+    <p><br><b> ECMAScript 6 (ES6) </b>, also known as ECMAScript 2015, was a massive update that introduced:<br>
+    <b> Arrow functions.</b><br>
+    <b> Classes.</b><br>
+    <b> Promises.</b><br>
+    <b> Modules (import/export)</b><br>
+    <b> Template literals.</b><br>
+    <b> Destructuring assignment.</b><br>
+    Subsequent updates (ES7, ES8, etc.) added features like <small> async/await, optional chaining,</small> and many other improvements.</p>
+    
+    <p><b>--JavaScript in the Modern Era--</b></p>
+    <p><br><b> Frameworks</b>: The rise of React, Angular, and Vue. made building complex web applications easier.<br>
+    <b> TypeScript</b>: A superset of JavaScript, TypeScript, introduced static typing, improving code maintainability.<br>
+    <b> Ecosystem</b>:Tools like Webpack, Babel, and ESLint streamlined development.<br>
+    JavaScript became a key player in mobile app development (e.g., <small> React Native</small>) and desktop apps (e.g., <small> Electron</small>).
+
+    <p><b>--The Future of JavaScript-- (2019)</b></p>
+    <p><br>Focus on:<br>
+    Performance optimizations.<br>
+    Improved developer experience.<br>
+    More robust standard libraries.<br>
+    Continued evolution through TC39 proposals, ensuring JavaScript stays relevant.
+
+    
+    <hr style="width:100%; height: 1px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="Intro">JavaScript Introduction </h1>
+    <h2>JavaScript Can Change HTML Content</h2>
+    <p>One of many JavaScript HTML methods is <span style="color: red;"> <small> getElementById() </small></style> </p>
+    <br>
+    <p> The example below "finds" an HTML element (with id="demo"), and changes the element content (innerHTML) to "Hello JavaScript":</p>
+
+    <a href="https://ibb.co/1fnC03W"><img src="https://i.ibb.co/ns0XwTJ/Screenshot-2024-12-08-143027.png" alt="Screenshot-2024-12-08-143027" border="2" style="border-color: #525a63;"/></a>
+    
+    <p style="margin-top: 10px; color: rgb(6, 125, 87);" > JavaScript Accepts both double and Single Qoutes ('')</p>
+        <hr style="width:100%; height: 1px; text-align:center; color: rgb(167, 166, 166); background-color: rgb(167, 167, 167); border: none;">
+
+
+    <h2 id="Intro">JavaScript Can Change HTML Styles (CSS)</h2>
+    <p>Changing the style of an HTML element, is a variant of changing an HTML attribute:</p>
+    <br>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/h8yd6Zn/Screenshot-2024-12-08-144731.png" alt="Screenshot-2024-12-08-144731" border="2" style="border-color: #525a63;" /></a>
+        <hr style="width:100%; height: 1px; text-align:center; color: rgb(167, 166, 166); background-color: rgb(167, 167, 167); border: none;">
+
+    <h2 id="Intro">JavaScript Can Hide HTML Elements</h2>
+    <p>Hiding HTML elements can be done by changing the <span style="color: red; font-size: small;">display</span> style:</p>
+    <br>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/hXVy8cH/Screenshot-2024-12-08-145609.png" alt="Screenshot-2024-12-08-145609" border="2" style="border-color: #525a63;" /></a>
+        <hr style="width:100%; height: 1px; text-align:center; color: rgb(167, 166, 166); background-color: rgb(167, 167, 167); border: none;">
+    
+    <h2 id="Intro">JavaScript Can Show HTML Elements</h2>
+    <p>Showing hidden HTML elements can also be done by changing the <span style="color: red; font-size: small;">display</span> style:</p>
+    <br>
+    <a href="https://ibb.co/sRcYM88"><img src="https://i.ibb.co/T2J3F99/Screenshot-2024-12-08-145952.png" alt="Screenshot-2024-12-08-145952" border="2" style="border-color: #525a63;" /></a>
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(0, 0, 0); background-color: rgb(0, 0, 0); border: none;">
+     
+    <h1 id="IDE">JavaScript Output </h1>
+    <h2>JavaScript Display Possibilities</h2>
+    <p>JavaScript can "display" data in different ways:</p>
+    <br>
+    <p> Writing into an HTML element, using <span style="color: red; font-size: small;"> innerHTML</span>.</p>
+    <p> Writing into the HTML output using <span style="color: red; font-size: small;"> document.write()</span>.</p>
+    <p> Writing into an alert box, using <span style="color: red; font-size: small;">window.alert()</span>.</p>
+    <p> Writing into the browser console, using <span style="color: red; font-size: small;"> console.log()</span>.</p>
+        <hr style="width:100%; height: 1px; text-align:center; color: rgb(167, 166, 166); background-color: rgb(167, 167, 167); border: none;">
+
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/vjp-INh-SC0?si=dBZZBS6ZYbBamKGZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="Var">JavaScript Syntax </h1>
+    <a href="https://ibb.co/8Mp6QN7"><img src="https://i.ibb.co/6YxgqrW/Screenshot-2024-12-08-153023.png" alt="Screenshot-2024-12-08-153023" border="2" style="border-color: #525a63;"></a>
+    <h2>JavaScript Values</h2>
+    <p>The JavaScript syntax defines two types of values:<br>
+        <p></p>
+        -Fixed values<br>
+        -Variable values<br>
+        <p></p>
+        Fixed values are called <b>Literals.</b><br>
+        <p></p>
+        Variable values are called <b>Variables</b>.</p>
+    <h2> JavaScript Literals </h2>
+    <p> The two most important syntax rules for fixed values are:<br>
+        <p> </p>
+        1. <b>Numbers</b> are written with or without decimals:</p>
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/GkHLMcx/Screenshot-2024-12-08-154038.png" alt="Screenshot-2024-12-08-154038" border="2" style="border-color: #525a63;"></a>
+        <p> </p>
+        2. <b>Strings</b> are text, written within double or single quotes:
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/Lg7sVd6/Screenshot-2024-12-08-154046.png" alt="Screenshot-2024-12-08-154046" border="2" style="border-color: #525a63;"></a>
+    <h2> JavaScript Variables</h2>
+    <p> In a programming language, <b>variables</b> are used to <b>store</b> data values.<br>
+        <p></p>
+        JavaScript uses the keywords <span style="color: red; font-size: small;">var</span> ,<span style="color: red; font-size: small;">let</span> and <span style="color: red; font-size: small;">const </span>to <b>declare</b> variables.<br>
+        <p></p>
+        An <b>equal sign</b> is used to <b>assign values</b> to variables.<br>
+        <p></p>
+        In this example, x is defined as a variable. Then, x is assigned (given) the value 6:</p>
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/W0hc1nm/Screenshot-2024-12-08-154810.png" alt="Screenshot-2024-12-08-154810" border="2" style="border-color: #525a63;"></a>
+    <h2>JavaScript Operators</h2>
+    <p> JavaScript uses <b>arithmetic operators </b>( <span style="color: red; font-size: small;" >+ - * /</span> ) to compute values:</p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/HdCQQDp/Screenshot-2024-12-08-155301.png" alt="Screenshot-2024-12-08-155301" border="2" style="border-color: #525a63;"></a>
+    <p> JavaScript uses an <b> assignment operator</b> (<span style="color: red;"> = </span>) to <b>assign</b> values to variables:</p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/PWgLg9k/Screenshot-2024-12-08-155607.png" alt="Screenshot-2024-12-08-155607" border="2" style="border-color: #525a63;"></a>
+    <h2> JavaScript Expressions </h2>
+    <p>An expression is a combination of values, variables, and operators, which computes to a value.<br>
+        <p></p>
+        The computation is called an evaluation.<br>
+        <p></p>
+        For example, 5 * 10 evaluates to 50:</p>
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/bbJBxLh/Screenshot-2024-12-08-155925.png" alt="Screenshot-2024-12-08-155925" border="2" style="border-color: #525a63;"></a>
+        <p></p>
+        <p> Expressions can also contain variable values:</p>
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/47Wv3h0/Screenshot-2024-12-08-160203.png" alt="Screenshot-2024-12-08-160203" border="2" style="border-color: #525a63;"></a>
+        <p></p>
+        <p> The values can be of various types, such as numbers and strings.<br>
+        <p></p>
+        For example, "John" + " " + "Doe", evaluates to "John Doe":</p>
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/gPdWhNb/Screenshot-2024-12-08-160325.png" alt="Screenshot-2024-12-08-160325" border="2" style="border-color: #525a63;"></a>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+
+    <h1 id="User"> JavaScript Comments</h1>
+    <p>JavaScript comments can be used to explain JavaScript code, and to make it more readable.<br>
+        <p></p>
+        JavaScript comments can also be used to prevent execution, when testing alternative code.</p>
+    <h2> Single Line Comments</h2>
+    <p> Single line comments start with <span style="color: red;"> //</span>. <br>
+        <p></p>
+        Any text between <span style="color: red;">//</span> and the end of the line will be ignored by JavaScript (will not be executed). <br>
+        <p></p>
+        This example uses a single-line comment before each code line:</p>
+        <a href="https://ibb.co/3BdLHKs"><img src="https://i.ibb.co/Fg3jtpW/Screenshot-2024-12-08-161129.png" alt="Screenshot-2024-12-08-161129" border="2" style="border-color: #525a63;"></a>
+        <p></p>
+        <p>This example uses a single line comment at the end of each line to explain the code:</p>
+        <a href="https://ibb.co/DRcnrHb"><img src="https://i.ibb.co/Kr4HKpG/Screenshot-2024-12-08-161352.png" alt="Screenshot-2024-12-08-161352" border="2" style="border-color: #525a63;"></a>
+    <h2> Multi-Line Comments</h2>
+    <p> Multi-line comments start with <span style="color: red;">/* </span> and end with <span style="color: red;">*/</span>.<br>
+        <p></p>
+        Any text between <span style="color: red;">/*</span> and <span style="color: red;">*/</span> will be ignored by JavaScript.<br>
+        <p></p>
+        This example uses a multi-line comment (a comment block) to explain the code:</p>
+        <a href="https://ibb.co/bKrkK8Z"><img src="https://i.ibb.co/FDBFDjM/Screenshot-2024-12-08-161728.png" alt="Screenshot-2024-12-08-161728" border="2" style="border-color: #525a63;"></a>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="Data">JavaScript Variables</h1>
+    <a href="https://ibb.co/4mmGyK6"><img src="https://i.ibb.co/PmmnpF7/Screenshot-2024-12-08-162249.png" alt="Screenshot-2024-12-08-162249" border="2" style="border-color: #525a63;"></a>
+        <p></p>
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/nbX0MIV7-Ek?si=wF965I3J1UcAO9Zh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+        <p style="margin-top: 10px; color: rgb(6, 125, 87);" > Try it after you watch!</p>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="Arit"> JavaScript Operators</h1>
+    <a href="https://ibb.co/xzL7Zwj"><img src="https://i.ibb.co/6DwWQGP/Screenshot-2024-12-08-163401.png" alt="Screenshot-2024-12-08-163401" border="2" style="border-color: #525a63;"></a>
+    <h2> JavaScript Assignments</h2>
+    <p>The <b>Assignment Operator </b> (<span style="color: red;">=</span>) assigns a value to a variable:</p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/rpR2gcY/Screenshot-2024-12-08-163749.png" alt="Screenshot-2024-12-08-163749" border="2" style="border-color: #525a63;"></a>
+    <p></p>
+    <h2>JavaScript Addition</h2>
+    <p>The <b>Addition Operator</b> (<span style="color: red;">+</span>) adds numbers:</p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/Df9qZxh/Screenshot-2024-12-08-164125.png" alt="Screenshot-2024-12-08-164125" border="2" style="border-color: #525a63;"></a>
+    <p></p>
+    <h2> JavaScript Multiplication</h2>
+    <p> The <b> Multiplication Operator</b> (<span style="color: red;">*</span>) multiplies numbers:</p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/gtxpZQD/Screenshot-2024-12-08-164339.png" alt="Screenshot-2024-12-08-164339" border="2" style="border-color: #525a63;"></a>
+    <h2>Types of JavaScript Operators</h2>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/RyTSjp3/Screenshot-2024-12-08-164426.png" alt="Screenshot-2024-12-08-164426" border="2" style="border-color: #525a63;"></a>
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ULNTSJc7s?si=jXw1TeZ0SmSQ8Mp1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+    <h1 id="Arr"> JavaScript Assignment</h1>
+    <h2>JavaScript Assignments Operators</h2>
+    <p>Assignment operators assign values to JavaScript variables. </p>
+    <a href="https://ibb.co/4Yd5PJD"><img src="https://i.ibb.co/gPVBz6X/Screenshot-2024-12-08-165158.png" alt="Screenshot-2024-12-08-165158" border="2" style="border-color: #525a63;"></a>
+    <p></p>
+    <h2> Shift Assignment Operators</h2>
+    <a href="https://ibb.co/1dVyr6w"><img src="https://i.ibb.co/2s2VvNf/Screenshot-2024-12-08-165453.png" alt="Screenshot-2024-12-08-165453" border="2" style="border-color: #525a63;"></a>
+    <h2> Bitwise Assignment Operators</h2>
+    <a href="https://ibb.co/8Dnt1rQ"><img src="https://i.ibb.co/d0sx8PH/Screenshot-2024-12-08-165601.png" alt="Screenshot-2024-12-08-165601" border="2" style="border-color: #525a63;"></a>
+    <h2> Logical Assignment Operators</h2>
+    <a href="https://ibb.co/RCkMqN3"><img src="https://i.ibb.co/4jnDH28/Screenshot-2024-12-08-165718.png" alt="Screenshot-2024-12-08-165718" border="2" style="border-color: #525a63;"></a> 
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="Con"> JavaScript Data Types</h1>
+    <a href="https://ibb.co/fY7SZ91"><img src="https://i.ibb.co/99jvBh8/Screenshot-2024-12-08-170146.png" alt="Screenshot-2024-12-08-170146" border="2" style="border-color: #525a63;"></a>
+    <p></p>
+    <a href="https://ibb.co/HNYrdwL"><img src="https://i.ibb.co/Xypz80f/Screenshot-2024-12-08-170234.png" alt="Screenshot-2024-12-08-170234" border="2" style="border-color: #525a63;"></a>
+    <p></p>
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/UmSpfdxu3ro?si=vu_ZQGYsvFH-VUwQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="Swi"> JavaScript Functions</h1>
+    <a href="https://ibb.co/60qKRgm"><img src="https://i.ibb.co/HT9cDnV/Screenshot-2024-12-08-170645.png" alt="Screenshot-2024-12-08-170645" border="2" style="border-color: #525a63;"></a>
+    <p></p>
+    <a href="https://ibb.co/BzQWLjR"><img src="https://i.ibb.co/8KfvM2V/Screenshot-2024-12-08-170727.png" alt="Screenshot-2024-12-08-170727" border="2" style="border-color: #525a63;"></a>
+    <p></p>
+    <h2> JavaScript Function Syntax </h2>
+    <p> A JavaScript function is defined with the <span style="color: red;">function </span> keyword, followed by a <b>name</b>, followed by parentheses <b>()</b>. <br>
+        <p></p>
+        Function names can contain letters, digits, underscores, and dollar signs (same rules as variables).<br>
+        <p></p>
+        The parentheses may include parameter names separated by commas:<br>
+        <b><i>(parameter1, parameter2, ...)</i></b><br>
+        <p></p>
+        The code to be executed, by the function, is placed inside curly brackets: <b>{}</b></p>
+        <a href="https://ibb.co/Wp1wxPC"><img src="https://i.ibb.co/n8Svgnp/Screenshot-2024-12-08-171142.png" alt="Screenshot-2024-12-08-171142" border="2" style="border-color: #525a63;"></a>
+        <p>Function <b>parameters </b> are listed inside the parentheses () in the function definition.<br>
+            <p></p>
+            Function <b>arguments</b> are the <b>values</b> received by the function when it is invoked.<br>
+            <p></p>
+            Inside the function, the arguments (the parameters) behave as local variables.</p>
+        <h2> Function Invocation</h2>
+        <p> The code inside the function will execute when "something" <b>invokes</b> (calls) the function:<br>
+            <p></p>
+            -When an event occurs (when a user clicks a button)<br>
+            -When it is invoked (called) from JavaScript code<br>
+            -Automatically (self invoked)
+            <p></p>
+            You will learn a lot more about function invocation later in this tutorial.</p>
+        <h2> Function Return</h2>
+        <p>When JavaScript reaches a return statement, the function will stop executing.<br>
+            <p></p>
+            If the function was invoked from a statement, JavaScript will "return" to execute the code after the invoking statement.<br>
+            <p></p>
+            Functions often compute a <b>return value</b>. The return value is "returned" back to the "caller":</p>
+            <a href="https://ibb.co/XXpcQcx"><img src="https://i.ibb.co/sjQ8f89/Screenshot-2024-12-08-171721.png" alt="Screenshot-2024-12-08-171721" border="2" style="border-color: #525a63;"></a>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="Whi"> JavaScript Objects </h1>
+    <a href="https://ibb.co/P6VWKhL"><img src="https://i.ibb.co/wz2QVWk/Screenshot-2024-12-08-172129.png" alt="Screenshot-2024-12-08-172129" border="2" style="border-color: #525a63;"></a>
+    <h2> Object Properties </h2>
+    <p>A real life car has <b>properties</b> like weight and color:<br>
+        <p></p>
+        car.name = Fiat, car.model = 500, car.weight = 850kg, car.color = white.<br>
+        <p></p>
+        Car objects have the same <b>properties</b>, but the <b>values</b> differ from car to car.</p>
+    <h2> Object Methods</h2>
+    <p> A real life car has <b> methods</b> like start and stop:<br>
+        <P></P>
+        car.start(), car.drive(), car.brake(), car.stop().<br>
+        <P></P>
+        Car objects have the same <b>methods </b>, but the methods are performed <b>at different times</b>.</p>
+    <h2> JavaScript Variables</h2>
+        <p>JavaScript variables are containers for data values.<br>
+            <P></P>
+            This code assigns a <B>simple value</B> (Fiat) to a <b>variable</b> named car:</p>
+            <a href="https://imgbb.com/"><img src="https://i.ibb.co/b3C7WFX/Screenshot-2024-12-08-172754.png" alt="Screenshot-2024-12-08-172754" border="2" style="border-color: #525a63;"></a>
+    <h2> JavaScript Objects</h2>
+            <p>Objects are variables too. But objects can contain many values.<br>
+            <p></p>
+                This code assigns <b>many values</b> (Fiat, 500, white) to an <b>object</b> named car:</p>
+                <a href="https://imgbb.com/"><img src="https://i.ibb.co/7RGCPbN/Screenshot-2024-12-08-173013.png" alt="Screenshot-2024-12-08-173013" border="2" style="border-color: #525a63;"></a>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="For"> JavaScript Strings </h1>
+    <a href="https://ibb.co/vPrsL1R"><img src="https://i.ibb.co/WydDBnj/Screenshot-2024-12-08-175328.png" alt="Screenshot-2024-12-08-175328" border="2" style="border-color: #525a63;"></a>
+    <h2>Using Qoutes</h2>
+    <p>A JavaScript string is zero or more characters written inside quotes. </p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/4KhrLxC/Screenshot-2024-12-08-175627.png" alt="Screenshot-2024-12-08-175627" border="2" style="border-color: #525a63;"></a>
+    <p></p>
+    <p>You can use single or double quotes:</p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/RTRcZ8Q/Screenshot-2024-12-08-175819.png" alt="Screenshot-2024-12-08-175819" border="2" style="border-color: #525a63;"></a>
+    <p style="color: #669f65;">NOTE: Strings created with single or double quotes works the same.<br>
+        There is no difference between the two.</p>
+    <p></p>
+    <h2>Quotes Inside Quotes</h2>
+    <p>You can use quotes inside a string, as long as they don't match the quotes surrounding the string:</p>
+    <a href="https://ibb.co/YjfHfg7"><img src="https://i.ibb.co/QmYyY0F/Screenshot-2024-12-08-180013.png" alt="Screenshot-2024-12-08-180013" border="2" style="border-color: #525a63;"></a>
+    <h2> Template Strings </h2>
+    <p> Templates were introduced with ES6 (JavaScript 2016).<br>
+        <p></p>
+        Templates are strings enclosed in backticks (`This is a template string`).<br>
+        <p></p>
+        Templates allow single and double quotes inside a string:</p>
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/3136f4k/Screenshot-2024-12-08-180204.png" alt="Screenshot-2024-12-08-180204" border="2" style="border-color: #525a63;"></a>
+    <p style="color: #669f65;">NOTE: Teplate are not supported in Internet Explorer</p>
+    <h2>String Length</h2>
+    <p>o find the length of a string, use the built-in <span style="color: red; font-size: small;"> length</span> property:</p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/L04wRh2/Screenshot-2024-12-08-180751.png" alt="Screenshot-2024-12-08-180751" border="2" style="border-color: #525a63;"></a>
+    <h2> Escape Characters</h2>
+    <p> Because strings must be written within quotes, JavaScript will misunderstand this string: </p>
+    <a href="https://ibb.co/dW2mpZm"><img src="https://i.ibb.co/p0zhKqh/Screenshot-2024-12-08-180920.png" alt="Screenshot-2024-12-08-180920" border="2" style="border-color: #525a63;"></a>
+    <p></p>
+    <p> The string will be chopped to "We are the so-called ".<br>
+        <p></p>
+        To solve this problem, you can use an <b>backslash escape character</b>.<br>
+        <p></p>
+        The backslash escape character (\) turns special characters into string characters:</p>
+        <a href="https://ibb.co/k0b20QX"><img src="https://i.ibb.co/nfdMfzj/Screenshot-2024-12-08-181133.png" alt="Screenshot-2024-12-08-181133" border="0"></a>
+        <p></p>
+        <a href="https://ibb.co/c3QRnkM"><img src="https://i.ibb.co/xL6wTXP/Screenshot-2024-12-08-181335.png" alt="Screenshot-2024-12-08-181335" border="2" style="border-color: #525a63;"></a>
+        <p></p>
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/G0mFqNM/Screenshot-2024-12-08-181459.png" alt="Screenshot-2024-12-08-181459" border="2" style="border-color: #525a63;"></a>
+        <p></p>
+        <a href="https://ibb.co/zPJJFHj"><img src="https://i.ibb.co/2cNNSYm/Screenshot-2024-12-08-181545.png" alt="Screenshot-2024-12-08-181545" border="2" style="border-color: #525a63;"></a>
+        <p></p>
+        <p>Six other escape sequences are valid in JavaScript:</p>
+        <a href="https://ibb.co/FVLB1CQ"><img src="https://i.ibb.co/pyB3T5H/Screenshot-2024-12-08-181715.png" alt="Screenshot-2024-12-08-181715" border="0"></a>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="FEL"> JavaScript String Methods</h1>
+    <a href="https://ibb.co/RC5t8QX"><img src="https://i.ibb.co/ZhZv9cQ/Screenshot-2024-12-08-182151.png" alt="Screenshot-2024-12-08-182151" border="0"></a>
+    <h2> Extracting String Characters </h2>
+    <p>There are 4 methods for extracting string characters:<br>
+    <p></p>
+        -The <span style="color: red;">at(<i>position</i>)</span> Method<br>
+        -The <span style="color: red;">charAt(<i>position</i>)</span> Method<br>
+        -The <span style="color: red;">charCodeAt(<i>position</i>)</span> Method<br>
+        -Using property access [] like in arrays </p>
+    <h2>JavaScript String charAt()</h2>
+    <p>The <span style="color: red;"> charAt()</span> method returns the character at a specified index (position) in a string:</p>
+    <a href="https://ibb.co/wC51ZCb"><img src="https://i.ibb.co/ct4dKtp/Screenshot-2024-12-08-183150.png" alt="Screenshot-2024-12-08-183150" border="2" style="border-color: #525a63;"></a>
+    <h2>JavaScript String charCodeAt()</h2>
+    <p> The <span style="color: red;">charCodeAt()</span> method returns the code of the character at a specified index in a string:<br>
+        <p></p>
+        The method returns a UTF-16 code (an integer between 0 and 65535).</p>
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/p2w5YP7/Screenshot-2024-12-08-183508.png" alt="Screenshot-2024-12-08-183508" border="2" style="border-color: #525a63;"></a>
+    <h2>JavaScript String at()</h2>
+    <p>ES2022 introduced the string method <span style="color: red;">at()</span>:</p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/k0Pvq9b/Screenshot-2024-12-08-183808.png" alt="Screenshot-2024-12-08-183808" border="2" style="border-color: #525a63;"></a>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/CvNHcPC/Screenshot-2024-12-08-184205.png" alt="Screenshot-2024-12-08-184205" border="2" style="border-color: #525a63;"></a>
+    <p></p>
+    <p>The <span style="color: red;">at()</span> method returns the character at a specified index (position) in a string.
+    <br> The <span style="color: red;">at()</span> method is supported in all modern browsers since March 2022:</p>
+        <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+        
+    <h1 id="2DArr">JavaScript Numbers</h1>
+    <p>JavaScript has only one type of number. Numbers can be written with or without decimals.</p>
+    <a href="https://ibb.co/4TYXkh6"><img src="https://i.ibb.co/pzRMqYt/Screenshot-2024-12-08-185103.png" alt="Screenshot-2024-12-08-185103" border="2" style="border-color: #525a63;"></a>
+    <p></p>
+    <p>Extra large or extra small numbers can be written with scientific (exponent) notation:</p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/Z88GGVX/Screenshot-2024-12-08-185213.png" alt="Screenshot-2024-12-08-185213" border="2" style="border-color: #525a63;"></a>
+    <p>2D Array, Declaring 2D Array, Accessing 2D Array, NESTED FOR Loop, Iterating 2D Array </p>
+    <h2> JavaScript Numbers are Always 64-bit Floating Point </h2>
+    <p>Unlike many other programming languages, JavaScript does not define different types of numbers, like integers, short, long, floating-point etc.<br>
+        <p></p>
+        JavaScript numbers are always stored as double precision floating point numbers, following the international IEEE 754 standard.<br>
+        <p></p>
+        This format stores numbers in 64 bits, where the number (the fraction) is stored in bits 0 to 51, the exponent in bits 52 to 62, and the sign in bit 63:</p>
+        <a href="https://ibb.co/Lpkc0rD"><img src="https://i.ibb.co/6snTy8c/Screenshot-2024-12-08-185721.png" alt="Screenshot-2024-12-08-185721" border="0"></a>
+    <h2> Integer Precision</h2> 
+    <p>Integers (numbers without a period or exponent notation) are accurate up to 15 digits.</p>
+    <a href="https://ibb.co/MPHtMMw"><img src="https://i.ibb.co/qm8ckkq/Screenshot-2024-12-08-194900.png" alt="Screenshot-2024-12-08-194900" border="2" style="border-color: #525a63;"></a>
+    <p></p>
+    <p>The maximum number of decimals is 17.</p>
+    <h2>Floating Precision</h2>
+    <a href="https://ibb.co/wBZXTV8"><img src="https://i.ibb.co/Qp7RZLh/Screenshot-2024-12-08-195057.png" alt="Screenshot-2024-12-08-195057" border="2" style="border-color: #525a63;"></a>
+    <a href="https://ibb.co/XV34Bmp"><img src="https://i.ibb.co/qxWnGb9/Screenshot-2024-12-08-195215.png" alt="Screenshot-2024-12-08-195215" border="2" style="border-color: #525a63;"></a>
+    <h2>Adding Numbers and Strings</h2> 
+    <p style="color:red;">WARNING !!<br></p>
+        <p></p>
+    <p style="color:red;">JavaScript uses the + operator for both addition and concatenation.<br>
+        <p></p>
+        <p style="color:red;">Numbers are added. Strings are concatenated.</p>
+        <p>If you add two numbers, the result will be a number:</p>
+        <a href="https://ibb.co/6F5sFBK"><img src="https://i.ibb.co/qpw1p5H/Screenshot-2024-12-08-195706.png" alt="Screenshot-2024-12-08-195706" border="2" style="border-color: #525a63;"></a>
+        <p></p>
+        <p>If you add two strings, the result will be a string concatenation:</p>
+        <a href="https://ibb.co/MGHqtMy"><img src="https://i.ibb.co/LJy4cnD/Screenshot-2024-12-08-200302.png" alt="Screenshot-2024-12-08-200302"border="2" style="border-color: #525a63;"></a>
+        <p></p>
+        <p>If you add a number and a string, the result will be a string concatenation:</p>
+        <a href="https://ibb.co/HhjZYtM"><img src="https://i.ibb.co/PDdk4cb/Screenshot-2024-12-08-200440.png" alt="Screenshot-2024-12-08-200440" border="2" style="border-color: #525a63;"></a>
+        <p></p>
+        <p>A common mistake is to expect this result to be 30:</p>
+        <a href="https://ibb.co/jzVD3Tx"><img src="https://i.ibb.co/bFHXNPy/Screenshot-2024-12-08-200735.png" alt="Screenshot-2024-12-08-200735" border="2" style="border-color: #525a63;"></a>
+        <p></p>
+        <p>A common mistake is to expect this result to be 102030:</p>
+        <a href="https://ibb.co/2M8cbQm"><img src="https://i.ibb.co/bvHNfZq/Screenshot-2024-12-08-200916.png" alt="Screenshot-2024-12-08-200916" border="2" style="border-color: #525a63;"></a>
+        <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+    
+    <h1 id="Met">JavaScript Arrays</h1>
+    <a href="https://ibb.co/HV3xcGd"><img src="https://i.ibb.co/Nsbm0WS/Screenshot-2024-12-08-201140.png" alt="Screenshot-2024-12-08-201140" border="2" style="border-color: #525a63;"></a>
+    <h2>Why Use Arrays?</h2>
+    <p>If you have a list of items (a list of car names, for example), storing the cars in single variables could look like this: </p>
+    <a href="https://ibb.co/s9ZNfSQ"><img src="https://i.ibb.co/zVzBMcb/Screenshot-2024-12-08-201349.png" alt="Screenshot-2024-12-08-201349" border="0"></a>
+    <p></p>
+    <p>However, what if you want to loop through the cars and find a specific one? And what if you had not 3 cars, but 300? <br>
+        <p></p>
+        The solution is an array!<br>
+        <p></p>
+        An array can hold many values under a single name, and you can access the values by referring to an index number.</p>
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/yQ1fz8LY354?si=CfwOAR9CXxsqFgXb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="CM">JavaScript Array Methods</h1>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/FhgsMgS/Screenshot-2024-12-08-201934.png" alt="Screenshot-2024-12-08-201934" border="2" style="border-color: #525a63;"></a>
+    <h2>JavaScript Array length</h2>
+    <p>The length property returns the <span style="color:red;">length</span> (size) of an array:</p>
+    <a href="https://ibb.co/fQN7JzG"><img src="https://i.ibb.co/t325RTP/Screenshot-2024-12-08-202303.png" alt="Screenshot-2024-12-08-202303" border="2" style="border-color: #525a63;"></a>
+    <p></p>
+    <h2>JavaScript Array toString()</h2>
+    <p>The JavaScript method <span style="color:red;">toString()</span> converts an array to a string of (comma separated) array values.</p>
+    <a href="https://ibb.co/QQZSZjf"><img src="https://i.ibb.co/fFb6bG2/Screenshot-2024-12-08-202522.png" alt="Screenshot-2024-12-08-202522" border="2" style="border-color: #525a63;"></a>
+    <h2>JavaScript Array at()</h2>
+    <p>ES2022 intoduced the array method at():</p>
+    <a href="https://ibb.co/Fb4zBrK"><img src="https://i.ibb.co/MDk7Rvs/Screenshot-2024-12-08-205325.png" alt="Screenshot-2024-12-08-205325" border="2" style="border-color: #525a63;"></a>
+    <a href="https://ibb.co/tXkC4wL"><img src="https://i.ibb.co/jRB4T9J/Screenshot-2024-12-08-205410.png" alt="Screenshot-2024-12-08-205410" border="2" style="border-color: #525a63;"></a>
+    <h2> JavaScript Array join() </h2>
+    <p>The <span style="color:red;">join()</span> method also joins all array elements into a string.<br>
+        <p></p>
+        It behaves just like <span style="color:red"> toString()</span>, but in addition you can specify the separator:</p>
+    <a href="https://ibb.co/d4hPGqW"><img src="https://i.ibb.co/gZnSzpj/Screenshot-2024-12-08-210739.png" alt="Screenshot-2024-12-08-210739" border="2" style="border-color: #525a63;"></a>
+    <h2>JavaScript Array pop()</h2>
+    <p>The <span style="color:red;">pop()</span> method removes the last element from an array:</p>
+    <a href="https://ibb.co/T2vK4Q1"><img src="https://i.ibb.co/nmg37XB/Screenshot-2024-12-08-210911.png" alt="Screenshot-2024-12-08-210911" border="2" style="border-color: #525a63;"></a>
+    <p></p>
+    <p>The <span style="color:red;"> pop()</span> method returns the value that was "popped out":</p>
+    <a href="https://ibb.co/p0zwm4T"><img src="https://i.ibb.co/mDqTxhK/Screenshot-2024-12-08-211306.png" alt="Screenshot-2024-12-08-211306" border="2" style="border-color: #525a63;"></a>
+    <h2>JavaScript Array push()</h2>
+    <p>The <span style="color:red;">push()</span> method adds a new element to an array (at the end):</p>
+    <a href="https://ibb.co/PD3Xn2k"><img src="https://i.ibb.co/2ZmVQzJ/Screenshot-2024-12-08-211526.png" alt="Screenshot-2024-12-08-211526" border="2" style="border-color: #525a63;"></a>
+    <p></p>
+    <p>The <span style="color:red;">push()</span> method returns the new array length:</p>
+    <a href="https://ibb.co/x3hwMY9"><img src="https://i.ibb.co/6NYG489/Screenshot-2024-12-08-211646.png" alt="Screenshot-2024-12-08-211646" border="2" style="border-color: #525a63;"></a>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1  id="CO"> JavaScript Math Object </h1>
+    <p style="color:#669f65;">The JavaScript Math object allows you to perform mathematical tasks on numbers.</p>
+    <a href="https://ibb.co/Y8Frkdc"><img src="https://i.ibb.co/ftzcpNk/Screenshot-2024-12-08-213140.png" alt="Screenshot-2024-12-08-213140" border="2" style="border-color: #525a63;"></a>
+    <p style="color: #669f65;">//Outcome</p>
+    <a href="https://ibb.co/p0rCD18"><img src="https://i.ibb.co/PmzBprn/Screenshot-2024-12-08-213306.png" alt="Screenshot-2024-12-08-213306" border="2" style="border-color: #525a63;"></a>
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/93Nd8f9HU8Q?si=BILRyBoKmm3Q60G5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="Cons">JavaScript Booleans</h1>
+    <p style="color:#669f65";> A JavaScript Boolean represents one of two values: true or false.</p>
+    <h2>Boolean Values</h2>
+    <p>Very often, in programming, you will need a data type that can only have one of two values, like<br>
+        <p></p>
+        -YES / NO<br>
+        -ON / OFF<br>
+        -TRUE / FALSE<br>
+        <p></p>
+        For this, JavaScript has a <b>Boolean</b> data type. It can only take the values true or false.</p>
+    <h2>The Boolean() Function</h2>
+    <p>You can use the <span style="color:red;">Boolean()</span> function to find out if an expression (or a variable) is true:</p>
+    <a href="https://ibb.co/RcqDLw7"><img src="https://i.ibb.co/VTsqX43/Screenshot-2024-12-08-213944.png" alt="Screenshot-2024-12-08-213944" border="2" style="border-color: #525a63;"></a>
+    <p style="color:#669f65;">//Outcome </p>
+    <a href="https://ibb.co/ZSxjFsq"><img src="https://i.ibb.co/3vc3jXg/Screenshot-2024-12-08-214618.png" alt="Screenshot-2024-12-08-214618" border="2" style="border-color: #525a63;"></a>
+    
+    <div class="vid">
+        <div class="video-wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/B4ZCFdrBmbE?si=WWJv5Bv_9zGjB0MV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+    
+    <h1 id="Obj">JavaScript Break and Continue</h1>
+    <p>The <span style="color:red;">break</span> statement "jumps out" of a loop.<br>
+        <p></p>
+        The <span style="color:red">continue</span> statement "jumps over" one iteration in the loop.</p>
+    <h2>The Break Statement</h2>
+    <p>You have already seen the <span style="color:red">break</span> statement used in an earlier chapter of this tutorial. It was used to "jump out" of a
+        <span style="color:red">switch()</span> statement.
+        <p></p>
+        The <span style="color:red">break</span> statement can also be used to jump out of a loop:</p>
+        <a href="https://ibb.co/1Gp4Z99"><img src="https://i.ibb.co/yFMx088/Screenshot-2024-12-08-215753.png" alt="Screenshot-2024-12-08-215753" border="2" style="border-color: #525a63;"></a>
+        <p style="color:#669f65;">//Outcome </p>
+        <a href="https://ibb.co/hd2kQxJ"><img src="https://i.ibb.co/rp5g8KR/Screenshot-2024-12-08-215851.png" alt="Screenshot-2024-12-08-215851" border="2" style="border-color: #525a63;"></a>
+        <p>In the example above, the <span style="color:red">break</span> statement ends the loop ("breaks" the loop) when the loop counter (i) is 3.</p>
+    <h2>The Continue Statement</h2>
+    <p>The <span style="color:red">continue</span> statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop.<br>
+        <p></p>
+        This example skips the value of 3:</p>
+        <a href="https://ibb.co/YXKKSgg"><img src="https://i.ibb.co/Sc11gSS/Screenshot-2024-12-08-220323.png" alt="Screenshot-2024-12-08-220323" border="2" style="border-color: #525a63;"></a>
+        <p style="color:#669f65;">//Outcome </p>
+        <a href="https://ibb.co/Km1CJ2h"><img src="https://i.ibb.co/rvWnVx0/Screenshot-2024-12-08-220418.png" alt="Screenshot-2024-12-08-220418" border="2" style="border-color: #525a63;"></a>
+        <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="Enc">JavaScript Maps</h1>
+    <p>A Map holds key-value pairs where the keys can be any datatype.<br>
+        <p></p>
+        A Map remembers the original insertion order of the keys.
+        <h2>How to Create a Map</h2>
+        <p>You can create a JavaScript Map by:<br>
+            <p></p>
+            -Passing an Array to <span style="color:red">new Map()</span>
+            -Automatically a Map and use  Map.set()</span></p>
+        <h2> The new Map() Method </h2>
+        <p>You can create a Map by passing an Array to the <span style="color:red">new Map()</span> constructor:</p>
+        <a href="https://ibb.co/zVYGtK1"><img src="https://i.ibb.co/0yShzPk/Screenshot-2024-12-08-221430.png" alt="Screenshot-2024-12-08-221430" border="2" style="border-color: #525a63;"></a>
+        <p style="color:#669f65;">//Outcome </p>
+        <a href="https://ibb.co/PY59wc8"><img src="https://i.ibb.co/3s0MBpH/Screenshot-2024-12-08-221532.png" alt="Screenshot-2024-12-08-221532" border="2" style="border-color: #525a63;"></a>
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/xNQH1NbZQ0E?si=iDmgTZccIKSNVntv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+        <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+   
+        <h1 id="Inh"> JavaScript typeof </h1>   
+        <h2 >The typeof Operator</h2>
+        <p>The <b>typeof</b> operator returns the <b>data type</b> of a JavaScript variable.</p>
+        <h2>Primitive Data Types</h2>
+        <p>In JavaScript, a primitive value is a single value with no properties or methods.<br>
+            <p></p>
+            JavaScript has 7 primitive data types:
+            <p><p>
+            -string<br>
+            -number<br>
+            -boolean<br>
+            -bigint<br>
+            -symbol<br>
+            -null<br>
+            -undefined
+            <p></p>
+            The <span style="color:red">typeof</span> operator returns the type of a variable or an expression.
+            <a href="https://ibb.co/k0x0Syg"><img src="https://i.ibb.co/XpbpC4Z/Screenshot-2024-12-08-223120.png" alt="Screenshot-2024-12-08-223120" border="2" style="border-color: #525a63;"></a><br /><a target='_blank' href='https://freeonlinedice.com/'></a><br />
+            <p style="color: #669f65;">//Outcome</p>
+            <a href="https://ibb.co/ZVwZpp8"><img src="https://i.ibb.co/bPyfMMB/Screenshot-2024-12-08-223514.png" alt="Screenshot-2024-12-08-223514" border="2" style="border-color: #525a63;"></a><br /><a target='_blank' href='https://freeonlinedice.com/'></a><br />
+            <div class="vid">
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/LrI02dTkeRo?si=wz3X7KhM-Yes48GG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="Pol">JavaScript Errors</h1>
+    <h2 >Throw, and Try...Catch...Finally</h2>
+    <p>The <span style="color: red;">try</span> statement defines a code block to run (to try).<br>
+        <p></p>
+        The <span style="color: red;">catch</span> statement defines a code block to handle any error.<br>
+        <p></p>
+        The <span style="color: red;">finally</span> statement defines a code block to run regardless of the result.<br>
+        <p></p>
+        The <span style="color: red;">throw statement</span> defines a custom error.</p>
+    <h2> Errors Will Happen! </h2>
+    <p>When executing JavaScript code, different errors can occur.<br>
+        <p></p>
+        Errors can be coding errors made by the programmer, errors due to wrong input, and other unforeseeable things. </p>
+        <a href="https://ibb.co/mywrwdz"><img src="https://i.ibb.co/vdGCGfz/Screenshot-2024-12-08-225332.png" alt="Screenshot-2024-12-08-225332" border="2" style="border-color: #525a63;"></a>
+        <p style="color:#669f65;">//Outcome </p>
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/x7JWL5J/Screenshot-2024-12-08-225435.png" alt="Screenshot-2024-12-08-225435" border="2" style="border-color: #525a63;"></a>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="Abs"> JavaScript Classes </h1>
+    <p>ECMAScript 2015, also known as ES6, introduced JavaScript Classes.<br>
+        <p></p>
+        JavaScript Classes are templates for JavaScript Objects.</p>
+    <h2>JavaScript Class Syntax</h2>
+    <p>Use the keyword <span style="color: red;">class</span> to create a class.<br>
+        <p></p>
+        Always add a method named <span style="color: red;">constructor()</span>:/p>
+        <a href="https://ibb.co/WKP1S6H"><img src="https://i.ibb.co/q1WwbdD/Screenshot-2024-12-08-230145.png" alt="Screenshot-2024-12-08-230145" border="2" style="border-color: #525a63;"></a>
+        <a href="https://ibb.co/5FtfHFL"><img src="https://i.ibb.co/Qdz1wdM/Screenshot-2024-12-08-230238.png" alt="Screenshot-2024-12-08-230238" border="2" style="border-color: #525a63;"></a>
+        <p>The example above creates a class named "Car".<br>
+            <p></p>
+            The class has two initial properties: "name" and "year".</p>
+        <p style="color: #669f65; margin-top: 20px;">A JavaScript class is <b>not</b> an object.<br></p>
+            <p></p>
+        <p style="color: #669f65; margin-top: 20px;">It is a <b>template</b> for JavaScript objects.</p>
+    <h2>Using a Class</h2>
+    <p>When you have a class, you can use the class to create objects:</p>
+    <a href="https://ibb.co/j9YsgQ0"><img src="https://i.ibb.co/tw6F8vj/Screenshot-2024-12-08-230708.png" alt="Screenshot-2024-12-08-230708" border="2" style="border-color: #525a63;"></a>
+    <p style="color:#669f65;">//Outcome </p>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/0yYNqr9/Screenshot-2024-12-08-230758.png" alt="Screenshot-2024-12-08-230758" border="2" style="border-color: #525a63;"></a>  
+    <p> The example above uses the <b> Car class</b> to create two <b>Car objects</b>.</p>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+    
+    <h1 id="AbsI">JavaScript Debugging</h1>
+    <p style="color: #669f65;">Errors can (will) happen, every time you write some new computer code.</p>
+    <h2 >Code Debugging</h2>
+    <p>Programming code might contain syntax errors, or logical errors.<br>
+        <p></p>
+        Many of these errors are difficult to diagnose.<br>
+        <p></p>
+        Often, when programming code contains errors, nothing will happen. There are no error messages, and you will get no indications where to search for errors.<br>
+        <p></p>
+        Searching for (and fixing) errors in programming code is called code debugging.</p>
+        <h2>JavaScript Debuggers</h2>
+    <p>Debugging is not easy. But fortunately, all modern browsers have a built-in JavaScript debugger.<br>
+        <p></p>
+        Built-in debuggers can be turned on and off, forcing errors to be reported to the user.<b></b>
+        <p></p>
+        With a debugger, you can also set breakpoints (places where code execution can be stopped), and examine variables while the code is executing.<br>
+        <p></p>
+        Normally (otherwise follow the steps at the bottom of this page), you activate debugging in your browser with the F12 key, and select "Console" in the debugger menu.</p>
+    <h2>The console.log() Method</h2>
+        <p>If your browser supports debugging, you can use <span style="color:red;">console.log()</span> to display JavaScript values in the debugger window:</p>
+        <a href="https://ibb.co/dWMfj7q"><img src="https://i.ibb.co/98gpcGL/Screenshot-2024-12-08-233158.png" alt="Screenshot-2024-12-08-233158" border="2" style="border-color: #525a63;"></a>
+    <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    <h1 id="AOB">JavaScript Performance</h1>
+    <p>How to speed up your JavaScript code.</p>
+    <h2 >Reduce Activity in Loops</h2>
+    <p>Loops are often used in programming.<br>
+        <p></p>
+        Each statement in a loop, including the for statement, is executed for each iteration of the loop.<br>
+        <p></p>
+        Statements or assignments that can be placed outside the loop will make the loop run faster.</p>
+        <a href="https://ibb.co/JyLk7p0"><img src="https://i.ibb.co/1dV2qXh/Screenshot-2024-12-08-233642.png" alt="Screenshot-2024-12-08-233642" border="2" style="border-color: #525a63;"></a>
+        <a href="https://ibb.co/DVX4tQG"><img src="https://i.ibb.co/smSj2q5/Screenshot-2024-12-08-233717.png" alt="Screenshot-2024-12-08-233717" border="2" style="border-color: #525a63;"></a>
+        <p>The bad code accesses the length property of an array each time the loop is iterated.<br>
+            <p></p>
+            The better code accesses the length property outside the loop and makes the loop run faster.</p>
+        <h2>Reduce DOM Access</h2>
+        <p>Accessing the HTML DOM is very slow, compared to other JavaScript statements.<br>
+            <p></p>
+            If you expect to access a DOM element several times, access it once, and use it as a local variable:</p>
+            <a href="https://ibb.co/R3k3Fhq"><img src="https://i.ibb.co/ZBpBjH0/Screenshot-2024-12-08-234041.png" alt="Screenshot-2024-12-08-234041" border="2" style="border-color: #525a63;"></a>
+        <h2>Reduce DOM Size</h2>
+        <p>Keep the number of elements in the HTML DOM small.<br>
+            <p></p>
+            This will always improve page loading, and speed up rendering (page display), especially on smaller devices.<br>
+            <p></p>
+            Every attempt to search the DOM (like getElementsByTagName) will benefit from a smaller DOM.</p>
+        <h2>Avoid Unnecessary Variables</h2>
+        <p>Don't create new variables if you don't plan to save values.<br>
+            <p></p>
+            Often you can replace code like this:</p>
+            <a href="https://ibb.co/YDZHnNS"><img src="https://i.ibb.co/KNwT45g/Screenshot-2024-12-08-234403.png" alt="Screenshot-2024-12-08-234403" border="2" style="border-color: #525a63;"></a>
+        <p>With this:</p>
+        <a href="https://ibb.co/8P7ccLG"><img src="https://i.ibb.co/CVH2234/Screenshot-2024-12-08-234433.png" alt="Screenshot-2024-12-08-234433" border="2" style="border-color: #525a63;"></a>
+        <h2>Delay JavaScript Loading</h2>
+        <p>Putting your scripts at the bottom of the page body lets the browser load the page first.<br>
+            <p></p>
+            While a script is downloading, the browser will not start any other downloads. In addition all parsing and rendering activity might be blocked.</p>
+        <p> An alternative is to use <span style="color: red;">defer="true"</span> in the script tag. The defer attribute specifies that the script should be executed after the page has finished parsing, but it only works for external scripts.<br>
+            <p></p>
+            If possible, you can add your script to the page by code, after the page has loaded:</p>
+            <a href="https://ibb.co/mFQ6gBc"><img src="https://i.ibb.co/7N72Lz1/Screenshot-2024-12-08-235024.png" alt="Screenshot-2024-12-08-235024" border="2" style="border-color: #525a63;"></a>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: black; background-color: black; border: none;">
+
+    
+
+</body>
+
+</html>

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="Shorcut icon" type="x-icon" href="https://i.ibb.co/SPDsjNv/PHP-Photoroom.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Tutorial</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Ledger&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Frijole&family=Ledger&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+        p {
+            font-size: 1.3em;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        body {
+            display: flex; 
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8; /* Light background for contrast */
+        }
+
+        h1, h2 {
+            font-size: 1.8em;
+            font-family: 'Times New Roman', Times, serif;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-top: 30px;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #0b0f23, #1b2845, #0b0f23);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            background-size: cover;
+            color: white;
+        }
+        @keyframes twinkling {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: -1000px 1000px;
+            }
+        }
+
+        body {
+            background: #000 url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+            animation: twinkling 200s linear infinite;
+        }    
+
+        .navbar {
+            width: 220px;
+            background: linear-gradient(to bottom, rgba(25, 25, 25, 1), rgba(0, 0, 50, 1));
+            padding: 20px;
+            border-radius: 0 20px 20px 0;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.6); 
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+            padding: 10px 15px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+        }
+
+        .navbar a:active {
+            background: rgba(255, 255, 255, 0.5);
+            color: #ff00ff;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.7);
+        }
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: #00ffff;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            max-width: 900px; 
+            margin-left: 30px;
+            margin-right: 30px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5), 0 2px 10px rgba(0, 0, 0, 0.1);
+            color: white; /* White text color */
+        }
+
+        /* Videos */
+        .vid {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 20px 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%; 
+            padding-top: 56.25%; 
+            overflow: hidden;
+        }
+        .video-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width of the wrapper */
+            height: 100%; /* Full height of the wrapper */
+            object-fit: contain; /* Cover the area while maintaining aspect ratio */
+            border-radius: 8px; /* Rounded corners */
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width of the wrapper */
+            height: 100%; /* Full height of the wrapper */
+            border: none; /* Remove border */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        /* Language Access */
+        .container {
+            padding: 50px 0;
+            height: 100%;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .parent {
+            margin-top: -50px;
+            height: 400px;
+            width: 300px;
+            padding: 20px;
+            perspective: 1000px;
+        }
+        .card { 
+            padding-top: 100px;
+            height: 425px;
+            transform-style: preserve-3d;
+            background-image: url(https://i.ibb.co/3pZVjjQ/i01-meow-1.png);
+            background-position: center center;
+            width: 100%;
+            transition: all 0.5s ease-in-out;
+            border-radius: 10px;
+        }
+        .card:hover {
+            background-position: 80% 20%;
+            transform: rotate3d(0.5, 1, 0, 15deg);
+        }
+        .content-box {
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.811);
+            border-radius: 0 0 10px 10px;
+            box-shadow: rgba(255, 255, 255, 0.925) 0 20px 50px -25px;
+            transition: all 0.5s ease-in-out;
+            padding: 50px 25px 25px 25px;
+            transform-style: preserve-3d;
+        }
+        .card-title {
+            color: white;
+            font-size: 25px;
+            font-family: 'Frijole';
+            font-weight: 900;
+            transition: all 0.5s ease-in-out;
+            transform: translate3d(0px, 0px, 25px);
+        }
+        .card-title:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        .card-content {
+            padding-top: 15px;
+            font-size: 0.9em;
+            font-family: 'Ledger';
+            color: white;
+            transition: all 0.5s ease-in-out;
+        }
+        .card-content:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        .see-more {
+            display: block;
+            font-weight: 900;
+            font-size: 11px;
+            font-family: 'Times New Roman', Times, serif;
+            text-transform: uppercase;
+            color: blue;
+            padding-top: 15px;
+            transition: all 0.5s ease-in-out;
+            transform: translate3d(0px, 0px, 20px);
+        }
+        .see-more a {
+            text-decoration: none;
+            color: white;
+        }
+        .see-more:hover {
+            transform: translate3d(0px, 0px, 50px);
+        }
+        
+        .date-box8 {
+            position: absolute;
+            top: 75px;
+            left: 25px;
+            height: 60px;
+            width: 60px;
+            background-color: rgb(187, 187, 187);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: rgb(162, 175, 196) 0px 20px 60px 0px, rgb(175, 175, 175) 0px 18px 36px -18px;
+            transform: translate3d(0px, 0px, 50px);
+            background-image: url(https://i.ibb.co/SPDsjNv/PHP-Photoroom.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .date-box span {
+            display: block;
+            text-align: center;
+        }
+        .date-box .month {
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .date-box .date {
+            font-size: 20px;
+            font-weight: 900;
+            color: rgb(0, 136, 255);
+        }
+        
+    </style>
+
+</head>
+
+<body>
+
+    
+    <div class="container">
+        <div class="parent card9">
+            <div class="card">
+                <div class="content-box">
+                    <h1 class="card-title">PHP</h1>
+                    <p class="card-content">A server-side scripting language used for creating dynamic websites and web applications, often paired with databases like MySQL.</p>
+                    <span class="see-more"><a href="/SCLWEB/TSCLPL.html">Exit</a></span>
+                </div>
+                <div class="date-box8">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <div class="navbar">
+        <h2>Navigation</h2>
+        <a href="#history">History</a>
+        <a href="#Intro">Introduction to PHP</a>
+        <a href="#syn">Syntax</a>
+        <a href="#str">String</a>
+        <a href="#var">Variable</a>
+        <a href="#data">Data Type</a>
+        <a href="#com">Comment</a>
+        <a href="#EP">Echo and Print</a>
+        <a href="#cast">Casting</a>
+        <a href="#num">Number</a>
+        <a href="#mat">Math</a>
+        <a href="#con">Constant</a>
+        <a href="#oper">Operators</a>
+        <a href="#If">If</a>
+        <a href="#swi">Switch</a>
+        <a href="#loo">Loops</a>
+        <a href="#Arr">Arrays</a>
+        <a href="#fun">Function</a>
+        <a href="#GV">Global Variable</a>
+        <a href="#RE">Regualar Expression</a>
+        <a href="#frm">Form</a>
+        <a href="#DT">Date and Time </a>
+        <a href="#inc">Include</a>
+        <a href="#CW">File Create/Write</a>
+        <a href="hand">Handling</a>
+        <a href="#upl">File Upload</a>
+        <a href="#ses">Sessions</a>
+        <a href="#cok">Cookies</a>
+        <a href="#fil">Filter</a>
+        <a href="#CF">Callback Function</a>
+        <a href="#JN">JSON</a>
+        <a href="exp">Exeptions</a>
+    </div>
+    
+    <div class="content">
+        <h1>PHP</h1>
+        <h2 id="history">History</h2>
+        <p><b>A Brief History About PHP</b></p>
+        <br>
+        <p>PHP(Hypertext Preprocessor) is a general-purpose scripting language geared towards web development.
+           PHP is a server scripting language, and a powerful tool for making dynamic and interactive Web pages.
+           PHP was originally an abbreviation of Personal Home Page but it now stands for the recursive acronym PHP: Hypertext Preprocessor.
+        </p>
+        <br>
+        <p><b>Origins(1993)</b> </p>
+        <br>
+        <p>Development: PHP was created by Danish-Canadian programmer Rasmus Lerdorf.
+           The language PHP is now associated primarily with web development, its original uses were much simpler and focused. Initially, 
+           it was just meant for personal website management.Tracking website visitorsPHP can be used to develop dynamic and interactive web pages,
+           applications, and eCommerce platforms.
+        <br>Influence: PHP was influenced by C programming language.</p>
+        <br>
+        <P><b>PHP 1.0 (1995)</b>
+        <br>PHP development began in 1993 and was release in 1995 This release included basic functionality such as Perl-like variables, form handling,
+            and the ability to embed HTML. By this point, the syntax had changed to resemble that of Perl, but was simpler, more limited, and less consistent.
+            when Rasmus Lerdorf wrote several Common Gateway Interface (CGI) programs in C</P>
+            <br>
+        <p><b>PHP 2.0 (1997)</b>
+        <br>Officially called "PHP/FI 2.0". This is the first release that could actually be characterised as PHP, being a standalone language with many features
+           that have endured to the present day.</p>
+           <br>
+        <p><b>PHP 3.0 (1998)</b>
+        <br>Zeev Suraski and Andi Gutmans rewrote the parser in 1997 and formed the base of PHP 3, changing the language's name to the recursive acronym PHP: 
+            Hypertext Preprocesso public testing of PHP 3 began, and the official launch came in June 1998.</p>
+            <br>
+        <p><b>PHP 4.0 (2000)</b>
+        <br>On 22 May 2000, PHP 4, powered by the Zend Engine 1.0, was released.this branch had reached version 4.4.9. PHP 4 is now no longer under development and 
+            nor are any security updates planned to be released</p>
+            <br>
+        <p><b>PHP 5.0 (2004)</b>
+        <br>July 1 2004 PHP 5 was released, powered by the new Zend Engine IIPHP 5 included new features such as improved support for object-oriented programming,
+            the PHP Data Objects (PDO) extension (which defines a lightweight and consistent interface for accessing databases), and numerous performance enhancements
+            In 2008, PHP 5 became the only stable version under development. Late static binding had been missing from previous versions of PHP.</p>
+            <br>
+            <p><b>6.0 (Not released)</b>
+        <br>Abandoned version of PHP that planned to include native Unicode support.</p>
+        <br>
+        <p><b>7.0 (2015)</b>
+        <br>During 2014 and 2015, a new major PHP version was developed, foundation of PHP 7 is a PHP branch that was originally dubbed PHP next generation (phpng). 
+            It was authored by Dmitry Stogov, Xinchen Hui and Nikita Popov, and aimed to optimize PHP performance by refactoring the Zend Engine while retaining near-complete language compatibility</p>
+            <br>
+        <p><b>8.0 (2020)</b>
+        <br>PHP 8 was released on 26 November 2020, and is currently the second-most used PHP major version.PHP 8 is a major version and has breaking changes from previous versions
+            New features and notable changes include </p>
+
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h1>PHP For Begginers</h1>
+        <h2 id="Intro">Introduction to PHP</h2>
+
+        <p>
+            PHP (Hypertext Preprocessor) is a widely-used open-source scripting language primarily designed for web development. It is especially suited for creating dynamic web pages and applications. PHP code is embedded within HTML code and executed on the server side, making it a server-side scripting language. This means that the client (browser) only sees the output of the PHP code, not the code itself.
+        </p>
+        <br>
+        <p>Overview of PHP Setting up the development environment (Visual Studio) </p>
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Mip_RuSEoso?si=al2v4bAmrk-zhCpT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="syn">Syntax</h2>
+
+        <p> A PHP script is executed on the server, and the plain HTML result is sent back to the browser. PHP's syntax borrows some concepts and styles from other languages, mostly C, Perl and Java. It uses "curly braces" ( {} ) to structure code, variable names start with a $ sign and 
+            statements end with a semicolon.<br>PHP script can be placed anywhere in the document.PHP script starts with <? php and ends with ?>.<br>The default file extension for PHP files is ".php".</p>
+        <br>
+        <p> <b>Case Sensitivity</b><br>keywords (if, else, while, echo, etc.), classes, functions, and user-defined functions are not case-sensitive.</p>
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <img src="https://1drv.ms/i/c/7208af6871413284/EWj3fZh3e0NOif_0e8YZX_IBh3K3V7YWEGTh3TDSs4Luwg?e=2fQ1pf" alt="">
+            </div>
+        </div>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/zZ6vybT1HQs" title="PHP Full Course for non-haters 🐘" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="str">String</h2>
+
+        <p> string is a series of characters, where a character is the same as a byte
+            A string is a sequence of characters,Strings in PHP are surrounded by either double quotation marks,
+            or single quotation marks.<br>Double or Single quotesbe aware of the differences between the two<br> Double quoted strings
+            perform action on special characters while Single quoted strings does not perform such actions Single quoted string literals
+            returns the string as it is</p>
+
+        <p> <b>String Length</b><br> PHP strlen() function returns the length of a string.<br><b>Word Count</b><br> PHP str_word_count() function counts 
+            the number of words in a string</p>
+        <br>
+        <h2>Concatenate Strings</h2>
+        <p> Concatenate Strings oncatenate, or combine, two strings you can use the . operator: </p>
+        <br>
+        <h2>Modify Strings</h2>
+        <p> PHP has a set of built-in functions that you can use to modify strings.<br><br><b>Upper Case</b><br>The strtoupper() function returns the string
+            in upper case<br><b>Lower Case</b><br>The strtolower() function returns the string in lower case<br><b>Replace String</b><br>PHP str_replace() 
+            function replaces some characters with some other characters in a string<br><b>Remove Whitespace</b><br>trim() removes any whitespace from the beginning
+            or the end<br><b>Convert String into Array</b><br>PHP explode() function splits a string into an array.The first parameter of the explode() function represents the "separator". 
+            The "separator" specifies where to split the string. </p>
+        <h2>Slicing Strings</h2>
+        <p> <b>Slicing Strings</b><br>You can return a range of characters by using the substr() function.Specify the start index and the number of characters you want to return<br>
+        <b> Negative Length</b><br>Use negative length to specify how many characters to omit, starting from the end of the string<br><b>Escape Characters</b>
+            insert characters that are illegal in a string, use an escape character.An escape character is a backslash \ followed by the character you want to insert.<br>Other escape characters used in PHP:<br>
+            Single Quote \', PHP variables \$ ,Double Quote \", Carriage Return \r, New Line \n, Tab \t, Form Feed \f, Octal value \ooo, Hex value \xhh</p>
+
+            <div class="vid">
+                <div class="video-wrapper">
+                    <iframe width="640" height="360" src="https://www.youtube.com/embed/lRUljf_chOE" title="Working With Strings | PHP | Tutorial 8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+        
+        <h2 id="var">Variable</h2>
+
+        <p> Variables are "containers" for storing information.<br><b>Creating (Declaring)</b><br>a variable starts with the $ sign, followed by the name of the variable.<br><b>Output Variables</b><br>
+            PHP echo statement is often used to output data to the screen.<br><b>Variable Type</b><br>command for declaring a variable, and the data type depends on the value of the variable.
+            <br>PHP supports the following data types:String,Integer,Float,Double,Boolean,Array,Object,NULL,Resource<br><b>Type</b><br>get the data type of a variable, use the var_dump() function.
+            <br><b>Assign String to a Variable</b><br>Assigning a string to a variable is done with the variable name followed by an equal sign and the string<br><b>Assign Multiple Values</b><br>
+            You can assign the same value to multiple variables in one line</p>
+        <h2>Variables Scope</h2>
+        <p>ariables can be declared anywhere in the script.The scope of a variable is the part of the script where the variable can be referenced/used<br>Three Diffirent variable scopes: local, global, static<br>
+           <b>Global and Local Scope</b><br>Variable declared outside a function has a GLOBAL SCOPE and can only be accessed outside a function variable declared within a function has a LOCAL SCOPE and can only be 
+           accessed within that function<br><b>global Keyword</b><br>keyword is used to access a global variable from within a function. To do this, use the global keyword before the variables (inside the function)
+           global variables in an array called $GLOBALS[index].index holds the name of the variable. This array is also accessible from within functions and can be used to update global variables directly.<br>
+           <b>Static Keyword</b><br>when a function is completed/executed, all of its variables are deleted.we want a local variable NOT to be deleted o do this, use the static keyword when you first declare the variable</p>
+
+           <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/-1iErfiYpBU?list=PLLAZ4kZ9dFpNJvT-JKogcCySuSznPpXEp" title="Variables | PHP | Tutorial 6" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="data">Data type</h2>
+
+        <p> Variables can store data of different types, and different data types can do different things.PHP supports the following data types:String,Integer,Float,Double,Boolean,Array,Object,NULL,Resource<br>
+            You can get the data type of any object by using the var_dump() function.<br><b>String</b>A string can be any text inside quotes. You can use single or double quotes<br><b>Float</b><br>is a number with a decimal point
+            or a number in exponential form. The PHP var_dump() function returns the data type and value<br><b>Boolean</b><br>Boolean represents two possible states: TRUE or FALSE.<br><b>Integer</b><br> integer data type is a non-decimal number
+            <br><b>Array</b><br>array stores multiple values in one single variable<br><b>NULL Value</b><br>Null is a special data type which can have only one value: NULL.variable of data type NULL is a variable that has no value assigned to it.<br>
+            <b>Change Data Type</b><br>assign an integer value to a variable, the type will automatically be an integer. a string to the same variable, the type will change to a string<br><b>Object</b><br>Classes and objects are the two main aspects of object-oriented programming
+            class is a template for objects, and an object is an instance of a class he individual objects are created, they inherit all the properties and behaviors from the class, but each object will have different values for the properties.If you create a __construct() function, 
+            PHP will automatically call this function when you create an object from a class.<br><b>Resource</b><br>resource type is not an actual data type. It is the storing of a reference to functions and resources external to PHP.</p>
+
+            <div class="vid">
+                <div class="video-wrapper">
+                    <iframe width="640" height="360" src="https://www.youtube.com/embed/3kWAba3hZbg?list=PLLAZ4kZ9dFpNJvT-JKogcCySuSznPpXEp" title="Data Types | PHP | Tutorial 7" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="com">Comment</h2>
+
+        <p> comment in PHP code is a line that is not executed as a part of the program.<br><b>Single Line Comments</b><br>Single line comments start with // and the end of the line will be ignored You can also use # for single line comments<br><b>Comments to Ignore Code</b><br>
+            use comments to prevent code lines from being executed</p>
+        <h2> Multiline Comments</h2>
+        <p>Multi-line comments start with /* and end with */ Any text will be ignored.<br><b>Multi-line Comments to Ignore</b><br>multi-line comments to prevent blocks of code from being executed<br><b>Comments in the Middle</b><br>multi-line comment syntax can also be used to prevent execution of parts inside a code-line</p>
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/htK4tLcwk_I" title="Comments | PHP | Tutorial 26" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="EP">Echo and Print Statements</h2>
+
+        <p> Here are two basic ways to get output: echo and print echo and print are more or less the same. They are both used to output data to the screen<br>DIFFERENCES:echo has no return value while print has a return value of 1 so it can be used in expressions.echo can take multiple parameters while
+            print can take one argument. echo is marginally faster than print.<br><b>echo Statement</b><br>echo statement can be used with or without parentheses: echo or echo()<br><b>PHP print Statement</b><br> print statement can be used with or without parentheses: print or print().</p>
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/xNjdVgBIuS0" title="Echo vs. Print in PHP | PHP Tutorial for Beginners  | Ep 7" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="cast">Casting</h2>
+
+        <p> change a variable from one data type into another,a variable to have a specific data type. This can be done with casting.<br>Casting in PHP is done with these statements: (string) - Converts to data type String<br>(int) - Converts to data type Integer<br>(float) - Converts to data type Float<br>(bool) - Converts to data type Boolean<br>
+            (array) - Converts to data type Array<br> (object) - Converts to data type Object<br>(unset) - Converts to data type NULL<br><br><b>Cast to String</b>: use the (string) statement<br><b>Cast to Integer</b>:use the (int) statement<br><b>Cast to Boolean</b>:use the (bool) statement<br><b>Cast to Float</b>:use the (float) statement<br><b>Cast to Array</b>
+            :use the (array) statement<br><b>Cast to Object</b>:use the (object) statement<br><b>Cast to NULL</b>:se the (unset) statement</p>
+        
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="num">Number</h2>
+
+        <p> into Integers, Floats, and Number Strings.<br>here are three main numeric types in PHP:<br>Integers<br>Float<br>Number String<br><br>Data type:<br> Infinity<br>NaN<br><b>Integers</b><br>An integer is a number without any decimal part.An integer data type is a non-decimal number<br>PHP has the following predefined constants for integers:
+            PHP_INT_MAX - The largest integer supported<br>PHP_INT_MIN - The smallest integer supported<br>PHP_INT_SIZE -  The size of an integer in bytes<br><br>PHP has the following functions to check if the type of a variable is integer:<br>is_int()<br>is_integer() - alias of is_int()<br>is_long() - alias of is_int()<br><br><b>Floats</b><br>float is a number with a decimal point or
+            a number in exponential form The float data type can commonly store a value up to 1.7976931348623E+308 and have a maximum precision of 14 digits.<br>PHP has the following functions to check if the type of a variable is float:<br>is_float()<br>is_double()<br><b> Infinity</b>numeric value that is larger than PHP_FLOAT_MAX is considered infinite<br><b>Nan</b><br>NaN stands for Not a Number.
+            PHP has the following functions to check if a value is not a number<br><b>Numerical Strings</b><br>PHP is_numeric() function can be used to find whether a variable is numeric. The function returns true if the variable is a number or a numeric string, false otherwise.<br><b>Casting Strings and Floats to Integers</b><br>The (int), (integer), and intval() functions are often used to convert a value to an integer.</p>
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/LXx0JaipiQc" title="Working with Numbers | PHP for Beginners - Part 5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="mat">Math</h2>
+
+        <p> Set of math functions that allows you to perform mathematical tasks on numbers.<br><b> pi() Function</b><br>pi() function returns the value of PI<br><b>min() and max() Functions</b><br>The min() and max() functions can be used to find the lowest or highest value in a list of arguments.<br><b> abs() Function</b><br>The abs() function returns the absolute (positive) value of a number<br>
+            <b> sqrt() Function</b><br>The sqrt() function returns the square root of a number<br><b>round() Function</b><br>The round() function rounds a floating-point number to its nearest integer.<br><b>Random Numbers</b><br>The rand() function generates a random number.</p>
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/nT5f5brN4xI" title="PHP useful math functions you should know" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="con">Constant</h2>
+
+        <p> Constants are like variables, except that once they are defined they cannot be changed or undefined.constant is an identifier.The value cannot be changed during the script.valid constant name starts with a letter or underscore create a constant, use the define() function.<br><b>Constant Arrays</b><br> you can create an Array constant using the define() function.<br><b>Constants are Global</b><br>
+            Constants are automatically global and can be used across the entire script.<br><b>const Keyword</b><br>a constant by using the const keyword.</p>
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/6JtP8xk1U_k" title="What Are Constants &amp; Variable Variables In PHP - Full PHP 8 Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="oper">Operators</h2>
+
+        <p> Operators are used to perform operations on variables and values.<br><b>Assignment Operators</b><br>PHP assignment operators are used with numeric values to write a value to a variable. basic assignment operator in PHP is "=". It means that the left operand gets set to the value of the assignment expression on the right<br><b>Arithmetic Operators</b><br>arithmetic operators are used with numeric values to perform common 
+            arithmetical operations, such as addition, subtraction, multiplication<br><b>Increment / Decrement Operators</b><br> PHP increment operators are used to increment a variable's value while decrement operators are used to decrement a variable's value.<br><b>Comparison Operators</b>comparison operators are used to compare two values string or number<br><b>Logical operators</b><br>logical operators are used to combine conditional statements.
+            <br><b>String Operators</b><br>wo operators that are specially designed for strings<br><b>Conditional Assignment Operators</b>conditional assignment operators are used to set a value depending on conditions<br><b> Array Operators</b><br>array operators are used to compare arrays</p>
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/Q5NoBVswShE" title="PHP logical operators explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="If">IF</h2>
+
+        <p> if statement executes some code if one condition is true.<br><b>Comparison Operators</b><br>If statements usually contain conditions that compare two values.<br><b>Logical Operators</b><br>check more than one condition, we can use logical operators, like the && operator<br><b> The if.else Statement</b><br>The if...else statement executes some code if a condition is true and another code if that condition is false.<br>
+            <b> if.elseif.else Statement</b><br>The if...elseif...else statement executes different codes for more than two conditions<br><b>Nested If</b><br>if statements inside if statements, this is called nested if statements.<br><b>Short Hand If</b><br>write shorter code, you can write if statements on one line<br><b>Short Hand If.Else</b>if...else statements can also be written in one line, but the syntax is a bit different.</p>
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/Kp35Sa2Qay0" title="PHP if statements explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="swi">Switch</h2>
+
+        <p> Switch statement is used to perform different actions based on different conditions.Use the switch statement to select one of many blocks of code to be executed.<br><b>default Keyword</b><br>default keyword specifies the code to run if there is no case match.<br><b>break Keyword</b><br>reaches a break keyword, it breaks out of the switch block stop the execution of more code, and no more cases are tested last block does not need a break, the block breaks</p>
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/f7Ejo1WgUtA" title="PHP switches explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="loo">Loops</h2>
+
+        <p>  instead of adding several almost equal code-lines in a script, we can use loops<br><b>while</b> - loops through a block of code as long as the specified condition is tru<br><b>do...while</b> - loops through a block of code once, and then repeats<br><b>for </b>- loops through a block of code a specified number of time<br><b>foreach</b> - loops through a block of code for each element in an array<br><br><b>Break</b><br>break statement can be used to jump out of different kind of loops.<br>
+            <b>Break in For loop</b><br>break statement can be used to jump out of a for loop<br><b>Break in Do While Loop</b><br>break statement can be used to jump out of a do...while loop.<br><b>Break in While Loop</b><br>break statement can be used to jump out of a while loop.<br><b>Break in For Each Loop</b>break statement can be used to jump out of a foreach loop.<br><br><b>Continue</b>continue statement can be used to jump out of the current iteration of a loop, and continue 
+            with the next<br><b>Continue in While Loop</b><br>continue statement stops the current iteration in the while loop and continue with the next.<br><b>Continue in For Loops</b><br>continue statement can be used to jump out of the current iteration of a loop.<br><b>Continue in Do While Loop</b><br>ontinue statement stops the current iteration in the do...while loop<br><b>Continue in For Each Loop</b><br>continue statement stops the current iteration in the foreach loop.</p>
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/OY5EP9G0AYc" title="PHP Loops: for, while, foreach | PHP for Beginners - Part 9" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="arr">Arrays</h2>
+
+        <p>  array stores multiple values in one single variable<br>Three types of arrays:<br><b>Indexed arrays</b>- Arrays with a numeric index<br><b>Associative arrays</b>- Arrays with named keys<br><b>Multidimensional arrays</b>-Arrays containing one or more arrays<br><br><b>Array Functions</b><br>Real strength of PHP arrays are the built-in array functions, like the count() function for counting array items<br><b>Create Array</b><br>create arrays by using the array() function<br>
+            <b>Update Array Items in a Foreach Loop</b><br>different techniques to use when changing item values in a foreach loop<br><b>Add Array Item</b><br>add items to an existing array, you can use the bracket [] syntax<br><b>Associative Arrays</b><br>add items to an associative array, or key/value array, use brackets [] for the key, and assign value with the = operator<br><b>Add Multiple Items to Associative Arrays</b><br>multiple items to an existing array, you can use the += operator
+            <br><b> Multiple Array Items</b><br> add multiple items to an existing array, use the array_push() function<br><b>Remove Array Item</b><br> remove an existing item from an array, you can use the array_splice() function<br><br><b>unset()</b>-function to delete existing array items.<br><b>array_splice()</b>-function takes a length parameter that allows you to specify the number of items to delete.<br><b>unset()</b>-remove items from an associative array<br><b>array_diff()</b>remove items 
+            from an associative array.<br><b>array_pop()</b>function removes the last item of an array<br><b>array_shift()</b>function removes the first item of an array.In this chapter, we will go through the following PHP array sort functions:<br><b>sort()</b> - sort arrays in ascending order<br><b>rsort()</b> - sort arrays in descending order<br><b>asort()</b> - sort associative arrays in ascending order, according to the value<br><b>ksort()</b> - sort associative arrays in ascending order, according to the key<br>
+            <b>arsort()</b> - sort associative arrays in descending order, according to the value<br><b>krsort()</b> - sort associative arrays in descending order, according to the key<br><br><b>Array Functions</b><br> set of built-in functions that you can use on arrays.<br><b>array()</b>Creates an array</p>
+   
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/CuOZ8d7gWeU" title="PHP arrays explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+        
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="fun">Functions</h2>
+
+        <p> <b>Create a Function</b><br>a user-defined function declaration starts with the keyword function, followed by the name of the function.<br><b> Call a Function</b> to call the function, just write its name followed by parentheses ().<br><b>Default Argument Value</b><br>setHeight() without arguments it takes the default value as argument<br><b>Functions - Returning values</b><br>return  let a function return a value.<br></p>
+        
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/SBFO5bIDYHQ" title="PHP functions explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div> 
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="GV">Gloval Variebal</h2>
+
+        <p>  always accessible, regardless of scope - and you can access them from any function, class or file without having to do anything special.The PHP superglobal variables are:<br>$GLOBALS<br>$_SERVER<br>$_REQUEST<br>$_POST<br> $_GET<br>$_FILES<br>$_ENV<br>$_COOKIE<br>$_SESSION</p>
+    
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="RE">Reagular Expression</h2>
+
+        <p> A regular expression can be a single character, or a more complicated pattern.s a sequence of characters that forms a search pattern. When you search for data in a text, you can use this search pattern to describe what you are searching for can be used to perform all types of text search and text replace operations</p>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">   
+
+        <h2 id="DT">Date and Time</h2>
+
+        <p> PHP date() function is used to format a date and/or a time.<br><b>PHP Tip - Automatic Copyright Year</b><br>date() function to automatically update the copyright year on your website.<br><b>Create a Date With mktime()</b><br> PHP mktime() function returns the Unix timestamp for a date. The Unix timestamp contains the number of 
+            seconds between the Unix Epoch and the time specified.<br><b>A Date From a String With strtotime()</b><br>PHP strtotime() function is used to convert a human readable date string into a Unix timestamp.</p>
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/hkTQkaFzEEo" title="PHP - DateTime Object - Full PHP 8 Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div> 
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">   
+
+        <h2 id="inc">Include</h2>
+
+        <p> Include Files  statement takes all the text/code/markup that exists in the specified file and copies it into the file that uses the include statement. include (or require) <br><b>include and require Statements</b><br><b>require</b>-will produce a fatal error (E_COMPILE_ERROR) and stop the script<br><b>include</b>-will only produce a warning (E_WARNING) and the script will continue\</p>
+        
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/aU0Tqxgtid8" title="PHP include() function explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>     
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">   
+
+        <h2 id="CW">File Create and Write</h2>
+
+        <p> fopen() function is also used to create a file. Maybe a little confusing, but in PHP, a file is created using the same function used to open files.<br><b>Write to File </b><br>fwrite() function is used to write to a file.first parameter of fwrite() contains the name of the file to write to and the second parameter is the string to be written.</p>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">   
+
+        <h2 id="upl">File Upload</h2>
+
+        <p> <b>The "php.ini" File</b><br>"php.ini" file, search for the file_uploads directive and set it to On</p>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="hand">Handling</h2>
+
+        <p> important part of any web application.often need to open and process a file for different tasks.<br><b>readfile() Function</b><br>readfile() function reads a file and writes it to the output buffer.</p>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">   
+        
+        <h2 id="ses">Sessions</h2>
+        
+        <p> session is a way to store information (in variables) to be used across multiple pages.session is started with the session_start() function.<br><b>Session Variable Values</b><br>session_start() variables are not passed individually to each new page,
+            instead they are retrieved from the session we open at the beginning of each page </p>
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/JXKQmIpjRTk" title="PHP $_SESSION explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>     
+    
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="cok">Cookies</h2>
+
+        <p> created with the setcookie() function.<br><b>Create/Retrieve a Cookie</b><br>isset() function to find out if the cookie is set<br><b>Cookie Value</b><br>the cookie using the setcookie() function<br><b>Delete a Cookie</b>
+            setcookie() function with an expiration date in the past</p>
+
+        <div class="vid">
+            <div class="video-wrapper">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/EgDQ7Z13FQc" title="PHP $_COOKIE explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>     
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="fil">Filter</h2>
+
+        <p> PHP filters are used to validate and sanitize external input. PHP filter extension has many of the functions needed for checking user input. PHP filter extension has many of the functions needed for checking user input
+            can be used to list what the PHP filter extension offers the filter_list() function<br><b>Filters Advanced</b><br>ilter_var() function to check if a variable is both of type INT, and between 1 and 200. </p>
+        
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="CF">Callback Function</h2>
+
+        <p> is a function which is passed as an argument into another function. anonymous function as a callback for PHP's array_map() function</p>
+  
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="JN">JSON</h2>
+
+        <p> <b>json_encode()</b>-The json_encode() function is used to encode a value to JSON format.<br><b>json_decode()</b>-The json_decode() function is used to decode a JSON object into a PHP object or an associative array.<br>
+            <b> Looping Through the Values</b>-loop through the values with a foreach() loop</p>
+
+        <hr style="width:100%; height: 2px; text-align:center; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); border: none;">
+
+        <h2 id="exp">Exeptions</h2>
+
+        <p> exception is an object that describes an error or unexpected behaviour of a PHP script.<br><b>The try...catch Statement</b><br>we can use the try...catch statement to catch exceptions and continue the process.<br>
+            <b>try...catch...finally Statement</b><br>try...catch...finally statement can be used to catch exceptions. Code in the finally block will always run regardless of whether an exception was caught. If finally is present, the catch block is optional.<br>
+            <b>Throwing an Exception</b>throw statement allows a user defined function or method to throw an exception. When an exception is thrown, the code following it will not be executed.
+        </p>
+
+    </div>
+
+</body>
+
+</html>

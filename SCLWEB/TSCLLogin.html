@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="Shorcut icon" type="x-icon" href="/SCL:IMG:GIF:ETC/SCLLOGO.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Log in</title>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Rye&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+        body {
+            background-image: url(/SCL:IMG:GIF:ETC/7068.jpg);
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Navigation Bar */
+
+        .navbar {
+            backdrop-filter: blur(10px);
+            border: 1px #b8bcc9 solid;
+            border-left: none;
+            border-right: none;
+            margin-right: 0;
+            margin-top: 0;
+            padding-right: 10px;
+        }
+        .reallogo {
+            display: flex; /* Flexbox for the logo container */
+            align-items: center; /* Vertically aligns the image with the text */
+            margin-left: 46px; /* Adjust margin as needed */
+        }
+        .reallogo img {
+            width: 100px; /* Set the base width */
+            height: auto; /* Maintain aspect ratio */
+            clip-path: inset(20px 20px 20px 10px); /* Top, right, bottom, left */
+            position: relative;
+        }
+        .logo {
+            margin-right: 230px;
+            text-align: center;
+            font-size: 20px;
+            vertical-align: center;
+            color: #cec8c8;
+            font-family: 'Fugaz One';
+            padding-top: 0px;
+            padding-left: auto;
+            padding-right: auto;
+        }
+        .logo span {
+            color: gray;
+            font-size: 1.2em;
+        }
+        .navdiv {
+            margin: inherit;
+            justify-content: space-between;
+            display: flex;
+            align-items: center;
+        }
+        .navbar a{
+            text-decoration: none;
+            color: #e6d8f1;
+            font-family: 'Nunito';
+        }
+        .navbar a:hover {
+            color: black;
+            background-color: rgb(198, 197, 197);
+            border-radius: 10px;
+            transition: all 0.2s ease-in-out;
+        }
+        .navbar ul {
+            list-style-type: none;
+            margin: 0; 
+            padding: 0; 
+        }
+        .navbar ul li {
+            margin-left: 25px;
+            font-size: 20px;
+            padding-left: 10px;
+            padding-top: 0px;
+            float: left;
+        }
+        .navbar ul li a {
+            color: #e6d8f1;
+            text-decoration: none;
+            padding: 10px 15px;
+        }
+        .navbar ul li a.active {
+            background-color: rgb(198, 197, 197);
+            color: black; /* Change text color if you prefer */
+            border-radius: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+        }
+
+        /* Login Box */
+
+        .wrapper {
+            margin-top: 90px; /* Add some space below the navbar */
+            margin-left: auto;
+            margin-right: auto;
+            width: 420px;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+            color: white;
+            border-radius: 10px;
+            padding: 30px 40px;
+        }
+        .wrapper h1 {
+            font-size: 36px;
+            text-align: center;
+        }
+        .wrapper .input-box {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            margin: 30px 0;
+        }
+        .input-box input {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            border: 1px solid rgba(255, 255, 255, .2);
+            border-radius: 40px;
+            font-size: 16px;
+            color: white;
+            padding: 20px 45px 20px 20px;
+        }
+        .input-box input::placeholder {
+            color: white;
+        }
+        .input-box i {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+        .wrapper .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14.5px;
+            margin: -15px 0 15px;
+        }
+        .wrapper .remember-forgot label input {
+            accent-color: white;
+            margin-right: 3px;
+        }
+        .remember-forgot a {
+            color: white;
+            text-decoration: none;
+        }
+        .remember-forgot a:hover {
+            text-decoration: underline;
+        }
+        .wrapper .btn {
+            width: 100%;
+            height: 45px;
+            background: white;
+            border: none;
+            border-radius: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+        }
+        .wrapper .register-link {
+            font-size: 14.5px;
+            text-align: center;
+            margin: 20px 0 15px;
+        }
+        .register-link p a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .register-link p a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    
+    <nav class="navbar"> 
+        <div class="navdiv"> 
+            <div class="reallogo">
+                <img src="/SCL:IMG:GIF:ETC/SCLLOGO.png" alt="Logo" style="height: 100px; width: 100px;">
+            </div>
+            <div class="logo"> 
+                <span> Student </span> Code Learning
+            </div>
+            <ul> 
+                <li><a href="/SCLWEB/TSCL.html"> Home </a></li>
+                <li><a href="/SCLWEB/TSCLPL.html"> Programming Language </a></li>
+                <li><a href="/SCLWEB/TSCLAbout.html"> About </a></li>
+                <li><a href="/SCLWEB/TSCLContact.html"> Contact </a></li>
+                <li><a href="/SCLWEB/TSCLLogin.html" class="active"> Log in </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="wrapper">
+        <form action="">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <div class="remember-forgot">
+                <label><input type="checkbox">Remember me</label>
+                <a href="#">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+
+            <div class="register-link">
+                <p>Don't have an account? <a href="#">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+
+</html>
